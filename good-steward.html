@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Steward – Christian Business Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --gold: #C9973A;
+  --gold-light: #E8C97A;
+  --gold-pale: #FBF5E8;
+  --navy: #1A2744;
+  --navy-mid: #2C3E66;
+  --olive: #4A5E3A;
+  --olive-light: #6B8A52;
+  --cream: #FAF8F4;
+  --warm-white: #FFFFFF;
+  --text-primary: #1C1C1E;
+  --text-secondary: #5C5C6E;
+  --text-muted: #9A9AAF;
+  --border: #E8E4DC;
+  --card-bg: #FFFFFF;
+  --page-bg: #FAF8F4;
+  --nav-bg: rgba(250,248,244,0.95);
+  --shadow: 0 2px 20px rgba(26,39,68,0.08);
+  --shadow-lg: 0 8px 40px rgba(26,39,68,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.25s ease;
+}
+
+[data-theme="dark"] {
+  --gold: #D4A84B;
+  --gold-light: #E8C97A;
+  --gold-pale: #2A2210;
+  --navy: #8AADFF;
+  --navy-mid: #A8C4FF;
+  --cream: #0E0E12;
+  --warm-white: #1A1A22;
+  --text-primary: #F0EDE8;
+  --text-secondary: #B0ACBE;
+  --text-muted: #6A6880;
+  --border: #2A2A38;
+  --card-bg: #1A1A22;
+  --page-bg: #0E0E12;
+  --nav-bg: rgba(14,14,18,0.95);
+  --shadow: 0 2px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+}
+h1,h2,h3,h4 { font-family: 'Lora', serif; line-height: 1.25; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; border-radius: var(--radius); }
+button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+input, textarea, select { font-family: inherit; outline: none; }
+
+/* ===== UTILITY ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 72px 0; }
+.section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-primary); margin-bottom: 8px; }
+.section-sub { color: var(--text-secondary); font-size: 1rem; margin-bottom: 48px; max-width: 520px; }
+.gold { color: var(--gold); }
+.hidden { display: none !important; }
+.chip {
+  display: inline-block; padding: 4px 14px; border-radius: 100px;
+  background: var(--gold-pale); color: var(--gold); font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 24px; border-radius: 100px; font-size: 0.92rem;
+  font-weight: 500; transition: all var(--transition); cursor: pointer;
+}
+.btn-primary {
+  background: var(--gold); color: #fff;
+  box-shadow: 0 2px 12px rgba(201,151,58,0.3);
+}
+.btn-primary:hover { background: #b8872e; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(201,151,58,0.4); }
+.btn-outline {
+  background: transparent; color: var(--text-primary);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-ghost { background: transparent; color: var(--text-secondary); padding: 8px 16px; }
+.btn-ghost:hover { color: var(--gold); }
+.card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 28px;
+  box-shadow: var(--shadow); transition: box-shadow var(--transition), transform var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-gold { background: var(--gold-pale); color: var(--gold); }
+.badge-green { background: #EFF6EA; color: var(--olive-light); }
+.badge-blue { background: #EEF2FF; color: #4361EE; }
+
+/* ===== NAVIGATION ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--nav-bg); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; max-width: 1100px; margin: 0 auto; padding: 0 24px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.nav-logo-text { font-family: 'Lora', serif; font-weight: 600; font-size: 1.05rem; }
+.nav-logo-text span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a {
+  padding: 6px 12px; border-radius: 8px; font-size: 0.88rem;
+  color: var(--text-secondary); font-weight: 500; transition: all var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); background: var(--gold-pale); }
+.nav-controls { display: flex; align-items: center; gap: 8px; }
+.toggle-btn {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 100px; padding: 5px 14px; font-size: 0.8rem;
+  color: var(--text-secondary); display: flex; align-items: center; gap: 6px;
+  transition: all var(--transition);
+}
+.toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
+.nav-cta { background: var(--gold); color: #fff; padding: 7px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; transition: all var(--transition); }
+.nav-cta:hover { background: #b8872e; }
+
+/* Mobile nav toggle */
+.mob-menu-btn { display: none; background: none; padding: 6px; color: var(--text-primary); }
+.mob-nav { display: none; background: var(--nav-bg); border-top: 1px solid var(--border); padding: 16px 24px; }
+.mob-nav a { display: block; padding: 10px 0; color: var(--text-secondary); font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+
+/* ===== PAGE SYSTEM ===== */
+.page { display: none; padding-top: 64px; }
+.page.active { display: block; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 88vh; display: flex; align-items: center;
+  background: linear-gradient(160deg, var(--cream) 0%, var(--gold-pale) 60%, var(--cream) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '✦'; font-size: 320px; position: absolute; right: -60px; top: -80px;
+  color: var(--gold); opacity: 0.04; font-family: serif; line-height: 1;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.hero-eyebrow-line { width: 32px; height: 1.5px; background: var(--gold); }
+.hero-eyebrow-text { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+.hero-title { font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 20px; color: var(--text-primary); }
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-desc { color: var(--text-secondary); font-size: 1.05rem; max-width: 420px; margin-bottom: 36px; line-height: 1.75; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 32px; margin-top: 48px; }
+.hero-stat-num { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 600; color: var(--text-primary); }
+.hero-stat-label { font-size: 0.8rem; color: var(--text-muted); }
+.hero-visual {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 32px;
+  box-shadow: var(--shadow-lg); position: relative;
+}
+.hero-visual-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.hero-visual-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#C9973A,#E8C97A); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; font-weight: 700; }
+.news-ticker {
+  background: var(--gold-pale); border-radius: var(--radius);
+  padding: 12px 16px; margin-bottom: 16px; border-left: 3px solid var(--gold);
+}
+.news-ticker-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+.news-ticker-text { font-size: 0.88rem; color: var(--text-primary); line-height: 1.5; }
+.mini-event { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.mini-event:last-child { border: none; }
+.mini-event-date { text-align: center; min-width: 40px; }
+.mini-event-day { font-size: 1.3rem; font-family: 'Lora', serif; font-weight: 600; color: var(--gold); line-height: 1; }
+.mini-event-month { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+.mini-event-title { font-size: 0.88rem; font-weight: 500; margin-bottom: 2px; }
+.mini-event-loc { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ===== NEWS STRIP ===== */
+.news-strip { background: var(--navy); padding: 16px 0; overflow: hidden; position: relative; }
+[data-theme="dark"] .news-strip { background: var(--gold); }
+.news-strip-inner { display: flex; align-items: center; gap: 0; }
+.news-strip-label {
+  background: var(--gold); color: #fff; padding: 4px 16px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0; margin-right: 24px;
+}
+[data-theme="dark"] .news-strip-label { background: var(--navy); }
+.news-scroll { display: flex; gap: 48px; animation: scrollNews 30s linear infinite; white-space: nowrap; }
+.news-scroll span { color: rgba(255,255,255,0.85); font-size: 0.85rem; }
+[data-theme="dark"] .news-scroll span { color: rgba(26,39,68,0.9); }
+@keyframes scrollNews { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== FEATURES GRID ===== */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 28px 24px;
+  transition: all var(--transition); cursor: pointer;
+}
+.feature-card:hover { border-color: var(--gold); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.feature-icon { font-size: 2rem; margin-bottom: 16px; }
+.feature-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+.feature-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+.feature-link { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin-top: 14px; display: inline-flex; align-items: center; gap: 4px; }
+
+/* ===== BUSINESS DIRECTORY PAGE ===== */
+.biz-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+.filter-btn {
+  padding: 7px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;
+  background: var(--card-bg); border: 1.5px solid var(--border); color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.filter-btn.active, .filter-btn:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+.biz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.biz-card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: all var(--transition); }
+.biz-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.biz-card-img { height: 160px; background: linear-gradient(135deg, var(--gold-pale), var(--border)); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.biz-card-body { padding: 20px; }
+.biz-card-name { font-size: 1.05rem; font-weight: 600; margin: 6px 0 4px; }
+.biz-card-cat { font-size: 0.78rem; color: var(--text-muted); }
+.biz-card-desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.55; }
+.biz-card-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-top: 1px solid var(--border); }
+.biz-card-loc { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+.biz-card-rating { font-size: 0.82rem; color: var(--gold); font-weight: 600; }
+
+/* ===== SOCIAL PAGE ===== */
+.social-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
+.post-composer { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 20px; margin-bottom: 24px; }
+.post-composer textarea { width: 100%; border: none; background: none; font-size: 0.95rem; color: var(--text-primary); resize: none; min-height: 80px; }
+.post-composer textarea::placeholder { color: var(--text-muted); }
+.post-composer-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 8px; }
+.post-composer-tags { display: flex; gap: 8px; }
+.composer-tag { font-size: 0.78rem; color: var(--text-muted); padding: 4px 10px; border-radius: 6px; background: var(--gold-pale); cursor: pointer; }
+.social-post { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 22px; margin-bottom: 18px; }
+.post-author { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.post-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+.post-author-name { font-weight: 600; font-size: 0.92rem; }
+.post-author-role { font-size: 0.78rem; color: var(--text-muted); }
+.post-time { font-size: 0.75rem; color: var(--text-muted); margin-left: auto; }
+.post-content { font-size: 0.92rem; color: var(--text-primary); line-height: 1.7; margin-bottom: 14px; }
+.post-tag-pill { display: inline-block; padding: 3px 10px; border-radius: 100px; background: var(--gold-pale); color: var(--gold); font-size: 0.75rem; font-weight: 600; margin-right: 6px; margin-bottom: 10px; }
+.post-actions { display: flex; gap: 6px; border-top: 1px solid var(--border); padding-top: 12px; }
+.post-action-btn { display: flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 8px; font-size: 0.82rem; color: var(--text-muted); background: none; border: none; cursor: pointer; transition: all var(--transition); }
+.post-action-btn:hover { background: var(--gold-pale); color: var(--gold); }
+.social-sidebar-widget { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 20px; margin-bottom: 20px; }
+.sidebar-widget-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; color: var(--text-primary); }
+.trending-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.trending-item:last-child { border: none; }
+.trending-num { font-size: 1.1rem; font-family: 'Lora', serif; color: var(--gold); font-weight: 600; min-width: 24px; }
+.trending-text { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== HIRING PAGE ===== */
+.hire-layout { display: grid; grid-template-columns: 280px 1fr; gap: 32px; }
+.hire-sidebar .card { margin-bottom: 20px; }
+.form-label { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 6px; }
+.form-input {
+  width: 100%; padding: 9px 14px; border-radius: 8px;
+  border: 1.5px solid var(--border); background: var(--page-bg);
+  color: var(--text-primary); font-size: 0.9rem; transition: border var(--transition);
+}
+.form-input:focus { border-color: var(--gold); }
+.form-group { margin-bottom: 14px; }
+.job-card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 22px; margin-bottom: 16px; transition: all var(--transition); }
+.job-card:hover { box-shadow: var(--shadow-lg); border-color: var(--gold); }
+.job-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.job-logo { width: 48px; height: 48px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.job-title { font-size: 1.02rem; font-weight: 700; margin-bottom: 2px; }
+.job-company { font-size: 0.85rem; color: var(--text-secondary); }
+.job-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.job-meta { display: flex; gap: 16px; margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); }
+.job-salary { font-size: 0.95rem; font-weight: 700; color: var(--olive-light); }
+
+/* ===== EVENTS PAGE ===== */
+.events-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+.events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.event-card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: all var(--transition); }
+.event-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.event-card-banner { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.event-card-body { padding: 20px; }
+.event-date-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.event-date-badge { background: var(--gold); color: #fff; padding: 2px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; }
+.event-type-badge { font-size: 0.72rem; font-weight: 600; padding: 2px 10px; border-radius: 100px; }
+.event-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.event-desc { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.55; }
+.event-footer { display: flex; align-items: center; justify-content: space-between; }
+.event-seats { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ===== NEWS PAGE ===== */
+.news-hero-card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 32px; }
+.news-hero-img { background: linear-gradient(135deg, var(--navy), var(--navy-mid)); display: flex; align-items: center; justify-content: center; font-size: 5rem; min-height: 260px; }
+.news-hero-body { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+.news-hero-cat { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 10px; }
+.news-hero-title { font-size: 1.4rem; margin-bottom: 12px; }
+.news-hero-excerpt { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 20px; }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.news-card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: all var(--transition); }
+.news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.news-card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+.news-card-body { padding: 18px; }
+.news-card-cat { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 6px; }
+.news-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; line-height: 1.35; }
+.news-card-date { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ===== REGISTRATION PAGE ===== */
+.reg-layout { display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: start; }
+.reg-benefits { margin-top: 32px; }
+.benefit-item { display: flex; gap: 16px; margin-bottom: 24px; }
+.benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.benefit-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+.benefit-text p { font-size: 0.85rem; color: var(--text-secondary); }
+.reg-form { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 36px; box-shadow: var(--shadow-lg); }
+.reg-form h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.reg-form .sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.step-dots { display: flex; gap: 8px; margin-bottom: 24px; }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background var(--transition); }
+.step-dot.active { background: var(--gold); width: 24px; border-radius: 100px; }
+.form-section-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 20px 0 12px; border-top: 1px solid var(--border); padding-top: 18px; }
+.success-box { text-align: center; padding: 32px 0; }
+.success-icon { font-size: 3rem; margin-bottom: 14px; }
+.success-box h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.success-box p { font-size: 0.9rem; color: var(--text-secondary); max-width: 300px; margin: 0 auto 20px; }
+
+/* ===== DASHBOARD PAGE ===== */
+.dash-layout { display: grid; grid-template-columns: 240px 1fr; gap: 32px; min-height: 80vh; }
+.dash-sidebar { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 20px; height: fit-content; position: sticky; top: 80px; }
+.dash-user { text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.dash-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0 auto 10px; }
+.dash-name { font-weight: 700; font-size: 0.95rem; }
+.dash-role { font-size: 0.78rem; color: var(--text-muted); }
+.dash-nav a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 0.88rem; color: var(--text-secondary); transition: all var(--transition); margin-bottom: 2px; }
+.dash-nav a:hover, .dash-nav a.active { background: var(--gold-pale); color: var(--gold); }
+.dash-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.dash-stat { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 18px; }
+.dash-stat-num { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 600; color: var(--gold); }
+.dash-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+.activity-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.activity-item:last-child { border: none; }
+.activity-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); margin-top: 5px; flex-shrink: 0; }
+.activity-text { font-size: 0.88rem; color: var(--text-primary); }
+.activity-time { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--navy); color: rgba(255,255,255,0.8);
+  padding: 60px 0 32px;
+}
+[data-theme="dark"] .footer { background: #060609; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand-desc { font-size: 0.88rem; margin-top: 12px; opacity: 0.7; line-height: 1.65; max-width: 240px; }
+.footer-col-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 0.88rem; margin-bottom: 9px; opacity: 0.7; transition: opacity var(--transition); }
+.footer-col a:hover { opacity: 1; color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; opacity: 0.6; }
+.footer-logo { font-family: 'Lora', serif; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+.footer-logo span { color: var(--gold); }
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: var(--navy); color: #fff; padding: 14px 22px;
+  border-radius: var(--radius); font-size: 0.9rem; box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 10px;
+  transform: translateY(80px); opacity: 0; transition: all 0.35s ease;
+}
+[data-theme="dark"] .toast { background: var(--gold); }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ===== MODAL ===== */
+.modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2000; align-items: center; justify-content: center; }
+.modal-backdrop.open { display: flex; }
+.modal { background: var(--card-bg); border-radius: var(--radius-lg); padding: 36px; width: 90%; max-width: 480px; box-shadow: var(--shadow-lg); position: relative; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: var(--border); border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1rem; cursor: pointer; color: var(--text-muted); }
+.modal h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.modal .sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+
+/* ===== TESTIMONIALS STRIP ===== */
+.testimonials-strip { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 0; }
+.testimonials-scroll { display: flex; gap: 24px; overflow-x: auto; padding: 0 24px; scrollbar-width: none; }
+.testimonials-scroll::-webkit-scrollbar { display: none; }
+.testimonial-card { background: var(--page-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 22px; min-width: 280px; flex-shrink: 0; }
+.testimonial-stars { color: var(--gold); margin-bottom: 10px; font-size: 0.9rem; }
+.testimonial-text { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 10px; }
+.testimonial-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--gold); }
+.testimonial-name { font-size: 0.85rem; font-weight: 700; }
+.testimonial-info { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ===== VERSE BANNER ===== */
+.verse-banner {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  padding: 48px 0; text-align: center; position: relative; overflow: hidden;
+}
+[data-theme="dark"] .verse-banner { background: linear-gradient(135deg, #0A0A14, #141428); }
+.verse-banner::before { content: '✦'; font-size: 200px; position: absolute; left: -40px; top: -40px; color: rgba(201,151,58,0.06); font-family: serif; }
+.verse-banner::after { content: '✦'; font-size: 200px; position: absolute; right: -40px; bottom: -40px; color: rgba(201,151,58,0.06); font-family: serif; }
+.verse-text { font-family: 'Lora', serif; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: rgba(255,255,255,0.92); font-style: italic; max-width: 680px; margin: 0 auto 10px; line-height: 1.6; }
+.verse-ref { font-size: 0.85rem; color: var(--gold); font-weight: 600; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero-inner, .reg-layout, .news-hero-card, .social-layout, .hire-layout { grid-template-columns: 1fr; }
+  .features-grid, .biz-grid, .news-grid { grid-template-columns: repeat(2,1fr); }
+  .events-grid { grid-template-columns: 1fr; }
+  .dash-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links, .nav-cta { display: none; }
+  .mob-menu-btn { display: block; }
+  .hero-visual { display: none; }
+  .dash-stat-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .features-grid, .biz-grid, .news-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .dash-stat-grid { grid-template-columns: 1fr; }
+  .section { padding: 48px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer">
+      <div class="nav-logo-icon">✦</div>
+      <div class="nav-logo-text">Good <span>Steward</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home')" id="nav-home" class="active" data-en="Home" data-zh="首页">Home</a>
+      <a href="#" onclick="showPage('business')" id="nav-business" data-en="Business" data-zh="商业">Business</a>
+      <a href="#" onclick="showPage('social')" id="nav-social" data-en="Community" data-zh="社群">Community</a>
+      <a href="#" onclick="showPage('hiring')" id="nav-hiring" data-en="Jobs" data-zh="职位">Jobs</a>
+      <a href="#" onclick="showPage('events')" id="nav-events" data-en="Events" data-zh="活动">Events</a>
+      <a href="#" onclick="showPage('news')" id="nav-news" data-en="News" data-zh="新闻">News</a>
+    </div>
+    <div class="nav-controls">
+      <button class="toggle-btn" onclick="toggleLang()" id="lang-btn">🌐 中文</button>
+      <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">🌙 Dark</button>
+      <a href="#" class="nav-cta" onclick="showPage('register')" data-en="Join Free" data-zh="免费注册">Join Free</a>
+    </div>
+    <button class="mob-menu-btn" onclick="toggleMobileNav()">☰</button>
+  </div>
+  <div class="mob-nav" id="mobNav">
+    <a href="#" onclick="showPage('home');toggleMobileNav()" data-en="Home" data-zh="首页">Home</a>
+    <a href="#" onclick="showPage('business');toggleMobileNav()" data-en="Business" data-zh="商业">Business</a>
+    <a href="#" onclick="showPage('social');toggleMobileNav()" data-en="Community" data-zh="社群">Community</a>
+    <a href="#" onclick="showPage('hiring');toggleMobileNav()" data-en="Jobs" data-zh="职位">Jobs</a>
+    <a href="#" onclick="showPage('events');toggleMobileNav()" data-en="Events" data-zh="活动">Events</a>
+    <a href="#" onclick="showPage('news');toggleMobileNav()" data-en="News" data-zh="新闻">News</a>
+    <a href="#" onclick="showPage('register');toggleMobileNav()" style="color:var(--gold);font-weight:700" data-en="Join Free →" data-zh="免费注册 →">Join Free →</a>
+  </div>
+</nav>
+
+<!-- ============================== HOME PAGE ============================== -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text" data-en="Malaysia · Singapore · Asia" data-zh="马来西亚 · 新加坡 · 亚洲">Malaysia · Singapore · Asia</span></div>
+          <h1 class="hero-title" data-en="Where <em>Faith</em> Meets<br>Business Excellence" data-zh="<em>信仰</em>与<br>商业卓越的交汇点">Where <em>Faith</em> Meets<br>Business Excellence</h1>
+          <p class="hero-desc" data-en="A trusted Christian business community across Asia. Connect, grow, and do business with integrity — guided by timeless values." data-zh="亚洲基督徒商业社区。以诚信连结、成长，以永恒价值经营。">A trusted Christian business community across Asia. Connect, grow, and do business with integrity — guided by timeless values.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="showPage('register')" data-en="Join the Network" data-zh="加入网络">Join the Network</button>
+            <button class="btn btn-outline" onclick="showPage('business')" data-en="Browse Directory" data-zh="浏览商业目录">Browse Directory</button>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">2,400+</div><div class="hero-stat-label" data-en="Members" data-zh="会员">Members</div></div>
+            <div><div class="hero-stat-num">18</div><div class="hero-stat-label" data-en="Countries" data-zh="国家">Countries</div></div>
+            <div><div class="hero-stat-num">580+</div><div class="hero-stat-label" data-en="Businesses" data-zh="商家">Businesses</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-visual-header">
+            <div class="hero-visual-avatar">GS</div>
+            <div><div style="font-weight:700;font-size:0.9rem" data-en="Good Steward Network" data-zh="好管家网络">Good Steward Network</div><div style="font-size:0.75rem;color:var(--text-muted)" data-en="Live updates" data-zh="实时更新">Live updates</div></div>
+            <span class="badge badge-green" style="margin-left:auto" data-en="● Live" data-zh="● 实时">● Live</span>
+          </div>
+          <div class="news-ticker">
+            <div class="news-ticker-label" data-en="Latest News" data-zh="最新消息">Latest News</div>
+            <div class="news-ticker-text" data-en="Christian entrepreneurs from KL and Singapore gather for annual Business-Faith Forum this weekend." data-zh="来自吉隆坡和新加坡的基督徒企业家将于本周末聚集参加年度商业信仰论坛。">Christian entrepreneurs from KL and Singapore gather for annual Business-Faith Forum this weekend.</div>
+          </div>
+          <div class="mini-event">
+            <div class="mini-event-date"><div class="mini-event-day">12</div><div class="mini-event-month">May</div></div>
+            <div><div class="mini-event-title" data-en="Biblical Leadership Workshop" data-zh="圣经领导力工作坊">Biblical Leadership Workshop</div><div class="mini-event-loc" data-en="📍 Kuala Lumpur · Hybrid" data-zh="📍 吉隆坡 · 混合">📍 Kuala Lumpur · Hybrid</div></div>
+          </div>
+          <div class="mini-event">
+            <div class="mini-event-date"><div class="mini-event-day">20</div><div class="mini-event-month">May</div></div>
+            <div><div class="mini-event-title" data-en="Singapore Networking Night" data-zh="新加坡商业交流夜">Singapore Networking Night</div><div class="mini-event-loc" data-en="📍 Singapore · Physical" data-zh="📍 新加坡 · 实体">📍 Singapore · Physical</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Strip -->
+  <div class="news-strip">
+    <div class="container">
+      <div class="news-strip-inner">
+        <div class="news-strip-label" data-en="BREAKING" data-zh="要闻">BREAKING</div>
+        <div class="news-scroll">
+          <span data-en="Christian business owners in Malaysia report 40% growth in cross-border partnerships — GS Forum" data-zh="马来西亚基督徒企业主报告跨境合作增长40%">Christian business owners in Malaysia report 40% growth in cross-border partnerships — GS Forum</span>
+          <span data-en="New mentorship program launches for young Christian entrepreneurs in Singapore" data-zh="新加坡年轻基督徒企业家导师计划启动">New mentorship program launches for young Christian entrepreneurs in Singapore</span>
+          <span data-en="Asia Pacific Prayer Breakfast brings together 500 faith leaders in Bangkok" data-zh="亚太祈祷早餐会汇聚曼谷500位信仰领袖">Asia Pacific Prayer Breakfast brings together 500 faith leaders in Bangkok</span>
+          <span data-en="Christian business owners in Malaysia report 40% growth in cross-border partnerships — GS Forum" data-zh="马来西亚基督徒企业主报告跨境合作增长40%">Christian business owners in Malaysia report 40% growth in cross-border partnerships — GS Forum</span>
+          <span data-en="New mentorship program launches for young Christian entrepreneurs in Singapore" data-zh="新加坡年轻基督徒企业家导师计划启动">New mentorship program launches for young Christian entrepreneurs in Singapore</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="What We Offer" data-zh="我们提供">What We Offer</div>
+      <h2 class="section-title" data-en="Everything you need to<br>grow with integrity" data-zh="诚信成长所需的一切">Everything you need to<br>grow with integrity</h2>
+      <p class="section-sub" data-en="Built for Christian professionals and business owners across Malaysia, Singapore and beyond." data-zh="为马来西亚、新加坡及亚洲各地的基督徒专业人士和企业主打造。">Built for Christian professionals and business owners across Malaysia, Singapore and beyond.</p>
+      <div class="features-grid">
+        <div class="feature-card" onclick="showPage('business')">
+          <div class="feature-icon">🏪</div>
+          <div class="feature-title" data-en="Business Directory" data-zh="商业目录">Business Directory</div>
+          <div class="feature-desc" data-en="Discover and connect with Christian-owned businesses across Asia. Search by category, location and service." data-zh="发现并联系亚洲各地基督徒经营的企业。按类别、地区和服务搜索。">Discover and connect with Christian-owned businesses across Asia. Search by category, location and service.</div>
+          <div class="feature-link" data-en="Browse businesses →" data-zh="浏览商家 →">Browse businesses →</div>
+        </div>
+        <div class="feature-card" onclick="showPage('social')">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title" data-en="Community Feed" data-zh="社群动态">Community Feed</div>
+          <div class="feature-desc" data-en="Share business insights, testimonies and lessons learned. Encourage and be encouraged by fellow believers." data-zh="分享商业洞见、见证和人生教训。彼此鼓励，共同成长。">Share business insights, testimonies and lessons learned. Encourage and be encouraged by fellow believers.</div>
+          <div class="feature-link" data-en="Join conversations →" data-zh="加入对话 →">Join conversations →</div>
+        </div>
+        <div class="feature-card" onclick="showPage('hiring')">
+          <div class="feature-icon">💼</div>
+          <div class="feature-title" data-en="Hiring Board" data-zh="招聘板">Hiring Board</div>
+          <div class="feature-desc" data-en="Post jobs or find meaningful work at Christian-led companies. A faith-centered professional job marketplace." data-zh="在基督徒领导的公司发布或寻找有意义的工作。以信仰为中心的职业市场。">Post jobs or find meaningful work at Christian-led companies. A faith-centered professional job marketplace.</div>
+          <div class="feature-link" data-en="View openings →" data-zh="查看职位 →">View openings →</div>
+        </div>
+        <div class="feature-card" onclick="showPage('events')">
+          <div class="feature-icon">📅</div>
+          <div class="feature-title" data-en="Events" data-zh="活动">Events</div>
+          <div class="feature-desc" data-en="Online, hybrid and physical events — from prayer breakfasts to business conferences and workshops." data-zh="线上、混合和实体活动——从祈祷早餐会到商业会议和工作坊。">Online, hybrid and physical events — from prayer breakfasts to business conferences and workshops.</div>
+          <div class="feature-link" data-en="See upcoming →" data-zh="查看即将举行 →">See upcoming →</div>
+        </div>
+        <div class="feature-card" onclick="showPage('news')">
+          <div class="feature-icon">📰</div>
+          <div class="feature-title" data-en="News & Updates" data-zh="新闻与更新">News & Updates</div>
+          <div class="feature-desc" data-en="Christian and world news curated for faith-driven business leaders. Stay informed and inspired." data-zh="为信仰驱动的商业领袖精选的基督教和世界新闻。保持知情和激励。">Christian and world news curated for faith-driven business leaders. Stay informed and inspired.</div>
+          <div class="feature-link" data-en="Read latest →" data-zh="阅读最新 →">Read latest →</div>
+        </div>
+        <div class="feature-card" onclick="showPage('register')">
+          <div class="feature-icon">✦</div>
+          <div class="feature-title" data-en="Member Dashboard" data-zh="会员仪表板">Member Dashboard</div>
+          <div class="feature-desc" data-en="Your personal hub — manage your business listing, posts, event RSVPs and network connections." data-zh="您的个人中心——管理商业列表、帖子、活动报名和网络联系。">Your personal hub — manage your business listing, posts, event RSVPs and network connections.</div>
+          <div class="feature-link" data-en="Get started →" data-zh="开始使用 →">Get started →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <div class="testimonials-strip">
+    <div class="testimonials-scroll">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text" data-en='"Good Steward gave my consulting firm the visibility we needed. Three new clients in the first month alone."' data-zh='"好管家为我的咨询公司提供了所需的曝光度。第一个月就获得了三位新客户。"'>"Good Steward gave my consulting firm the visibility we needed. Three new clients in the first month alone."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DL</div>
+          <div><div class="testimonial-name">David Lim</div><div class="testimonial-info" data-en="Management Consultant, KL" data-zh="管理顾问，吉隆坡">Management Consultant, KL</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text" data-en='"Finally a platform where my faith and business journey can coexist. The community here is genuinely warm."' data-zh='"终于有一个让我的信仰和商业旅程共存的平台。这里的社区真的很温暖。"'>"Finally a platform where my faith and business journey can coexist. The community here is genuinely warm."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">GL</div>
+          <div><div class="testimonial-name">Grace Lee</div><div class="testimonial-info" data-en="Interior Designer, Singapore" data-zh="室内设计师，新加坡">Interior Designer, Singapore</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text" data-en='"I found my business partner through the Hiring Board. We share the same values — that matters more than anything."' data-zh='"我通过招聘板找到了我的商业伙伴。我们有共同的价值观——这比任何事情都重要。"'>"I found my business partner through the Hiring Board. We share the same values — that matters more than anything."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JT</div>
+          <div><div class="testimonial-name">James Tan</div><div class="testimonial-info" data-en="Tech Founder, Penang" data-zh="科技创始人，槟城">Tech Founder, Penang</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text" data-en='"The events are exceptional. I attended the Singapore Networking Night and left with 12 new connections."' data-zh='"活动非常出色。我参加了新加坡商业交流夜，建立了12个新联系。"'>"The events are exceptional. I attended the Singapore Networking Night and left with 12 new connections."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SC</div>
+          <div><div class="testimonial-name">Sarah Chong</div><div class="testimonial-info" data-en="Financial Advisor, Singapore" data-zh="财务顾问，新加坡">Financial Advisor, Singapore</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text" data-en='"As a senior professional, I value the respect and wisdom in this community. It feels like a second church family."' data-zh='"作为一名资深专业人士，我非常重视这个社区的尊重和智慧。感觉就像第二个教会家庭。"'>"As a senior professional, I value the respect and wisdom in this community. It feels like a second church family."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PW</div>
+          <div><div class="testimonial-name">Philip Wong</div><div class="testimonial-info" data-en="Retired Banker & Mentor, KL" data-zh="退休银行家兼导师，吉隆坡">Retired Banker & Mentor, KL</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verse Banner -->
+  <div class="verse-banner">
+    <div class="container">
+      <p class="verse-text" data-en='"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."' data-zh='"无论做什么，都要从心里做，像是给主做的，不是给人做的。"'>"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."</p>
+      <div class="verse-ref">— Colossians 3:23</div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="section" style="text-align:center">
+    <div class="container">
+      <div class="chip" data-en="Be Part of Something Meaningful" data-zh="成为有意义事业的一部分">Be Part of Something Meaningful</div>
+      <h2 class="section-title" style="margin-bottom:12px" data-en="Join 2,400+ Christian business<br>leaders across Asia" data-zh="加入亚洲2,400+基督徒<br>商业领袖的行列">Join 2,400+ Christian business<br>leaders across Asia</h2>
+      <p style="color:var(--text-secondary);max-width:440px;margin:0 auto 32px;font-size:1rem" data-en="Free to join. Paid tiers for more visibility and premium tools." data-zh="免费加入。付费等级提供更多曝光度和高级工具。">Free to join. Paid tiers for more visibility and premium tools.</p>
+      <button class="btn btn-primary" style="padding:13px 32px;font-size:1rem" onclick="showPage('register')" data-en="Create Your Free Account" data-zh="创建免费账户">Create Your Free Account</button>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== BUSINESS DIRECTORY ============================== -->
+<div id="page-business" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="Christian Business Directory" data-zh="基督徒商业目录">Christian Business Directory</div>
+      <h2 class="section-title" data-en="Find & Support Christian Businesses" data-zh="发现并支持基督徒企业">Find & Support Christian Businesses</h2>
+      <p class="section-sub" data-en="Browse vetted Christian-owned businesses and services across Malaysia, Singapore and Asia." data-zh="浏览马来西亚、新加坡和亚洲经过审核的基督徒企业和服务。">Browse vetted Christian-owned businesses and services across Malaysia, Singapore and Asia.</p>
+      <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap">
+        <input class="form-input" style="max-width:320px" placeholder="Search businesses..." id="bizSearch" oninput="filterBiz()">
+        <select class="form-input" style="max-width:160px" id="bizCountry" onchange="filterBiz()">
+          <option value="">All Countries</option>
+          <option>Malaysia</option>
+          <option>Singapore</option>
+          <option>Indonesia</option>
+        </select>
+      </div>
+      <div class="biz-filters" id="bizFilters">
+        <button class="filter-btn active" onclick="filterBizCat(this,'all')">All</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Consulting')">Consulting</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Technology')">Technology</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Education')">Education</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Health')">Health</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Legal')">Legal</button>
+        <button class="filter-btn" onclick="filterBizCat(this,'Food')">Food & Beverage</button>
+      </div>
+      <div class="biz-grid" id="bizGrid">
+        <!-- Cards injected by JS -->
+      </div>
+      <div style="text-align:center;margin-top:36px">
+        <button class="btn btn-outline" onclick="showPage('register')">➕ <span data-en="List Your Business" data-zh="登记您的企业">List Your Business</span></button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== SOCIAL / COMMUNITY ============================== -->
+<div id="page-social" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="Christian Community Feed" data-zh="基督徒社群动态">Christian Community Feed</div>
+      <h2 class="section-title" data-en="Share. Encourage. Grow Together." data-zh="分享。鼓励。共同成长。">Share. Encourage. Grow Together.</h2>
+      <p class="section-sub" data-en="Share your business journey, faith testimony, lessons, or words of encouragement." data-zh="分享您的商业旅程、信仰见证、人生教训或鼓励的话语。">Share your business journey, faith testimony, lessons, or words of encouragement.</p>
+      <div class="social-layout">
+        <div>
+          <div class="post-composer">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="post-avatar">Y</div>
+              <textarea id="newPost" placeholder="Share a testimony, insight or encouragement..." style="flex:1"></textarea>
+            </div>
+            <div class="post-composer-footer">
+              <div class="post-composer-tags">
+                <div class="composer-tag" onclick="addTag('Business')" data-en="#Business" data-zh="#商业">#Business</div>
+                <div class="composer-tag" onclick="addTag('Faith')" data-en="#Faith" data-zh="#信仰">#Faith</div>
+                <div class="composer-tag" onclick="addTag('Testimony')" data-en="#Testimony" data-zh="#见证">#Testimony</div>
+                <div class="composer-tag" onclick="addTag('Lesson')" data-en="#Lesson" data-zh="#教训">#Lesson</div>
+              </div>
+              <button class="btn btn-primary" onclick="submitPost()" style="padding:7px 18px;font-size:0.85rem" data-en="Publish" data-zh="发布">Publish</button>
+            </div>
+          </div>
+          <div id="postFeed"></div>
+        </div>
+        <div>
+          <div class="social-sidebar-widget">
+            <div class="sidebar-widget-title" data-en="🔥 Trending Topics" data-zh="🔥 热门话题">🔥 Trending Topics</div>
+            <div class="trending-item"><div class="trending-num">1</div><div class="trending-text">#BiblicalLeadership</div></div>
+            <div class="trending-item"><div class="trending-num">2</div><div class="trending-text">#FaithInBusiness</div></div>
+            <div class="trending-item"><div class="trending-num">3</div><div class="trending-text">#ChristianEntrepreneur</div></div>
+            <div class="trending-item"><div class="trending-num">4</div><div class="trending-text">#Testimony</div></div>
+            <div class="trending-item"><div class="trending-num">5</div><div class="trending-text">#AsiaBusinessNetwork</div></div>
+          </div>
+          <div class="social-sidebar-widget">
+            <div class="sidebar-widget-title" data-en="💡 Verse of the Day" data-zh="💡 今日经文">💡 Verse of the Day</div>
+            <div style="font-style:italic;font-size:0.88rem;color:var(--text-secondary);line-height:1.65" data-en='"Commit to the LORD whatever you do, and he will establish your plans."' data-zh='"你所做的事都当交托耶和华，你所谋的就必成立。"'>"Commit to the LORD whatever you do, and he will establish your plans."</div>
+            <div style="font-size:0.78rem;color:var(--gold);font-weight:600;margin-top:8px">— Proverbs 16:3</div>
+          </div>
+          <div class="social-sidebar-widget">
+            <div class="sidebar-widget-title" data-en="People to Follow" data-zh="推荐关注">People to Follow</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+              <div class="post-avatar" style="width:36px;height:36px;font-size:0.8rem">GL</div>
+              <div style="flex:1"><div style="font-size:0.85rem;font-weight:600">Grace Lee</div><div style="font-size:0.75rem;color:var(--text-muted)" data-en="Interior Designer, SG" data-zh="室内设计师，新加坡">Interior Designer, SG</div></div>
+              <button class="btn btn-outline" style="padding:4px 12px;font-size:0.75rem" data-en="Follow" data-zh="关注">Follow</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+              <div class="post-avatar" style="width:36px;height:36px;font-size:0.8rem;background:linear-gradient(135deg,#4A5E3A,#6B8A52)">JT</div>
+              <div style="flex:1"><div style="font-size:0.85rem;font-weight:600">James Tan</div><div style="font-size:0.75rem;color:var(--text-muted)" data-en="Tech Founder, MY" data-zh="科技创始人，马来西亚">Tech Founder, MY</div></div>
+              <button class="btn btn-outline" style="padding:4px 12px;font-size:0.75rem" data-en="Follow" data-zh="关注">Follow</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== HIRING PAGE ============================== -->
+<div id="page-hiring" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="Christian Job Board" data-zh="基督徒招聘板">Christian Job Board</div>
+      <h2 class="section-title" data-en="Work With Purpose" data-zh="有目标地工作">Work With Purpose</h2>
+      <p class="section-sub" data-en="Find jobs at Christian-led companies or post a hiring ad. Faith-driven workplaces for every stage of career." data-zh="在基督徒领导的公司找工作或发布招聘广告。信仰驱动的职场，适合各个职业阶段。">Find jobs at Christian-led companies or post a hiring ad. Faith-driven workplaces for every stage of career.</p>
+      <div class="hire-layout">
+        <div class="hire-sidebar">
+          <div class="card">
+            <div style="font-weight:700;font-size:0.92rem;margin-bottom:14px" data-en="Filter Jobs" data-zh="筛选职位">Filter Jobs</div>
+            <div class="form-group"><label class="form-label" data-en="Location" data-zh="地点">Location</label>
+              <select class="form-input"><option>All Locations</option><option>Kuala Lumpur</option><option>Singapore</option><option>Penang</option><option>Remote</option></select>
+            </div>
+            <div class="form-group"><label class="form-label" data-en="Job Type" data-zh="工作类型">Job Type</label>
+              <select class="form-input"><option>All Types</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Volunteer</option></select>
+            </div>
+            <div class="form-group"><label class="form-label" data-en="Industry" data-zh="行业">Industry</label>
+              <select class="form-input"><option>All Industries</option><option>Technology</option><option>Finance</option><option>Education</option><option>Healthcare</option><option>Media</option></select>
+            </div>
+            <button class="btn btn-primary" style="width:100%" data-en="Apply Filters" data-zh="应用筛选">Apply Filters</button>
+          </div>
+          <div class="card" style="text-align:center">
+            <div style="font-size:2rem;margin-bottom:8px">📋</div>
+            <div style="font-weight:700;margin-bottom:6px;font-size:0.92rem" data-en="Looking for Work?" data-zh="寻找工作？">Looking for Work?</div>
+            <div style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:14px" data-en="Post your resume and let Christian employers find you." data-zh="发布您的简历，让基督徒雇主找到您。">Post your resume and let Christian employers find you.</div>
+            <button class="btn btn-outline" style="width:100%;font-size:0.85rem" onclick="showToast('Resume upload coming soon!')" data-en="Upload Resume" data-zh="上传简历">Upload Resume</button>
+          </div>
+          <div class="card" style="text-align:center">
+            <div style="font-size:2rem;margin-bottom:8px">📢</div>
+            <div style="font-weight:700;margin-bottom:6px;font-size:0.92rem" data-en="Hiring?" data-zh="正在招聘？">Hiring?</div>
+            <div style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:14px" data-en="Post a job ad starting from RM 50/SGD 20 per listing." data-zh="发布招聘广告，每个职位起价RM 50/SGD 20。">Post a job ad from RM 50/SGD 20 per listing.</div>
+            <button class="btn btn-primary" style="width:100%;font-size:0.85rem" onclick="openPostJobModal()" data-en="Post a Job" data-zh="发布职位">Post a Job</button>
+          </div>
+        </div>
+        <div>
+          <div id="jobListings"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== EVENTS PAGE ============================== -->
+<div id="page-events" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="Events & Gatherings" data-zh="活动与聚会">Events & Gatherings</div>
+      <h2 class="section-title" data-en="Grow Together in Community" data-zh="在社区中共同成长">Grow Together in Community</h2>
+      <p class="section-sub" data-en="Online, hybrid and physical events for Christian professionals across Asia." data-zh="为亚洲基督徒专业人士举办的线上、混合和实体活动。">Online, hybrid and physical events for Christian professionals across Asia.</p>
+      <div class="events-filter">
+        <button class="filter-btn active" data-en="All Events" data-zh="所有活动">All Events</button>
+        <button class="filter-btn" data-en="Online" data-zh="线上">Online</button>
+        <button class="filter-btn" data-en="Hybrid" data-zh="混合">Hybrid</button>
+        <button class="filter-btn" data-en="Physical" data-zh="实体">Physical</button>
+        <button class="filter-btn" data-en="Malaysia" data-zh="马来西亚">Malaysia</button>
+        <button class="filter-btn" data-en="Singapore" data-zh="新加坡">Singapore</button>
+      </div>
+      <div class="events-grid" id="eventsGrid"></div>
+      <div style="text-align:center;margin-top:36px">
+        <button class="btn btn-outline" onclick="showToast('Event submission form coming soon!')" data-en="Submit an Event" data-zh="提交活动">Submit an Event</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== NEWS PAGE ============================== -->
+<div id="page-news" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="chip" data-en="News & Updates" data-zh="新闻与更新">News & Updates</div>
+      <h2 class="section-title" data-en="Stay Informed, Stay Inspired" data-zh="保持知情，保持激励">Stay Informed, Stay Inspired</h2>
+      <p class="section-sub" data-en="Curated Christian and world news for faith-driven professionals." data-zh="为信仰驱动的专业人士精选的基督教和世界新闻。">Curated Christian and world news for faith-driven professionals.</p>
+      <div class="news-hero-card">
+        <div class="news-hero-img">🌏</div>
+        <div class="news-hero-body">
+          <div class="news-hero-cat" data-en="COVER STORY" data-zh="封面故事">COVER STORY</div>
+          <h2 class="news-hero-title" data-en="The Rise of Faith-Driven Entrepreneurship in Southeast Asia" data-zh="东南亚信仰驱动创业的崛起">The Rise of Faith-Driven Entrepreneurship in Southeast Asia</h2>
+          <p class="news-hero-excerpt" data-en="A new generation of Christian business leaders across Malaysia and Singapore is proving that faith and commercial success are not only compatible — they are mutually reinforcing." data-zh="马来西亚和新加坡新一代基督徒商业领袖正在证明，信仰和商业成功不仅相容，而且相互促进。">A new generation of Christian business leaders across Malaysia and Singapore is proving that faith and commercial success are not only compatible — they are mutually reinforcing.</p>
+          <button class="btn btn-primary" onclick="showToast('Full article opening...')" data-en="Read Full Story →" data-zh="阅读全文 →">Read Full Story →</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px">
+        <button class="filter-btn active" data-en="All" data-zh="全部">All</button>
+        <button class="filter-btn" data-en="Christian News" data-zh="基督教新闻">Christian News</button>
+        <button class="filter-btn" data-en="Business" data-zh="商业">Business</button>
+        <button class="filter-btn" data-en="World" data-zh="世界">World</button>
+        <button class="filter-btn" data-en="Asia" data-zh="亚洲">Asia</button>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== REGISTER PAGE ============================== -->
+<div id="page-register" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="reg-layout">
+        <div>
+          <div class="chip" data-en="Free Membership" data-zh="免费会员">Free Membership</div>
+          <h2 class="section-title" data-en="Join Good Steward Network" data-zh="加入好管家网络">Join Good Steward Network</h2>
+          <p style="color:var(--text-secondary);font-size:1rem;margin-bottom:32px;line-height:1.7" data-en="Create your free account and gain access to the full community. List your business, connect with other members, find jobs or attend events." data-zh="创建免费账户，获得完整社区访问权限。列出您的企业，与其他会员联系，找工作或参加活动。">Create your free account and gain access to the full community. List your business, connect with other members, find jobs or attend events.</p>
+          <div class="reg-benefits">
+            <div class="benefit-item">
+              <div class="benefit-icon">🏪</div>
+              <div class="benefit-text">
+                <h4 data-en="Free Business Listing" data-zh="免费商业列表">Free Business Listing</h4>
+                <p data-en="List your business in our Christian directory and reach thousands of potential customers." data-zh="在我们的基督徒目录中列出您的业务，接触数千名潜在客户。">List your business in our Christian directory and reach thousands of potential customers.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🤝</div>
+              <div class="benefit-text">
+                <h4 data-en="Community Access" data-zh="社区访问">Community Access</h4>
+                <p data-en="Post, comment, react and follow members in our growing Christian professional community." data-zh="在我们不断成长的基督徒专业社区中发布、评论、点赞和关注会员。">Post, comment, react and follow members in our growing Christian professional community.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📧</div>
+              <div class="benefit-text">
+                <h4 data-en="Welcome Email & Support" data-zh="欢迎邮件和支持">Welcome Email & Support</h4>
+                <p data-en="You'll receive a personalised welcome email from our team and a full onboarding guide." data-zh="您将收到我们团队发送的个性化欢迎邮件和完整入职指南。">You'll receive a personalised welcome email from our team and a full onboarding guide.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💼</div>
+              <div class="benefit-text">
+                <h4 data-en="Jobs & Events Access" data-zh="职位和活动访问">Jobs & Events Access</h4>
+                <p data-en="Apply for jobs, RSVP to events, and access members-only content." data-zh="申请工作，报名活动，访问会员专属内容。">Apply for jobs, RSVP to events, and access members-only content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="reg-form" id="regForm">
+            <h3 data-en="Create Your Account" data-zh="创建您的账户">Create Your Account</h3>
+            <p class="sub" data-en="Free forever. No credit card required." data-zh="永久免费。无需信用卡。">Free forever. No credit card required.</p>
+            <div class="step-dots"><div class="step-dot active"></div><div class="step-dot"></div><div class="step-dot"></div></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" data-en="First Name" data-zh="名字">First Name</label><input class="form-input" placeholder="John"></div>
+              <div class="form-group"><label class="form-label" data-en="Last Name" data-zh="姓氏">Last Name</label><input class="form-input" placeholder="Tan"></div>
+            </div>
+            <div class="form-group"><label class="form-label" data-en="Email Address" data-zh="电子邮件">Email Address</label><input class="form-input" type="email" id="regEmail" placeholder="john@example.com"></div>
+            <div class="form-group"><label class="form-label" data-en="Password" data-zh="密码">Password</label><input class="form-input" type="password" placeholder="Min. 8 characters"></div>
+            <div class="form-group"><label class="form-label" data-en="Country" data-zh="国家">Country</label>
+              <select class="form-input"><option>Malaysia</option><option>Singapore</option><option>Indonesia</option><option>Philippines</option><option>Hong Kong</option><option>Other</option></select>
+            </div>
+            <div class="form-section-title" data-en="BUSINESS INFORMATION (OPTIONAL)" data-zh="商业信息（可选）">BUSINESS INFORMATION (OPTIONAL)</div>
+            <div class="form-group"><label class="form-label" data-en="Business Name" data-zh="企业名称">Business Name</label><input class="form-input" placeholder="Grace & Co. Consulting"></div>
+            <div class="form-group"><label class="form-label" data-en="Industry" data-zh="行业">Industry</label>
+              <select class="form-input"><option data-en="Select Industry" data-zh="选择行业">Select Industry</option><option>Consulting</option><option>Technology</option><option>Education</option><option>Healthcare</option><option>Legal</option><option>Finance</option><option>Other</option></select>
+            </div>
+            <div class="form-group"><label class="form-label" data-en="Business Description" data-zh="企业描述">Business Description</label><textarea class="form-input" rows="3" placeholder="Brief description of your business..." style="resize:vertical"></textarea></div>
+            <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;margin-top:8px">
+              <input type="checkbox" id="agreeTerms" style="margin-top:3px;accent-color:var(--gold)">
+              <label for="agreeTerms" style="font-size:0.82rem;color:var(--text-secondary)" data-en="I agree to the Terms of Service and Privacy Policy, and confirm that I am a Christian professional or business owner." data-zh="我同意服务条款和隐私政策，并确认我是基督徒专业人士或企业主。">I agree to the Terms of Service and Privacy Policy, and confirm that I am a Christian professional or business owner.</label>
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:13px;font-size:0.95rem;justify-content:center" onclick="submitReg()" data-en="Create Free Account →" data-zh="创建免费账户 →">Create Free Account →</button>
+            <p style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:14px" data-en="Already a member? <a href='#' onclick='showPage(\"dashboard\")' style='color:var(--gold)'>Sign in</a>" data-zh="已是会员？<a href='#' onclick='showPage(\"dashboard\")' style='color:var(--gold)'>登录</a>">Already a member? <a href="#" onclick="showPage('dashboard')" style="color:var(--gold)">Sign in</a></p>
+          </div>
+          <div class="reg-form hidden" id="regSuccess">
+            <div class="success-box">
+              <div class="success-icon">🎉</div>
+              <h3 data-en="Welcome to Good Steward!" data-zh="欢迎加入好管家！">Welcome to Good Steward!</h3>
+              <p data-en="Your account has been created. A welcome email has been sent to your inbox. We're so glad you're here." data-zh="您的账户已创建。欢迎邮件已发送到您的邮箱。我们很高兴您的加入。">Your account has been created. A welcome email has been sent to your inbox. We're so glad you're here.</p>
+              <button class="btn btn-primary" onclick="showPage('dashboard')" data-en="Go to My Dashboard →" data-zh="前往我的仪表板 →">Go to My Dashboard →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== MEMBER DASHBOARD ============================== -->
+<div id="page-dashboard" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="dash-layout">
+        <div class="dash-sidebar">
+          <div class="dash-user">
+            <div class="dash-avatar">J</div>
+            <div class="dash-name">John Tan</div>
+            <div class="dash-role" data-en="Grace & Co. Consulting" data-zh="恩典咨询公司">Grace & Co. Consulting</div>
+            <div style="margin-top:8px"><span class="badge badge-gold" data-en="Member" data-zh="会员">Member</span></div>
+          </div>
+          <nav class="dash-nav">
+            <a href="#" class="active">📊 <span data-en="Overview" data-zh="概览">Overview</span></a>
+            <a href="#">🏪 <span data-en="My Business" data-zh="我的企业">My Business</span></a>
+            <a href="#">📝 <span data-en="My Posts" data-zh="我的帖子">My Posts</span></a>
+            <a href="#">💼 <span data-en="Job Applications" data-zh="职位申请">Job Applications</span></a>
+            <a href="#">📅 <span data-en="My Events" data-zh="我的活动">My Events</span></a>
+            <a href="#">👥 <span data-en="Connections" data-zh="人脉">Connections</span></a>
+            <a href="#">⚙️ <span data-en="Settings" data-zh="设置">Settings</span></a>
+          </nav>
+        </div>
+        <div>
+          <div style="margin-bottom:24px">
+            <h2 style="font-size:1.4rem;margin-bottom:4px" data-en="Good morning, John ✦" data-zh="早安，John ✦">Good morning, John ✦</h2>
+            <p style="color:var(--text-muted);font-size:0.88rem" data-en="Here's what's happening in your network." data-zh="以下是您网络中发生的事情。">Here's what's happening in your network.</p>
+          </div>
+          <div class="dash-stat-grid">
+            <div class="dash-stat"><div class="dash-stat-num">248</div><div class="dash-stat-label" data-en="Profile Views" data-zh="个人资料浏览">Profile Views</div></div>
+            <div class="dash-stat"><div class="dash-stat-num">31</div><div class="dash-stat-label" data-en="Connections" data-zh="人脉">Connections</div></div>
+            <div class="dash-stat"><div class="dash-stat-num">12</div><div class="dash-stat-label" data-en="Post Reactions" data-zh="帖子点赞">Post Reactions</div></div>
+          </div>
+          <div class="card" style="margin-bottom:24px">
+            <div style="font-weight:700;margin-bottom:16px" data-en="📋 Quick Actions" data-zh="📋 快速操作">📋 Quick Actions</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-primary" onclick="showPage('social')" style="font-size:0.85rem" data-en="+ New Post" data-zh="+ 新帖子">+ New Post</button>
+              <button class="btn btn-outline" onclick="showPage('business')" style="font-size:0.85rem" data-en="Edit Business Listing" data-zh="编辑商业列表">Edit Business Listing</button>
+              <button class="btn btn-outline" onclick="showPage('events')" style="font-size:0.85rem" data-en="Browse Events" data-zh="浏览活动">Browse Events</button>
+              <button class="btn btn-outline" onclick="showPage('hiring')" style="font-size:0.85rem" data-en="View Jobs" data-zh="查看职位">View Jobs</button>
+            </div>
+          </div>
+          <div class="card">
+            <div style="font-weight:700;margin-bottom:16px" data-en="🕐 Recent Activity" data-zh="🕐 最近活动">🕐 Recent Activity</div>
+            <div class="activity-item"><div class="activity-dot"></div><div><div class="activity-text" data-en="Grace Lee commented on your post about Biblical leadership." data-zh="Grace Lee 评论了您关于圣经领导力的帖子。">Grace Lee commented on your post about Biblical leadership.</div><div class="activity-time">2 hours ago</div></div></div>
+            <div class="activity-item"><div class="activity-dot"></div><div><div class="activity-text" data-en="Your business listing received 14 new views this week." data-zh="您的商业列表本周获得14次新浏览。">Your business listing received 14 new views this week.</div><div class="activity-time">Yesterday</div></div></div>
+            <div class="activity-item"><div class="activity-dot"></div><div><div class="activity-text" data-en="James Tan sent you a connection request." data-zh="James Tan 向您发送了联系请求。">James Tan sent you a connection request.</div><div class="activity-time">2 days ago</div></div></div>
+            <div class="activity-item"><div class="activity-dot"></div><div><div class="activity-text" data-en="You are registered for the Singapore Networking Night (May 20)." data-zh="您已报名参加新加坡商业交流夜（5月20日）。">You are registered for the Singapore Networking Night (May 20).</div><div class="activity-time">3 days ago</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer" id="mainFooter">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">✦ Good <span>Steward</span></div>
+        <p class="footer-brand-desc" data-en="A Christian business network built on faith, integrity and community — across Malaysia, Singapore and Asia." data-zh="建立在信仰、诚信和社区基础上的基督徒商业网络——遍及马来西亚、新加坡和亚洲。">A Christian business network built on faith, integrity and community — across Malaysia, Singapore and Asia.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-en="Platform" data-zh="平台">Platform</div>
+        <a href="#" onclick="showPage('business')" data-en="Business Directory" data-zh="商业目录">Business Directory</a>
+        <a href="#" onclick="showPage('social')" data-en="Community" data-zh="社群">Community</a>
+        <a href="#" onclick="showPage('hiring')" data-en="Jobs Board" data-zh="招聘板">Jobs Board</a>
+        <a href="#" onclick="showPage('events')" data-en="Events" data-zh="活动">Events</a>
+        <a href="#" onclick="showPage('news')" data-en="News" data-zh="新闻">News</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-en="Membership" data-zh="会员">Membership</div>
+        <a href="#" onclick="showPage('register')" data-en="Join Free" data-zh="免费加入">Join Free</a>
+        <a href="#" data-en="Premium Plans" data-zh="高级计划">Premium Plans</a>
+        <a href="#" onclick="showPage('dashboard')" data-en="My Dashboard" data-zh="我的仪表板">My Dashboard</a>
+        <a href="#" data-en="Advertise" data-zh="广告">Advertise</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-en="Connect" data-zh="联系">Connect</div>
+        <a href="mailto:hello@goodsteward.asia">📧 hello@goodsteward.asia</a>
+        <a href="#" data-en="🇲🇾 Malaysia Chapter" data-zh="🇲🇾 马来西亚分会">🇲🇾 Malaysia Chapter</a>
+        <a href="#" data-en="🇸🇬 Singapore Chapter" data-zh="🇸🇬 新加坡分会">🇸🇬 Singapore Chapter</a>
+        <a href="#" data-en="Privacy Policy" data-zh="隐私政策">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div data-en="© 2026 Good Steward Network. All rights reserved." data-zh="© 2026 好管家网络。版权所有。">© 2026 Good Steward Network. All rights reserved.</div>
+      <div style="font-style:italic;opacity:0.8" data-en='"Be faithful in what belongs to another." — Luke 16:12' data-zh='"你们在别人的东西上若不忠心，谁还把你们自己的东西给你们呢。"——路加福音 16:12'>"Be faithful in what belongs to another." — Luke 16:12</div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ <span id="toastMsg"></span></div>
+
+<!-- POST JOB MODAL -->
+<div class="modal-backdrop" id="postJobModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('postJobModal')">✕</button>
+    <h3 data-en="Post a Job" data-zh="发布职位">Post a Job</h3>
+    <p class="sub" data-en="Reach Christian professionals across Asia. From RM 50/SGD 20 per listing." data-zh="接触亚洲各地的基督徒专业人士。每个职位起价RM 50/SGD 20。">Reach Christian professionals across Asia. From RM 50/SGD 20 per listing.</p>
+    <div class="form-group"><label class="form-label">Job Title</label><input class="form-input" placeholder="e.g. Senior Financial Analyst"></div>
+    <div class="form-group"><label class="form-label">Company Name</label><input class="form-input" placeholder="Your company name"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Location</label><input class="form-input" placeholder="e.g. Kuala Lumpur"></div>
+      <div class="form-group"><label class="form-label">Job Type</label><select class="form-input"><option>Full-time</option><option>Part-time</option><option>Contract</option></select></div>
+    </div>
+    <div class="form-group"><label class="form-label">Salary Range</label><input class="form-input" placeholder="e.g. RM 5,000 – 8,000"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;padding:11px" onclick="closeModal('postJobModal');showToast('Job posted! Payment required to publish.')" data-en="Submit & Pay →" data-zh="提交并付款 →">Submit & Pay →</button>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const bizData = [
+  { id:1, name:"Grace & Co. Consulting", cat:"Consulting", country:"Malaysia", loc:"Kuala Lumpur", emoji:"💼", desc:"Faith-driven business consulting for SMEs. Strategy, finance and operations.", rating:"4.9" },
+  { id:2, name:"Cornerstone Tech", cat:"Technology", country:"Singapore", loc:"Singapore", emoji:"💻", desc:"Christian-led software development and digital transformation consultancy.", rating:"4.8" },
+  { id:3, name:"Olive Branch Education", cat:"Education", country:"Malaysia", loc:"Penang", emoji:"📚", desc:"Tuition and holistic education centre grounded in Christian values.", rating:"5.0" },
+  { id:4, name:"Living Water Legal", cat:"Legal", country:"Singapore", loc:"Singapore", emoji:"⚖️", desc:"Corporate and family law practice with a heart for justice and compassion.", rating:"4.7" },
+  { id:5, name:"Shepherd's Table F&B", cat:"Food", country:"Malaysia", loc:"KL", emoji:"🍽️", desc:"Café chain known for wholesome food, community and weekly devotionals.", rating:"4.9" },
+  { id:6, name:"Healing Hands Clinic", cat:"Health", country:"Malaysia", loc:"Johor Bahru", emoji:"🏥", desc:"Family health clinic run by Christian GPs committed to compassionate care.", rating:"4.8" },
+  { id:7, name:"Kingdom Digital", cat:"Technology", country:"Singapore", loc:"Singapore", emoji:"📱", desc:"Digital marketing agency helping Christian nonprofits and businesses grow online.", rating:"4.6" },
+  { id:8, name:"Faithful Finance", cat:"Consulting", country:"Malaysia", loc:"KL", emoji:"📈", desc:"Financial planning and wealth management guided by biblical stewardship principles.", rating:"4.9" },
+  { id:9, name:"Salt & Light Media", cat:"Technology", country:"Singapore", loc:"Singapore", emoji:"📡", desc:"Christian media and content production for churches, events and campaigns.", rating:"4.7" },
+];
+
+const postData = [
+  { author:"David L.", role:"Management Consultant, KL", initials:"DL", time:"2h ago", tag:"Business", content:"Just closed our 3rd cross-border deal this quarter — all through connections made on this platform. Grateful to God for the favour and for fellow believers who do business with integrity. If you're looking for a Malaysian partner for Indonesia or Singapore markets, let's connect!", bg:"linear-gradient(135deg,var(--gold),var(--gold-light))", likes:24, comments:8 },
+  { author:"Grace Lee", role:"Interior Designer, SG", initials:"GL", time:"5h ago", tag:"Testimony", content:"Years ago I nearly gave up my design practice after losing a major client. I remember sitting in prayer saying 'Lord, is this even worth continuing?' Today we just completed our 100th project. Not because I'm talented — but because He is faithful. Keep going, Christian entrepreneur.", bg:"linear-gradient(135deg,#4A5E3A,#6B8A52)", likes:61, comments:19 },
+  { author:"Philip Wong", role:"Mentor & Retired Banker, KL", initials:"PW", time:"1d ago", tag:"Lesson", content:"40 years in banking taught me this: the man who builds his reputation on integrity will never lack clients. The market shifts, products change, regulations evolve — but a name you can trust outlasts all of it. Proverbs 22:1 has never been wrong.", bg:"linear-gradient(135deg,#2C3E66,#4361EE)", likes:88, comments:31 },
+  { author:"Sarah Chong", role:"Financial Advisor, SG", initials:"SC", time:"2d ago", tag:"Faith", content:"Weekly reminder: Your business is your ministry. Every client interaction is an opportunity to reflect Christ's character — patience, honesty, genuine care. Don't compartmentalise your faith from your work. Let them breathe together.", bg:"linear-gradient(135deg,#9B59B6,#D1A4E0)", likes:45, comments:14 },
+];
+
+const jobData = [
+  { title:"Senior Financial Analyst", company:"Faithful Finance Sdn Bhd", logo:"📈", loc:"Kuala Lumpur, MY", type:"Full-time", salary:"RM 7,000 – 10,000", tags:["Finance","Excel","CPA"], desc:"Seeking a detail-oriented Christian professional committed to ethical financial practice." },
+  { title:"Software Engineer (React)", company:"Cornerstone Tech Pte Ltd", logo:"💻", loc:"Singapore / Remote", type:"Full-time", salary:"SGD 5,500 – 8,000", tags:["React","Node.js","TypeScript"], desc:"Join our faith-driven team building meaningful tech products across Southeast Asia." },
+  { title:"Digital Marketing Executive", company:"Kingdom Digital", logo:"📱", loc:"Singapore", type:"Full-time", salary:"SGD 3,500 – 5,000", tags:["SEO","Meta Ads","Content"], desc:"Help Christian businesses and nonprofits grow their digital presence with purpose." },
+  { title:"Admin & Operations Manager", company:"Olive Branch Education", logo:"📚", loc:"Penang, MY", type:"Full-time", salary:"RM 4,500 – 6,500", tags:["Operations","HR","Admin"], desc:"Manage daily operations for a growing Christian education centre in Penang." },
+  { title:"Graphic Designer (Part-time)", company:"Salt & Light Media", logo:"📡", loc:"Remote", type:"Part-time", salary:"SGD 25/hr", tags:["Illustrator","Canva","Branding"], desc:"Creative designer to support our church clients and Christian campaign projects." },
+  { title:"Church Accountant", company:"Congregation of Grace, KL", logo:"✦", loc:"Kuala Lumpur, MY", type:"Full-time", salary:"RM 4,000 – 5,500", tags:["Accounting","QuickBooks","Non-profit"], desc:"Manage financial records for an active, growing church community in KL.", volunteer:false },
+];
+
+const eventsData = [
+  { title:"Biblical Leadership Workshop", date:"12 May 2026", type:"Hybrid", loc:"Kuala Lumpur + Online", emoji:"🎓", color:"#FBF5E8", seats:"42 seats left", desc:"A half-day intensive on leading teams with servant leadership principles from Scripture." },
+  { title:"Singapore Business Networking Night", date:"20 May 2026", type:"Physical", loc:"Singapore CBD", emoji:"🤝", color:"#EFF6EA", seats:"18 seats left", desc:"Connect face-to-face with 100+ Christian professionals over dinner and structured networking." },
+  { title:"Christian Entrepreneur Online Summit", date:"3 June 2026", type:"Online", loc:"Zoom (Asia)", emoji:"🌐", color:"#EEF2FF", seats:"Unlimited", desc:"Full-day virtual summit with 8 keynote sessions from top Christian business leaders." },
+  { title:"KL Prayer Breakfast for Business Leaders", date:"10 June 2026", type:"Physical", loc:"Hilton KL", emoji:"☕", color:"#FEF3C7", seats:"60 seats left", desc:"An intimate morning of prayer, worship and peer sharing over breakfast. Invite only." },
+  { title:"Women in Business Faith Forum", date:"18 June 2026", type:"Hybrid", loc:"Singapore + Online", emoji:"💜", color:"#F5E8FB", seats:"35 seats left", desc:"Celebrating and empowering Christian women business leaders across Asia." },
+  { title:"Youth Entrepreneur Bootcamp", date:"28 June 2026", type:"Physical", loc:"Petaling Jaya, MY", emoji:"🚀", color:"#E8F5FB", seats:"20 seats left", desc:"Two-day bootcamp for Christian young adults (18–30) exploring faith-driven entrepreneurship." },
+];
+
+const newsData = [
+  { cat:"Christian News", title:"New Church-Business Partnership Initiative Launches in KL", date:"24 Apr 2026", emoji:"🏛️", bg:"#FBF5E8" },
+  { cat:"Business", title:"Malaysian SMEs See 15% Revenue Lift After Asia Free Trade Expansion", date:"23 Apr 2026", emoji:"📊", bg:"#EFF6EA" },
+  { cat:"World", title:"Global Christian Business Leaders Forum Meets in Geneva Next Month", date:"22 Apr 2026", emoji:"🌍", bg:"#EEF2FF" },
+  { cat:"Asia", title:"Singapore Announces New Social Enterprise Grants for Faith-Based NGOs", date:"21 Apr 2026", emoji:"🇸🇬", bg:"#FEF3C7" },
+  { cat:"Christian News", title:"Bible Society of Malaysia Reports Record Distribution Across East Malaysia", date:"20 Apr 2026", emoji:"📖", bg:"#F5E8FB" },
+  { cat:"Business", title:"Southeast Asia's Green Economy Boom: Opportunities for Ethical Businesses", date:"19 Apr 2026", emoji:"🌿", bg:"#E8F5FB" },
+];
+
+// ===== STATE =====
+let lang = 'en';
+let theme = 'light';
+let bizFilter = 'all';
+let activePage = 'home';
+
+// ===== PAGE ROUTING =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  activePage = id;
+  window.scrollTo(0, 0);
+  if (id === 'business') renderBiz();
+  if (id === 'social') renderPosts();
+  if (id === 'hiring') renderJobs();
+  if (id === 'events') renderEvents();
+  if (id === 'news') renderNews();
+}
+
+// ===== THEME =====
+function toggleTheme() {
+  theme = theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('theme-btn').textContent = theme === 'light' ? '🌙 Dark' : '☀️ Light';
+}
+
+// ===== LANGUAGE =====
+function toggleLang() {
+  lang = lang === 'en' ? 'zh' : 'en';
+  document.getElementById('lang-btn').textContent = lang === 'en' ? '🌐 中文' : '🌐 English';
+  document.documentElement.setAttribute('data-lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+}
+
+// ===== MOBILE NAV =====
+function toggleMobileNav() {
+  const nav = document.getElementById('mobNav');
+  nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+}
+
+// ===== RENDER BUSINESS =====
+function renderBiz() {
+  const grid = document.getElementById('bizGrid');
+  const search = document.getElementById('bizSearch').value.toLowerCase();
+  const country = document.getElementById('bizCountry').value;
+  const filtered = bizData.filter(b => {
+    const matchCat = bizFilter === 'all' || b.cat === bizFilter;
+    const matchSearch = b.name.toLowerCase().includes(search) || b.desc.toLowerCase().includes(search);
+    const matchCountry = !country || b.country === country;
+    return matchCat && matchSearch && matchCountry;
+  });
+  grid.innerHTML = filtered.map(b => `
+    <div class="biz-card">
+      <div class="biz-card-img">${b.emoji}</div>
+      <div class="biz-card-body">
+        <span class="badge badge-gold">${b.cat}</span>
+        <div class="biz-card-name">${b.name}</div>
+        <div class="biz-card-cat">📍 ${b.loc}</div>
+        <div class="biz-card-desc">${b.desc}</div>
+      </div>
+      <div class="biz-card-footer">
+        <div class="biz-card-loc">🌏 ${b.country}</div>
+        <div class="biz-card-rating">⭐ ${b.rating}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterBizCat(btn, cat) {
+  bizFilter = cat;
+  document.querySelectorAll('#bizFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBiz();
+}
+
+function filterBiz() { renderBiz(); }
+
+// ===== RENDER POSTS =====
+function renderPosts() {
+  const feed = document.getElementById('postFeed');
+  feed.innerHTML = postData.map(p => `
+    <div class="social-post">
+      <div class="post-author">
+        <div class="post-avatar" style="background:${p.bg}">${p.initials}</div>
+        <div>
+          <div class="post-author-name">${p.author}</div>
+          <div class="post-author-role">${p.role}</div>
+        </div>
+        <div class="post-time">${p.time}</div>
+      </div>
+      <div class="post-tag-pill">#${p.tag}</div>
+      <div class="post-content">${p.content}</div>
+      <div class="post-actions">
+        <button class="post-action-btn" onclick="likePost(this)">❤️ ${p.likes}</button>
+        <button class="post-action-btn">💬 ${p.comments}</button>
+        <button class="post-action-btn">🔗 Share</button>
+        <button class="post-action-btn" style="margin-left:auto">➕ Follow</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function likePost(btn) {
+  const parts = btn.textContent.trim().split(' ');
+  btn.textContent = '❤️ ' + (parseInt(parts[1]) + 1);
+  btn.style.color = 'var(--gold)';
+}
+
+let selectedTag = '';
+function addTag(tag) {
+  const ta = document.getElementById('newPost');
+  ta.value += (ta.value ? ' ' : '') + '#' + tag;
+}
+
+function submitPost() {
+  const content = document.getElementById('newPost').value.trim();
+  if (!content) return showToast('Please write something first.');
+  postData.unshift({ author:"John Tan", role:"Member · Grace & Co.", initials:"JT", time:"Just now", tag:"Post", content, bg:"linear-gradient(135deg,var(--gold),var(--gold-light))", likes:0, comments:0 });
+  document.getElementById('newPost').value = '';
+  renderPosts();
+  showToast('Post published! ✦');
+}
+
+// ===== RENDER JOBS =====
+function renderJobs() {
+  document.getElementById('jobListings').innerHTML = jobData.map(j => `
+    <div class="job-card">
+      <div class="job-card-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="job-logo">${j.logo}</div>
+          <div>
+            <div class="job-title">${j.title}</div>
+            <div class="job-company">${j.company}</div>
+          </div>
+        </div>
+        <div class="job-salary">${j.salary}</div>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:8px;line-height:1.55">${j.desc}</p>
+      <div class="job-tags">${j.tags.map(t => `<span class="badge badge-blue">${t}</span>`).join('')}</div>
+      <div class="job-meta">
+        <span>📍 ${j.loc}</span>
+        <span>⏱ ${j.type}</span>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px">
+        <button class="btn btn-primary" style="font-size:0.85rem;padding:8px 18px" onclick="showToast('Application submitted! 🎉')">Apply Now</button>
+        <button class="btn btn-outline" style="font-size:0.85rem;padding:8px 18px" onclick="showToast('Job saved!')">Save</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== RENDER EVENTS =====
+function renderEvents() {
+  const typeColors = { Online:'#EEF2FF', Hybrid:'#EFF6EA', Physical:'#FEF3C7' };
+  const typeTextColors = { Online:'#4361EE', Hybrid:'var(--olive-light)', Physical:'#D97706' };
+  document.getElementById('eventsGrid').innerHTML = eventsData.map(e => `
+    <div class="event-card">
+      <div class="event-card-banner" style="background:${e.color}">${e.emoji}</div>
+      <div class="event-card-body">
+        <div class="event-date-row">
+          <span class="event-date-badge">${e.date}</span>
+          <span class="event-type-badge" style="background:${typeColors[e.type]||'#eee'};color:${typeTextColors[e.type]||'#666'}">${e.type}</span>
+        </div>
+        <div class="event-title">${e.title}</div>
+        <div class="event-desc">${e.desc}</div>
+        <div class="event-footer">
+          <div class="event-seats">📍 ${e.loc} · ${e.seats}</div>
+          <button class="btn btn-primary" style="font-size:0.82rem;padding:7px 16px" onclick="showToast('RSVP confirmed! Check your email.')">RSVP</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== RENDER NEWS =====
+function renderNews() {
+  document.getElementById('newsGrid').innerHTML = newsData.map(n => `
+    <div class="news-card">
+      <div class="news-card-img" style="background:${n.bg}">${n.emoji}</div>
+      <div class="news-card-body">
+        <div class="news-card-cat">${n.cat}</div>
+        <div class="news-card-title">${n.title}</div>
+        <div class="news-card-date">${n.date}</div>
+        <button class="btn btn-ghost" style="margin-top:8px;padding:0;font-size:0.82rem;color:var(--gold)" onclick="showToast('Article opening...')">Read more →</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== REGISTRATION =====
+function submitReg() {
+  const agree = document.getElementById('agreeTerms').checked;
+  const email = document.getElementById('regEmail').value;
+  if (!agree) return showToast('Please agree to the Terms of Service.');
+  if (!email) return showToast('Please enter your email address.');
+  document.getElementById('regForm').classList.add('hidden');
+  document.getElementById('regSuccess').classList.remove('hidden');
+  showToast('Welcome email sent to ' + email + '! 📧');
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ===== MODAL =====
+function openPostJobModal() { document.getElementById('postJobModal').classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// ===== INIT =====
+window.addEventListener('load', () => {
+  renderBiz();
+  renderPosts();
+  renderJobs();
+  renderEvents();
+  renderNews();
+});
+
+// ===== FILTER BUTTONS (events/news) =====
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('filter-btn')) {
+    const parent = e.target.closest('.events-filter, div');
+    if (parent) {
+      parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    }
+  }
+});
+</script>
+</body>
+</html>

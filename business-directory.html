@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Directory — Good Steward Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9973A;--gold-light:#E8C97A;--gold-pale:#FBF5E8;
+  --navy:#1A2744;--navy-mid:#2C3E66;--olive:#4A5E3A;--olive-light:#6B8A52;
+  --cream:#FAF8F4;--card-bg:#FFFFFF;--page-bg:#FAF8F4;
+  --text-primary:#1C1C1E;--text-secondary:#5C5C6E;--text-muted:#9A9AAF;
+  --border:#E8E4DC;--nav-bg:rgba(250,248,244,0.96);
+  --shadow:0 2px 16px rgba(26,39,68,0.07);--shadow-lg:0 8px 40px rgba(26,39,68,0.12);
+  --radius:12px;--radius-lg:18px;--t:.22s ease;
+}
+[data-theme="dark"]{
+  --gold:#D4A84B;--gold-pale:#2A2210;
+  --navy:#8AADFF;--navy-mid:#A8C4FF;
+  --cream:#0E0E12;--card-bg:#1A1A22;--page-bg:#0E0E12;
+  --text-primary:#F0EDE8;--text-secondary:#B0ACBE;--text-muted:#6A6880;
+  --border:#2A2A38;--nav-bg:rgba(14,14,18,0.96);
+  --shadow:0 2px 16px rgba(0,0,0,0.3);--shadow-lg:0 8px 40px rgba(0,0,0,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--page-bg);color:var(--text-primary);line-height:1.6;transition:background .25s,color .25s;}
+h1,h2,h3,h4{font-family:'Lora',serif;line-height:1.25;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;}
+input,select,textarea{font-family:inherit;outline:none;}
+
+/* NAV */
+.navbar{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:8px;}
+.nav-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo span{color:var(--gold);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.npill{background:var(--card-bg);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.8rem;color:var(--text-secondary);transition:all var(--t);}
+.npill:hover{border-color:var(--gold);color:var(--gold);}
+.npill-accent{background:var(--gold);color:#fff;border-color:var(--gold);}
+.npill-accent:hover{background:#b8872e;color:#fff;}
+
+/* REGISTER BANNER */
+.reg-banner{background:linear-gradient(140deg,var(--olive) 0%,var(--olive-light) 100%);overflow:hidden;}
+.reg-banner-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 500px;}
+.reg-text{padding:48px 40px;color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.reg-text::after{content:'✦';font-size:280px;position:absolute;right:-30px;top:-60px;color:rgba(255,255,255,.04);font-family:serif;pointer-events:none;}
+.reg-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.reg-eyebrow::before{content:'';width:20px;height:1.5px;background:rgba(255,255,255,.75);}
+.reg-text h2{font-size:clamp(1.3rem,2.3vw,1.85rem);color:#fff;margin-bottom:10px;}
+.reg-text p{color:rgba(255,255,255,.68);font-size:.88rem;line-height:1.7;max-width:360px;}
+.reg-perks{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
+.reg-perk{display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.82);}
+.rpd{width:6px;height:6px;border-radius:50%;background:var(--gold-light);flex-shrink:0;}
+.reg-form-wrap{background:var(--card-bg);padding:36px;border-left:1px solid rgba(255,255,255,.1);}
+.reg-form-wrap h3{font-size:1.05rem;margin-bottom:3px;}
+.reg-form-wrap .sub{font-size:.8rem;color:var(--text-muted);margin-bottom:20px;}
+.form-group{margin-bottom:13px;}
+.lbl{font-size:.72rem;font-weight:700;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+.fi{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;transition:border var(--t);}
+.fi:focus{border-color:var(--gold);}
+.fi::placeholder{color:var(--text-muted);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.upload-area{border:2px dashed var(--border);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:all var(--t);position:relative;background:var(--page-bg);}
+.upload-area:hover{border-color:var(--gold);background:var(--gold-pale);}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.upload-icon{font-size:1.5rem;margin-bottom:5px;}
+.upload-txt{font-size:.78rem;color:var(--text-muted);}
+.img-prev{display:none;width:100%;max-height:100px;object-fit:cover;border-radius:7px;margin-top:6px;}
+.btn-sub{width:100%;padding:11px;border-radius:9px;background:var(--gold);color:#fff;font-size:.9rem;font-weight:600;transition:all var(--t);margin-top:6px;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-sub:hover{background:#b8872e;transform:translateY(-1px);}
+.fnote{font-size:.73rem;color:var(--text-muted);text-align:center;margin-top:8px;line-height:1.5;}
+.success-box{display:none;text-align:center;padding:28px 0;}
+.success-box .si{font-size:2.2rem;margin-bottom:8px;}
+.success-box h4{font-size:1rem;margin-bottom:5px;}
+.success-box p{font-size:.82rem;color:var(--text-muted);}
+
+/* PAGE HEADER */
+.page-hdr{background:var(--page-bg);border-bottom:1px solid var(--border);padding:28px 0;}
+.page-hdr-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.page-hdr h1{font-size:clamp(1.3rem,2.5vw,1.8rem);}
+.page-hdr p{font-size:.88rem;color:var(--text-secondary);}
+.stats-row{display:flex;gap:28px;}
+.stat{text-align:center;}
+.stat-n{font-family:'Lora',serif;font-size:1.5rem;font-weight:600;color:var(--gold);line-height:1;}
+.stat-l{font-size:.68rem;color:var(--text-muted);margin-top:2px;}
+
+/* SEARCH */
+.search-bar{background:var(--card-bg);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:60px;z-index:150;box-shadow:var(--shadow);}
+.sb-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.si-wrap{flex:1;min-width:200px;position:relative;}
+.si-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.88rem;pointer-events:none;}
+.si{width:100%;padding:9px 12px 9px 36px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;transition:border var(--t);}
+.si:focus{border-color:var(--gold);}
+.si::placeholder{color:var(--text-muted);}
+.fs{padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.84rem;min-width:150px;transition:border var(--t);}
+.fs:focus{border-color:var(--gold);}
+.rcount{font-size:.8rem;color:var(--text-muted);white-space:nowrap;margin-left:auto;}
+
+/* CATEGORY TABS */
+.cat-bar{background:var(--page-bg);border-bottom:1px solid var(--border);overflow-x:auto;position:sticky;top:108px;z-index:140;}
+.cat-bar::-webkit-scrollbar{height:0;}
+.cat-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;}
+.ctab{padding:11px 16px;font-size:.8rem;font-weight:500;white-space:nowrap;color:var(--text-muted);background:none;border-bottom:2.5px solid transparent;transition:all var(--t);display:flex;align-items:center;gap:5px;}
+.ctab:hover{color:var(--gold);}
+.ctab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.ctab .cc{background:var(--gold-pale);color:var(--gold);font-size:.62rem;font-weight:700;padding:1px 6px;border-radius:100px;}
+
+/* MAIN */
+.main{max-width:1200px;margin:0 auto;padding:32px 24px 80px;}
+
+/* CATEGORY SECTION */
+.cat-sec{margin-bottom:48px;scroll-margin-top:210px;}
+.cat-hdr{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1.5px solid var(--border);}
+.cat-icon-big{width:44px;height:44px;border-radius:12px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.cat-name{font-size:1.1rem;font-weight:600;}
+.cat-cnt{font-size:.75rem;color:var(--text-muted);margin-top:2px;}
+.cat-badge{margin-left:auto;padding:3px 12px;border-radius:100px;background:var(--gold-pale);color:var(--gold);font-size:.7rem;font-weight:700;text-transform:uppercase;}
+
+/* BIZ GRID */
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+.biz-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t);cursor:pointer;position:relative;}
+.biz-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--gold);}
+.biz-card-img{height:140px;background:linear-gradient(135deg,var(--gold-pale),var(--border));display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;}
+.biz-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.verified-badge{position:absolute;top:10px;left:10px;background:var(--olive-light);color:#fff;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase;}
+.new-badge{position:absolute;top:10px;right:10px;background:var(--gold);color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:100px;text-transform:uppercase;}
+.biz-body{padding:18px;}
+.biz-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.biz-name{font-family:'Lora',serif;font-size:.95rem;font-weight:600;line-height:1.3;}
+.cat-pill{display:inline-block;padding:2px 9px;border-radius:100px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:var(--gold-pale);color:var(--gold);}
+.biz-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:9px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.biz-meta{display:flex;gap:12px;font-size:.74rem;color:var(--text-muted);flex-wrap:wrap;}
+.biz-actions{display:flex;gap:7px;margin-top:13px;padding-top:12px;border-top:1px solid var(--border);}
+.bsm{padding:5px 12px;border-radius:7px;font-size:.75rem;font-weight:500;transition:all var(--t);display:inline-flex;align-items:center;gap:4px;}
+.bsm-p{background:var(--gold);color:#fff;}.bsm-p:hover{background:#b8872e;}
+.bsm-g{background:var(--page-bg);color:var(--text-secondary);border:1px solid var(--border);}.bsm-g:hover{border-color:var(--gold);color:var(--gold);}
+
+/* MODAL */
+.modal-back{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-back.open{display:flex;}
+.modal{background:var(--card-bg);border-radius:var(--radius-lg);width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
+.modal-hd{padding:24px 24px 0;position:relative;}
+.mc{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--border);font-size:.9rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;}
+.mc:hover{background:var(--gold);color:#fff;}
+.modal-bd{padding:16px 24px 24px;}
+.mdr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:.85rem;}
+.mdr:last-child{border:none;}
+.mdr-icon{min-width:20px;font-size:.9rem;}
+.mdr-label{font-size:.68rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:1px;}
+
+/* NO RES */
+.no-res{text-align:center;padding:60px 24px;color:var(--text-muted);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:#fff;padding:12px 18px;border-radius:var(--radius);font-size:.84rem;box-shadow:var(--shadow-lg);transform:translateY(60px);opacity:0;transition:all .3s ease;display:flex;align-items:center;gap:7px;}
+[data-theme="dark"] .toast{background:var(--gold);}
+.toast.show{transform:translateY(0);opacity:1;}
+
+.footer-strip{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:20px;font-size:.78rem;}
+[data-theme="dark"] .footer-strip{background:#060609;}
+.footer-strip strong{color:var(--gold);}
+
+@media(max-width:900px){
+  .reg-banner-inner{grid-template-columns:1fr;}
+  .reg-text{padding:28px 24px 0;}
+  .reg-form-wrap{padding:24px;}
+}
+@media(max-width:600px){
+  .biz-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .stats-row{gap:18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo"><div class="nav-logo-icon">✦</div>Good <span>Steward</span></div>
+    <div class="nav-right">
+      <button class="npill" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+      <button class="npill" onclick="toggleLang()" id="langBtn">🌐 中文</button>
+      <button class="npill npill-accent" onclick="scrollToReg()">+ List Your Business</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ REGISTER BANNER ══════════════════════════════════════════════════ -->
+<div class="reg-banner" id="regSection">
+  <div class="reg-banner-inner">
+
+    <div class="reg-text">
+      <div class="reg-eyebrow">Business Registration</div>
+      <h2>List Your Business in the<br>Christian Yellow Pages</h2>
+      <p>Get discovered by 2,400+ Christian professionals and business owners across Malaysia, Singapore and Asia. Build trust through community.</p>
+      <div class="reg-perks">
+        <div class="reg-perk"><div class="rpd"></div>Free basic listing — visible to all members</div>
+        <div class="reg-perk"><div class="rpd"></div>Premium upgrade for featured placement</div>
+        <div class="reg-perk"><div class="rpd"></div>Verified Christian Business badge</div>
+        <div class="reg-perk"><div class="rpd"></div>Receive enquiries directly to your email</div>
+        <div class="reg-perk"><div class="rpd"></div>Listed across relevant category searches</div>
+      </div>
+    </div>
+
+    <div class="reg-form-wrap">
+      <div id="bizRegForm">
+        <h3>Submit Your Business Details</h3>
+        <p class="sub">Free listing. All fields marked * required. Reviewed within 3 business days.</p>
+
+        <div class="form-group">
+          <label class="lbl">Business / Company Name *</label>
+          <input class="fi" id="b_name" placeholder="e.g. Grace & Co. Consulting Sdn Bhd">
+        </div>
+
+        <div class="form-group">
+          <label class="lbl">Category / Industry *</label>
+          <select class="fi" id="b_cat">
+            <option value="">Select category</option>
+            <option>Consulting & Advisory</option><option>Technology & IT</option>
+            <option>Education & Training</option><option>Health & Medical</option>
+            <option>Legal & Compliance</option><option>Finance & Accounting</option>
+            <option>Food & Beverage</option><option>Construction & Property</option>
+            <option>Media & Creative</option><option>Retail & E-commerce</option>
+            <option>Manufacturing</option><option>Logistics & Transport</option>
+            <option>Ministry & Nonprofit</option><option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="lbl">Service / Product Description *</label>
+          <textarea class="fi" id="b_desc" rows="3" placeholder="Describe your services or products clearly. What do you offer? Who do you serve?" style="resize:vertical"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="lbl">Business Address *</label>
+          <input class="fi" id="b_addr" placeholder="No, Street, Area, City, Postcode, State">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="lbl">Contact Email *</label>
+            <input class="fi" type="email" id="b_email" placeholder="business@example.com">
+          </div>
+          <div class="form-group">
+            <label class="lbl">Contact Number *</label>
+            <input class="fi" id="b_phone" placeholder="+60 xx-xxxx xxxx">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="lbl">Country *</label>
+            <select class="fi" id="b_country">
+              <option value="">Select</option>
+              <option>Malaysia</option><option>Singapore</option>
+              <option>Indonesia</option><option>Philippines</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="lbl">Website (optional)</label>
+            <input class="fi" id="b_web" placeholder="www.example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="lbl">Business Photo / Logo (max 1MB) *</label>
+          <div class="upload-area" id="bizUploadArea">
+            <input type="file" accept="image/jpeg,image/png,image/webp" onchange="handleImg(this,'bizImgPrev','bizUploadArea')">
+            <div class="upload-icon">📸</div>
+            <div class="upload-txt">Click to upload your logo or business photo<br><span style="color:var(--gold);font-weight:600">Max 1MB · JPG or PNG</span></div>
+            <img class="img-prev" id="bizImgPrev" alt="Preview">
+          </div>
+        </div>
+
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:9px">
+          <input type="checkbox" id="b_confirm" style="margin-top:3px;accent-color:var(--gold)">
+          <label for="b_confirm" style="font-size:.78rem;color:var(--text-secondary)">I confirm this is a Christian-owned or Christian-values aligned business, and I am authorised to submit these details.</label>
+        </div>
+
+        <button class="btn-sub" onclick="submitBiz()">✦ Submit Business for Review</button>
+        <p class="fnote">Submissions are reviewed before publishing. You will receive a confirmation email within 3 days.</p>
+      </div>
+
+      <div class="success-box" id="bizRegSuccess">
+        <div class="si">🎉</div>
+        <h4>Submission Received!</h4>
+        <p>Thank you for listing <strong id="submittedBizName"></strong>.<br>Our team will review and publish your listing within 1–3 business days.<br><br>A confirmation email has been sent to your inbox.</p>
+        <button class="btn-sub" style="margin-top:18px;max-width:200px;margin-left:auto;margin-right:auto" onclick="resetBizForm()">Submit Another Business</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-hdr">
+  <div class="page-hdr-inner">
+    <div>
+      <h1>Christian <span style="color:var(--gold)">Business Directory</span></h1>
+      <p>Find and support Christian-owned businesses across Malaysia, Singapore and Asia.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n" id="totalBiz">—</div><div class="stat-l">Businesses</div></div>
+      <div class="stat"><div class="stat-n">14</div><div class="stat-l">Categories</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Countries</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="sb-inner">
+    <div class="si-wrap">
+      <span class="si-icon">🔍</span>
+      <input class="si" id="searchIn" placeholder="Search business name, description, location..." oninput="applyFilters()">
+    </div>
+    <select class="fs" id="catFilter" onchange="applyFilters()">
+      <option value="">All Categories</option>
+      <option>Consulting & Advisory</option><option>Technology & IT</option>
+      <option>Education & Training</option><option>Health & Medical</option>
+      <option>Legal & Compliance</option><option>Finance & Accounting</option>
+      <option>Food & Beverage</option><option>Construction & Property</option>
+      <option>Media & Creative</option><option>Retail & E-commerce</option>
+      <option>Manufacturing</option><option>Logistics & Transport</option>
+      <option>Ministry & Nonprofit</option><option>Other</option>
+    </select>
+    <select class="fs" id="countryFilter" onchange="applyFilters()">
+      <option value="">All Countries</option>
+      <option>Malaysia</option><option>Singapore</option><option>Indonesia</option>
+    </select>
+    <div class="rcount" id="rcount"></div>
+  </div>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-bar">
+  <div class="cat-inner" id="catTabs"></div>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="mainContent"></main>
+
+<!-- MODAL -->
+<div class="modal-back" id="bizModal">
+  <div class="modal">
+    <div class="modal-hd">
+      <button class="mc" onclick="closeModal()">✕</button>
+      <div id="mCat" style="margin-bottom:8px"></div>
+      <h2 style="font-size:1.1rem" id="mName"></h2>
+      <div id="mCountry" style="font-size:.78rem;color:var(--text-muted);margin-top:3px"></div>
+    </div>
+    <div class="modal-bd" id="mBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="footer-strip"><strong>Good Steward Network</strong> · Business Directory · Malaysia & Singapore · <a href="#regSection" style="color:var(--gold)">List your business</a></div>
+
+<script>
+const CATS=[
+  {id:'consulting',name:'Consulting & Advisory',icon:'💼'},
+  {id:'technology',name:'Technology & IT',icon:'💻'},
+  {id:'education',name:'Education & Training',icon:'📚'},
+  {id:'health',name:'Health & Medical',icon:'🏥'},
+  {id:'legal',name:'Legal & Compliance',icon:'⚖️'},
+  {id:'finance',name:'Finance & Accounting',icon:'📈'},
+  {id:'food',name:'Food & Beverage',icon:'🍽️'},
+  {id:'construction',name:'Construction & Property',icon:'🏗️'},
+  {id:'media',name:'Media & Creative',icon:'🎨'},
+  {id:'retail',name:'Retail & E-commerce',icon:'🛍️'},
+  {id:'manufacturing',name:'Manufacturing',icon:'🏭'},
+  {id:'logistics',name:'Logistics & Transport',icon:'🚛'},
+  {id:'ministry',name:'Ministry & Nonprofit',icon:'✝️'},
+  {id:'other',name:'Other',icon:'⭐'},
+];
+function catId(name){return CATS.find(c=>c.name===name)?.id||'other';}
+
+const SAMPLE=[
+  {name:'Grace & Co. Consulting',cat:'Consulting & Advisory',country:'Malaysia',loc:'Kuala Lumpur',desc:'Faith-driven management consulting for SMEs. Strategy, finance, operations and transformation.',phone:'+603-7727 1234',email:'hello@graceandco.com',web:'www.graceandco.com',verified:true,rating:'4.9',emoji:'💼'},
+  {name:'Cornerstone Tech Sdn Bhd',cat:'Technology & IT',country:'Malaysia',loc:'Petaling Jaya',desc:'Christian-led software development, cloud solutions and digital transformation for businesses.',phone:'+603-7955 8899',email:'info@cornerstone.tech',web:'www.cornerstone.tech',verified:true,rating:'4.8',emoji:'💻'},
+  {name:'Olive Branch Education',cat:'Education & Training',country:'Malaysia',loc:'Penang',desc:'Holistic tuition centre and training provider grounded in Christian character education.',phone:'+604-827 3300',email:'contact@olivebranch.edu.my',web:'www.olivebranch.edu.my',verified:true,rating:'5.0',emoji:'📚'},
+  {name:'Living Water Legal LLC',cat:'Legal & Compliance',country:'Singapore',loc:'Singapore CBD',desc:'Corporate and family law practice committed to justice, compassion and ethical representation.',phone:'+65 6221 3344',email:'ask@livingwaterlegal.sg',web:'www.livingwaterlegal.sg',verified:true,rating:'4.7',emoji:'⚖️'},
+  {name:"Shepherd's Table Café",cat:'Food & Beverage',country:'Malaysia',loc:'KL & Selangor',desc:'Café chain known for wholesome food, warm community atmosphere and weekly devotionals over coffee.',phone:'+603-7958 5678',email:'hi@shepherdstable.my',web:'www.shepherdstable.my',verified:true,rating:'4.9',emoji:'🍽️'},
+  {name:'Healing Hands Clinic',cat:'Health & Medical',country:'Malaysia',loc:'Johor Bahru',desc:'Family health clinic run by Christian GPs committed to holistic, compassionate patient care.',phone:'+607-223 9900',email:'clinic@healinghands.com.my',web:'',verified:true,rating:'4.8',emoji:'🏥'},
+  {name:'Kingdom Digital Pte Ltd',cat:'Media & Creative',country:'Singapore',loc:'Singapore',desc:'Digital marketing agency helping Christian nonprofits and businesses grow their online presence.',phone:'+65 6820 7700',email:'team@kingdomdigital.sg',web:'www.kingdomdigital.sg',verified:false,rating:'4.6',emoji:'📱'},
+  {name:'Faithful Finance Advisory',cat:'Finance & Accounting',country:'Malaysia',loc:'Kuala Lumpur',desc:'Financial planning and wealth management guided by biblical stewardship and generosity principles.',phone:'+603-2282 4455',email:'wealth@faithfulfinance.my',web:'www.faithfulfinance.my',verified:true,rating:'4.9',emoji:'📈'},
+  {name:'Salt & Light Media',cat:'Media & Creative',country:'Singapore',loc:'Singapore',desc:'Christian media and content production for churches, events and faith-based campaigns.',phone:'+65 6348 0011',email:'create@saltandlight.sg',web:'www.saltandlight.sg',verified:false,rating:'4.7',emoji:'📡'},
+  {name:'Covenant Properties Sdn Bhd',cat:'Construction & Property',country:'Malaysia',loc:'Selangor',desc:'Ethical property developer focused on affordable, quality homes built with integrity and community.',phone:'+603-8070 3300',email:'info@covenantprop.com',web:'',verified:false,rating:'4.5',emoji:'🏗️'},
+  {name:'Manna Tech Solutions',cat:'Technology & IT',country:'Malaysia',loc:'Penang',desc:'IT managed services, cybersecurity and enterprise software deployment for SMEs across Malaysia.',phone:'+604-659 1133',email:'support@mannatech.my',web:'www.mannatech.my',verified:true,rating:'4.8',emoji:'🔧'},
+  {name:'Good Harvest Logistics',cat:'Logistics & Transport',country:'Malaysia',loc:'Johor Bahru',desc:'Freight and warehousing solutions connecting Malaysia and Singapore with Christian integrity.',phone:'+607-234 5678',email:'ops@goodharvest.com',web:'',verified:false,rating:'4.4',emoji:'🚛'},
+  {name:'Arise & Shine Retail',cat:'Retail & E-commerce',country:'Singapore',loc:'Singapore',desc:'Christian lifestyle brand selling books, gifts, devotional materials and apparel online and in store.',phone:'+65 6444 2200',email:'shop@ariseandshine.sg',web:'www.ariseandshine.sg',verified:true,rating:'4.8',emoji:'🛍️'},
+  {name:'Lighthouse Training Institute',cat:'Education & Training',country:'Malaysia',loc:'Kuala Lumpur',desc:'Professional skills training, certification courses and leadership programs for Christian workers.',phone:'+603-2166 7788',email:'enrol@lighthousetraining.my',web:'www.lighthousetraining.my',verified:true,rating:'4.9',emoji:'🎓'},
+  {name:'Bread of Life Manufacturing',cat:'Manufacturing',country:'Malaysia',loc:'Selangor',desc:'Halal-certified (for export) food manufacturing and private label production for Christian-owned brands.',phone:'+603-8023 4455',email:'bd@breadoflife.my',web:'',verified:false,rating:'4.3',emoji:'🏭'},
+  {name:'Refuge Counselling Centre',cat:'Ministry & Nonprofit',country:'Malaysia',loc:'Kuala Lumpur',desc:'Professional Christian counselling services for individuals, couples and families. Registered counsellors.',phone:'+603-7726 8800',email:'care@refugecounselling.org',web:'www.refugecounselling.org',verified:true,rating:'5.0',emoji:'🕊️'},
+];
+
+let userBiz=[];
+let filteredBiz=[];
+
+function handleImg(input,prevId,areaId){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>1048576){showToast('Image must be under 1MB.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const p=document.getElementById(prevId);
+    p.src=e.target.result;p.style.display='block';
+    document.querySelector('#'+areaId+' .upload-icon').style.display='none';
+    document.querySelector('#'+areaId+' .upload-txt').textContent='Photo selected ✓';
+  };
+  reader.readAsDataURL(file);
+  // store for later
+  input._dataUrl=null;
+  const r=new FileReader();
+  r.onload=e=>{input._dataUrl=e.target.result;};
+  r.readAsDataURL(file);
+}
+
+function submitBiz(){
+  const name=document.getElementById('b_name').value.trim();
+  const cat=document.getElementById('b_cat').value;
+  const desc=document.getElementById('b_desc').value.trim();
+  const addr=document.getElementById('b_addr').value.trim();
+  const email=document.getElementById('b_email').value.trim();
+  const phone=document.getElementById('b_phone').value.trim();
+  const country=document.getElementById('b_country').value;
+  const confirm=document.getElementById('b_confirm').checked;
+  if(!name||!cat||!desc||!addr||!email||!phone||!country){showToast('Please fill in all required fields (*)');return;}
+  if(!email.includes('@')){showToast('Please enter a valid email.');return;}
+  if(!confirm){showToast('Please confirm your business alignment.');return;}
+  const web=document.getElementById('b_web').value.trim();
+  const imgInput=document.querySelector('#bizUploadArea input[type=file]');
+  const imgData=imgInput._dataUrl||null;
+  userBiz.push({name,cat,country,loc:addr.split(',').slice(-2,-1)[0]?.trim()||addr,desc,phone,email,web,verified:false,rating:'New',emoji:'✦',isNew:true,imgData});
+  document.getElementById('submittedBizName').textContent=name;
+  document.getElementById('bizRegForm').style.display='none';
+  document.getElementById('bizRegSuccess').style.display='block';
+  applyFilters();
+  showToast('Business submitted! ✅');
+}
+
+function resetBizForm(){
+  document.getElementById('bizRegForm').style.display='block';
+  document.getElementById('bizRegSuccess').style.display='none';
+  ['b_name','b_desc','b_addr','b_email','b_phone','b_web'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b_cat').value='';
+  document.getElementById('b_country').value='';
+  document.getElementById('b_confirm').checked=false;
+}
+
+function scrollToReg(){document.getElementById('regSection').scrollIntoView({behavior:'smooth'});}
+
+function applyFilters(){
+  const q=document.getElementById('searchIn').value.toLowerCase();
+  const cat=document.getElementById('catFilter').value;
+  const country=document.getElementById('countryFilter').value;
+  const all=[...SAMPLE,...userBiz];
+  filteredBiz=all.filter(b=>{
+    const mQ=!q||b.name.toLowerCase().includes(q)||b.desc.toLowerCase().includes(q)||b.loc?.toLowerCase().includes(q);
+    const mC=!cat||b.cat===cat;
+    const mCo=!country||b.country===country;
+    return mQ&&mC&&mCo;
+  });
+  renderAll();
+}
+
+function renderAll(){
+  const main=document.getElementById('mainContent');
+  const catTabs=document.getElementById('catTabs');
+  let html='',tabsHtml='',total=0;
+
+  CATS.forEach(c=>{
+    const bizzes=filteredBiz.filter(b=>catId(b.cat)===c.id);
+    const cnt=bizzes.length;
+    tabsHtml+=`<button class="ctab" onclick="scrollToCat('${c.id}')">${c.icon} ${c.name.split(' & ')[0]} <span class="cc">${cnt}</span></button>`;
+    if(!cnt)return;
+    total+=cnt;
+    html+=`<div class="cat-sec" id="sec-${c.id}">
+      <div class="cat-hdr">
+        <div class="cat-icon-big">${c.icon}</div>
+        <div><div class="cat-name">${c.name}</div><div class="cat-cnt">${cnt} business${cnt!==1?'es':''}</div></div>
+        <span class="cat-badge">${c.name}</span>
+      </div>
+      <div class="biz-grid">
+        ${bizzes.map(b=>{
+          const fi=filteredBiz.indexOf(b);
+          const imgContent=b.imgData?`<img src="${b.imgData}" alt="${b.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`
+            :`<span style="font-size:2.8rem">${b.emoji}</span>`;
+          return`<div class="biz-card" onclick="openModal(${fi})">
+            <div class="biz-card-img">
+              ${imgContent}
+              ${b.verified?'<div class="verified-badge">✓ Verified</div>':''}
+              ${b.isNew?'<div class="new-badge">NEW</div>':''}
+            </div>
+            <div class="biz-body">
+              <div class="biz-top">
+                <div class="biz-name">${b.name}</div>
+                <span class="cat-pill">${b.cat.split(' & ')[0]}</span>
+              </div>
+              <div class="biz-desc">${b.desc}</div>
+              <div class="biz-meta">
+                <span>📍 ${b.loc}</span>
+                <span>🌏 ${b.country}</span>
+                ${b.rating!=='New'?`<span>⭐ ${b.rating}</span>`:'<span style="color:var(--gold)">⭐ New</span>'}
+              </div>
+              <div class="biz-actions">
+                <button class="bsm bsm-p" onclick="event.stopPropagation();openModal(${fi})">View Details</button>
+                <button class="bsm bsm-g" onclick="event.stopPropagation();showToast('Contact sent to '+b.name)">📧 Enquire</button>
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+
+  if(!total)html=`<div class="no-res"><div style="font-size:2.5rem;margin-bottom:10px">🔍</div><div style="font-size:1rem;font-weight:500">No businesses match your search.</div><p style="margin-top:6px;font-size:.85rem">Try different filters or <a href="#regSection" style="color:var(--gold)">list your business</a>.</p></div>`;
+
+  main.innerHTML=html;
+  catTabs.innerHTML=tabsHtml;
+  const all=[...SAMPLE,...userBiz];
+  document.getElementById('totalBiz').textContent=all.length;
+  document.getElementById('rcount').textContent=total?`${total} shown`:'';
+}
+
+function openModal(idx){
+  const b=filteredBiz[idx];
+  const c=CATS.find(ct=>ct.name===b.cat)||{icon:'⭐'};
+  document.getElementById('mCat').innerHTML=`<span class="cat-pill">${c.icon} ${b.cat}</span>`;
+  document.getElementById('mName').textContent=b.name;
+  document.getElementById('mCountry').textContent=`📍 ${b.loc} · 🌏 ${b.country}`;
+  document.getElementById('mBody').innerHTML=`
+    ${b.imgData?`<img src="${b.imgData}" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;margin-bottom:14px" alt="${b.name}">`:''}
+    <div class="mdr"><span class="mdr-icon">📝</span><div><span class="mdr-label">About</span><span>${b.desc}</span></div></div>
+    <div class="mdr"><span class="mdr-icon">📍</span><div><span class="mdr-label">Address</span><span>${b.loc}, ${b.country}</span></div></div>
+    ${b.phone?`<div class="mdr"><span class="mdr-icon">📞</span><div><span class="mdr-label">Phone</span><span>${b.phone}</span></div></div>`:''}
+    ${b.email?`<div class="mdr"><span class="mdr-icon">📧</span><div><span class="mdr-label">Email</span><a href="mailto:${b.email}" style="color:var(--gold)">${b.email}</a></div></div>`:''}
+    ${b.web?`<div class="mdr"><span class="mdr-icon">🌐</span><div><span class="mdr-label">Website</span><a href="https://${b.web}" target="_blank" style="color:var(--gold)">${b.web}</a></div></div>`:''}
+    ${b.rating&&b.rating!=='New'?`<div class="mdr"><span class="mdr-icon">⭐</span><div><span class="mdr-label">Rating</span><span>${b.rating} / 5.0</span></div></div>`:''}
+    <div style="display:flex;gap:8px;margin-top:18px">
+      <button class="bsm bsm-p" style="flex:1;justify-content:center" onclick="showToast('Enquiry sent to ${b.name.replace(/'/g,'')}!')">📧 Send Enquiry</button>
+      <button class="bsm bsm-g" style="flex:1;justify-content:center" onclick="showToast('Link copied!')">🔗 Share</button>
+    </div>
+  `;
+  document.getElementById('bizModal').classList.add('open');
+}
+function closeModal(){document.getElementById('bizModal').classList.remove('open');}
+document.getElementById('bizModal').addEventListener('click',e=>{if(e.target===document.getElementById('bizModal'))closeModal();});
+
+function scrollToCat(id){const el=document.getElementById('sec-'+id);if(el)el.scrollIntoView({behavior:'smooth'});}
+
+function toggleTheme(){
+  const t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('themeBtn').textContent=t==='light'?'🌙 Dark':'☀️ Light';
+}
+function toggleLang(){showToast('Language toggle: full version in main site');}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent='✅ '+msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+applyFilters();
+</script>
+</body>
+</html>

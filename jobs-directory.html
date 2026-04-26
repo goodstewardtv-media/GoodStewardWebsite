@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs Directory — Good Steward Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9973A;--gold-light:#E8C97A;--gold-pale:#FBF5E8;
+  --navy:#1A2744;--navy-mid:#2C3E66;--olive:#4A5E3A;--olive-light:#6B8A52;
+  --teal:#0E7490;--teal-pale:#E0F7FA;
+  --cream:#FAF8F4;--card-bg:#FFFFFF;--page-bg:#FAF8F4;
+  --text-primary:#1C1C1E;--text-secondary:#5C5C6E;--text-muted:#9A9AAF;
+  --border:#E8E4DC;--nav-bg:rgba(250,248,244,0.96);
+  --shadow:0 2px 16px rgba(26,39,68,0.07);--shadow-lg:0 8px 40px rgba(26,39,68,0.12);
+  --radius:12px;--radius-lg:18px;--t:.22s ease;
+}
+[data-theme="dark"]{
+  --gold:#D4A84B;--gold-pale:#2A2210;
+  --teal:#22D3EE;--teal-pale:#0A2030;
+  --navy:#8AADFF;--navy-mid:#A8C4FF;
+  --cream:#0E0E12;--card-bg:#1A1A22;--page-bg:#0E0E12;
+  --text-primary:#F0EDE8;--text-secondary:#B0ACBE;--text-muted:#6A6880;
+  --border:#2A2A38;--nav-bg:rgba(14,14,18,0.96);
+  --shadow:0 2px 16px rgba(0,0,0,0.3);--shadow-lg:0 8px 40px rgba(0,0,0,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--page-bg);color:var(--text-primary);line-height:1.6;transition:background .25s,color .25s;}
+h1,h2,h3,h4{font-family:'Lora',serif;line-height:1.25;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;}
+input,select,textarea{font-family:inherit;outline:none;}
+
+/* NAV */
+.navbar{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:8px;}
+.nav-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo span{color:var(--gold);}
+.nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.npill{background:var(--card-bg);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.8rem;color:var(--text-secondary);transition:all var(--t);}
+.npill:hover{border-color:var(--gold);color:var(--gold);}
+.npill-gold{background:var(--gold);color:#fff;border-color:var(--gold);}
+.npill-gold:hover{background:#b8872e;color:#fff;}
+.npill-teal{background:var(--teal);color:#fff;border-color:var(--teal);}
+.npill-teal:hover{background:#0a5f6e;color:#fff;}
+
+/* ═══════════════════════════════════════
+   SECTION 0 — REGISTER PROFILE BANNER
+═══════════════════════════════════════ */
+.profile-banner{background:linear-gradient(140deg,var(--navy) 0%,var(--navy-mid) 100%);overflow:hidden;}
+.pb-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;}
+.pb-text{padding:44px 40px;color:#fff;position:relative;}
+.pb-text::after{content:'✦';font-size:260px;position:absolute;right:-30px;top:-60px;color:rgba(201,151,58,.05);font-family:serif;pointer-events:none;}
+.pb-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.pb-eyebrow::before{content:'';width:20px;height:1.5px;background:var(--gold-light);}
+.pb-text h2{font-size:clamp(1.25rem,2.2vw,1.75rem);color:#fff;margin-bottom:10px;}
+.pb-text p{color:rgba(255,255,255,.66);font-size:.88rem;line-height:1.7;max-width:360px;}
+.pb-perks{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
+.pb-perk{display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.8);}
+.pbd{width:6px;height:6px;border-radius:50%;background:var(--gold-light);flex-shrink:0;}
+.pb-form{background:var(--card-bg);padding:36px;border-left:1px solid rgba(255,255,255,.08);}
+.pb-form h3{font-size:1.05rem;margin-bottom:3px;}
+.pb-form .sub{font-size:.79rem;color:var(--text-muted);margin-bottom:18px;}
+.form-group{margin-bottom:12px;}
+.lbl{font-size:.72rem;font-weight:700;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+.fi{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;transition:border var(--t);}
+.fi:focus{border-color:var(--gold);}
+.fi::placeholder{color:var(--text-muted);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.upload-area{border:2px dashed var(--border);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all var(--t);position:relative;background:var(--page-bg);}
+.upload-area:hover{border-color:var(--gold);background:var(--gold-pale);}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.upload-icon{font-size:1.3rem;margin-bottom:3px;}
+.upload-txt{font-size:.75rem;color:var(--text-muted);}
+.img-prev{display:none;width:60px;height:60px;object-fit:cover;border-radius:50%;margin:6px auto 0;border:2px solid var(--gold);}
+.btn-sub{width:100%;padding:11px;border-radius:9px;background:var(--gold);color:#fff;font-size:.9rem;font-weight:600;transition:all var(--t);margin-top:6px;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-sub:hover{background:#b8872e;transform:translateY(-1px);}
+.fnote{font-size:.72rem;color:var(--text-muted);text-align:center;margin-top:7px;line-height:1.5;}
+.success-box{display:none;text-align:center;padding:24px 0;}
+.success-box .si{font-size:2rem;margin-bottom:7px;}
+.success-box h4{font-size:1rem;margin-bottom:4px;}
+.success-box p{font-size:.8rem;color:var(--text-muted);}
+
+/* ═══════════════════════════════════════
+   SECTION TABS — Company Jobs / Seekers
+═══════════════════════════════════════ */
+.page-hdr{background:var(--page-bg);border-bottom:1px solid var(--border);padding:24px 0;}
+.page-hdr-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.page-hdr h1{font-size:clamp(1.3rem,2.5vw,1.75rem);}
+.page-hdr p{font-size:.87rem;color:var(--text-secondary);}
+.stats-row{display:flex;gap:28px;}
+.stat{text-align:center;}
+.stat-n{font-family:'Lora',serif;font-size:1.5rem;font-weight:600;color:var(--gold);line-height:1;}
+.stat-l{font-size:.67rem;color:var(--text-muted);margin-top:2px;}
+
+/* SEARCH */
+.search-bar{background:var(--card-bg);border-bottom:1px solid var(--border);padding:13px 0;position:sticky;top:60px;z-index:150;box-shadow:var(--shadow);}
+.sb-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.si-wrap{flex:1;min-width:200px;position:relative;}
+.si-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.88rem;pointer-events:none;}
+.si{width:100%;padding:8px 12px 8px 36px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;transition:border var(--t);}
+.si:focus{border-color:var(--gold);}
+.si::placeholder{color:var(--text-muted);}
+.fs{padding:8px 11px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.83rem;min-width:140px;transition:border var(--t);}
+.fs:focus{border-color:var(--gold);}
+
+/* MAIN TABS */
+.main-tabs{background:var(--page-bg);border-bottom:1px solid var(--border);position:sticky;top:108px;z-index:140;}
+.mt-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:0;}
+.mtab{padding:14px 20px;font-size:.88rem;font-weight:600;color:var(--text-muted);background:none;border-bottom:3px solid transparent;transition:all var(--t);display:flex;align-items:center;gap:7px;}
+.mtab:hover{color:var(--text-primary);}
+.mtab.active{color:var(--navy);border-bottom-color:var(--gold);}
+[data-theme="dark"] .mtab.active{color:var(--text-primary);}
+.mtab-count{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+.mtab-company .mtab-count{background:#EEF2FF;color:#4361EE;}
+.mtab-seeker .mtab-count{background:var(--teal-pale);color:var(--teal);}
+.mtab-matches .mtab-count{background:var(--gold-pale);color:var(--gold);}
+
+/* LAYOUT */
+.main-layout{max-width:1200px;margin:0 auto;padding:28px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start;}
+.sidebar{position:sticky;top:180px;}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;}
+.sc-title{font-size:.83rem;font-weight:700;margin-bottom:13px;color:var(--text-primary);}
+.sc-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all var(--t);}
+.sc-item:last-child{border:none;}
+.sc-item:hover{padding-left:4px;}
+.sc-item-num{font-size:1rem;font-family:'Lora',serif;color:var(--gold);min-width:22px;font-weight:600;}
+.sc-item-text{font-size:.83rem;font-weight:500;}
+.btn-post{width:100%;padding:11px;border-radius:9px;font-size:.88rem;font-weight:600;transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-post-company{background:linear-gradient(135deg,#4361EE,#3A50D0);color:#fff;}
+.btn-post-company:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(67,97,238,.35);}
+.btn-post-seeker{background:linear-gradient(135deg,var(--teal),#0a5f6e);color:#fff;margin-top:8px;}
+.btn-post-seeker:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(14,116,144,.3);}
+
+/* TAB PANELS */
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* JOB CARD */
+.job-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:16px;transition:all var(--t);cursor:pointer;position:relative;}
+.job-card:hover{box-shadow:var(--shadow-lg);border-color:rgba(67,97,238,.3);}
+.job-card.seeker-card:hover{border-color:rgba(14,116,144,.3);}
+.job-card.match-card{border-left:4px solid var(--gold);}
+.jc-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px;}
+.jc-logo{width:48px;height:48px;border-radius:12px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;overflow:hidden;}
+.jc-logo img{width:100%;height:100%;object-fit:cover;}
+.jc-main{flex:1;}
+.jc-title{font-size:1rem;font-weight:700;margin-bottom:2px;}
+.jc-company{font-size:.83rem;color:var(--text-secondary);}
+.jc-salary{font-size:.95rem;font-weight:700;color:var(--olive-light);white-space:nowrap;margin-top:2px;}
+.jc-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.55;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+.tag{padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+.tag-industry{background:#EEF2FF;color:#4361EE;}
+.tag-type{background:#FEF3C7;color:#D97706;}
+.tag-loc{background:var(--gold-pale);color:var(--gold);}
+.tag-skill{background:#F3E8FF;color:#7C3AED;}
+.tag-seeker{background:var(--teal-pale);color:var(--teal);}
+.tag-match{background:var(--gold-pale);color:var(--gold);}
+.jc-meta{display:flex;gap:16px;font-size:.76rem;color:var(--text-muted);flex-wrap:wrap;}
+.jc-actions{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.jbtn{padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:600;transition:all var(--t);display:inline-flex;align-items:center;gap:4px;}
+.jbtn-p{background:#4361EE;color:#fff;}.jbtn-p:hover{background:#3A50D0;}
+.jbtn-t{background:var(--teal);color:#fff;}.jbtn-t:hover{background:#0a5f6e;}
+.jbtn-g{background:var(--page-bg);color:var(--text-secondary);border:1px solid var(--border);}.jbtn-g:hover{border-color:var(--gold);color:var(--gold);}
+.jbtn-gold{background:var(--gold);color:#fff;}.jbtn-gold:hover{background:#b8872e;}
+
+/* SEEKER CARD */
+.seeker-card .jc-logo{background:var(--teal-pale);}
+.seeker-card .jc-title{color:var(--teal);}
+
+/* MATCH CARD SPECIAL */
+.match-score{position:absolute;top:14px;right:14px;background:var(--gold);color:#fff;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:100px;letter-spacing:.04em;}
+
+/* MATCH ENGINE BANNER */
+.match-banner{background:linear-gradient(135deg,var(--gold-pale),#FEF7E0);border:1px solid var(--gold-light);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+[data-theme="dark"] .match-banner{background:linear-gradient(135deg,#2A2210,#1E1A0A);}
+.match-banner-icon{font-size:2rem;flex-shrink:0;}
+.match-banner-text h4{font-size:.95rem;font-weight:700;margin-bottom:3px;}
+.match-banner-text p{font-size:.8rem;color:var(--text-secondary);}
+
+/* PROFILE PILL */
+.profile-pill{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;}
+.profile-pill-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0;overflow:hidden;}
+.profile-pill-avatar img{width:100%;height:100%;object-fit:cover;}
+.profile-pill-name{font-size:.87rem;font-weight:600;}
+.profile-pill-role{font-size:.75rem;color:var(--text-muted);}
+
+/* MODAL */
+.modal-back{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-back.open{display:flex;}
+.modal{background:var(--card-bg);border-radius:var(--radius-lg);width:100%;max-width:560px;max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
+.modal-hd{padding:24px 24px 0;position:relative;}
+.mc{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--border);font-size:.9rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;}
+.mc:hover{background:var(--gold);color:#fff;}
+.modal-bd{padding:16px 24px 28px;}
+.mdr{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:.85rem;}
+.mdr:last-child{border:none;}
+.mdr-icon{min-width:20px;font-size:.9rem;}
+.mdr-label{font-size:.68rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:1px;}
+
+/* POST MODAL FORM */
+.post-modal-form h3{font-size:1.05rem;margin-bottom:3px;}
+.post-modal-form .sub{font-size:.79rem;color:var(--text-muted);margin-bottom:16px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:#fff;padding:12px 18px;border-radius:var(--radius);font-size:.84rem;box-shadow:var(--shadow-lg);transform:translateY(60px);opacity:0;transition:all .3s ease;display:flex;align-items:center;gap:7px;max-width:320px;}
+[data-theme="dark"] .toast{background:var(--gold);}
+.toast.show{transform:translateY(0);opacity:1;}
+
+.footer-strip{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:20px;font-size:.78rem;}
+[data-theme="dark"] .footer-strip{background:#060609;}
+.footer-strip strong{color:var(--gold);}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:48px;color:var(--text-muted);}
+
+@media(max-width:960px){
+  .main-layout{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .pb-inner{grid-template-columns:1fr;}
+  .pb-text{padding:28px 24px 0;}
+  .pb-form{padding:24px;}
+}
+@media(max-width:600px){
+  .form-row{grid-template-columns:1fr;}
+  .jc-header{flex-wrap:wrap;}
+  .stats-row{gap:16px;}
+  .mtab{font-size:.78rem;padding:12px 12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo"><div class="nav-logo-icon">✦</div>Good <span>Steward</span></div>
+    <div class="nav-right">
+      <button class="npill" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+      <button class="npill" onclick="toggleLang()" id="langBtn">🌐 中文</button>
+      <button class="npill npill-gold" onclick="scrollToProfile()">👤 Register Profile</button>
+      <button class="npill npill-teal" onclick="openPostModal('company')">📢 Post a Job</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ SECTION 0: INDIVIDUAL REGISTRATION ══════════════════════════════ -->
+<div class="profile-banner" id="profileSection">
+  <div class="pb-inner">
+    <div class="pb-text">
+      <div class="pb-eyebrow">Individual Registration</div>
+      <h2>Create Your Christian<br>Professional Profile</h2>
+      <p>Whether you're hiring or job seeking — build your profile first. Our matching engine will connect you to the right opportunities or candidates automatically.</p>
+      <div class="pb-perks">
+        <div class="pb-perk"><div class="pbd"></div>Upload your resume/CV (PDF or DOC)</div>
+        <div class="pb-perk"><div class="pbd"></div>Smart AI matching to relevant job ads</div>
+        <div class="pb-perk"><div class="pbd"></div>Be found by Christian employers directly</div>
+        <div class="pb-perk"><div class="pbd"></div>Post what role you are looking for</div>
+        <div class="pb-perk"><div class="pbd"></div>Private — only matched parties can contact</div>
+      </div>
+    </div>
+    <div class="pb-form">
+      <div id="profileForm">
+        <h3>Your Professional Profile</h3>
+        <p class="sub">All fields marked * required. Free to register. Private until matched.</p>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Full Name *</label><input class="fi" id="p_name" placeholder="John Tan"></div>
+          <div class="form-group"><label class="lbl">Preferred Role *</label><input class="fi" id="p_role" placeholder="e.g. Financial Analyst"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Email *</label><input class="fi" type="email" id="p_email" placeholder="john@email.com"></div>
+          <div class="form-group"><label class="lbl">Contact Number *</label><input class="fi" id="p_phone" placeholder="+60 xx-xxxx xxxx"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Industry *</label>
+            <select class="fi" id="p_industry">
+              <option value="">Select</option>
+              <option>Finance & Accounting</option><option>Technology & IT</option>
+              <option>Education & Training</option><option>Health & Medical</option>
+              <option>Legal & Compliance</option><option>Consulting & Advisory</option>
+              <option>Media & Creative</option><option>Sales & Marketing</option>
+              <option>Operations & Admin</option><option>HR & Recruitment</option>
+              <option>Engineering</option><option>Ministry & Nonprofit</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="lbl">Location *</label><input class="fi" id="p_loc" placeholder="e.g. Kuala Lumpur"></div>
+        </div>
+        <div class="form-group"><label class="lbl">Key Skills (comma separated)</label><input class="fi" id="p_skills" placeholder="e.g. Excel, Financial Modelling, Leadership"></div>
+        <div class="form-group"><label class="lbl">Brief Bio / What You're Looking For *</label><textarea class="fi" id="p_bio" rows="2" placeholder="Describe yourself, your experience, and what kind of role or candidate you are seeking..." style="resize:vertical"></textarea></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="lbl">Profile Photo (max 1MB)</label>
+            <div class="upload-area" id="profilePhotoArea">
+              <input type="file" accept="image/*" onchange="handleImg(this,'profilePhotoPreview','profilePhotoArea')">
+              <div class="upload-icon">🤳</div>
+              <div class="upload-txt">Upload profile photo</div>
+              <img class="img-prev" id="profilePhotoPreview" alt="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="lbl">Resume / CV (PDF, max 2MB)</label>
+            <div class="upload-area" id="resumeArea" style="height:calc(100% - 22px)">
+              <input type="file" accept=".pdf,.doc,.docx" onchange="handleResume(this)">
+              <div class="upload-icon">📄</div>
+              <div class="upload-txt" id="resumeTxt">Upload Resume or CV</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:8px">
+          <input type="checkbox" id="p_seeker" style="margin-top:3px;accent-color:var(--teal)">
+          <label for="p_seeker" style="font-size:.78rem;color:var(--text-secondary)">I am currently looking for a job — post my profile in the Job Seekers section</label>
+        </div>
+        <button class="btn-sub" onclick="submitProfile()">✦ Create My Profile & Find Matches</button>
+        <p class="fnote">Your contact details are private. Only admin-approved matches will receive your information.</p>
+      </div>
+      <div class="success-box" id="profileSuccess">
+        <div class="si">✅</div>
+        <h4 id="profileSuccessName">Profile Created!</h4>
+        <p id="profileSuccessMsg">Your profile is live. Our matching engine is finding relevant jobs for you now. Check the <strong>Smart Matches</strong> tab to see results!</p>
+        <button class="btn-sub" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto" onclick="showTab('matches')">See My Matches →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-hdr">
+  <div class="page-hdr-inner">
+    <div>
+      <h1>Christian <span style="color:var(--gold)">Jobs Board</span></h1>
+      <p>Find meaningful work at faith-aligned companies — or post a job to find the right person.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n" id="totalJobs">—</div><div class="stat-l">Jobs Posted</div></div>
+      <div class="stat"><div class="stat-n" id="totalSeekers">—</div><div class="stat-l">Seekers</div></div>
+      <div class="stat"><div class="stat-n" id="totalMatches">—</div><div class="stat-l">Matches Made</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="sb-inner">
+    <div class="si-wrap">
+      <span class="si-icon">🔍</span>
+      <input class="si" id="searchIn" placeholder="Search job title, skills, company, location..." oninput="applySearch()">
+    </div>
+    <select class="fs" id="industryF" onchange="applySearch()">
+      <option value="">All Industries</option>
+      <option>Finance & Accounting</option><option>Technology & IT</option>
+      <option>Education & Training</option><option>Health & Medical</option>
+      <option>Legal & Compliance</option><option>Consulting & Advisory</option>
+      <option>Media & Creative</option><option>Sales & Marketing</option>
+      <option>Operations & Admin</option><option>Ministry & Nonprofit</option>
+    </select>
+    <select class="fs" id="typeF" onchange="applySearch()">
+      <option value="">All Types</option>
+      <option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option><option>Volunteer</option>
+    </select>
+    <select class="fs" id="locF" onchange="applySearch()">
+      <option value="">All Locations</option>
+      <option>Kuala Lumpur</option><option>Selangor</option><option>Penang</option>
+      <option>Johor Bahru</option><option>Singapore</option><option>Remote</option>
+    </select>
+  </div>
+</div>
+
+<!-- MAIN TABS -->
+<div class="main-tabs">
+  <div class="mt-inner">
+    <button class="mtab mtab-company active" id="tab-company" onclick="showTab('company')">
+      🏢 Company Job Ads <span class="mtab-count" id="cnt-company">0</span>
+    </button>
+    <button class="mtab mtab-seeker" id="tab-seeker" onclick="showTab('seeker')">
+      👤 Job Seekers <span class="mtab-count" id="cnt-seeker">0</span>
+    </button>
+    <button class="mtab mtab-matches" id="tab-matches" onclick="showTab('matches')">
+      ✦ Smart Matches <span class="mtab-count" id="cnt-matches">0</span>
+    </button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card" id="activeProfileCard" style="display:none">
+      <div class="sc-title">Your Profile</div>
+      <div class="profile-pill" id="sidePillContent"></div>
+      <button class="btn-post btn-post-seeker" onclick="showTab('matches')" style="font-size:.82rem;padding:9px">✦ View My Matches</button>
+    </div>
+    <div class="sidebar-card">
+      <div class="sc-title">🔥 Top Industries</div>
+      <div class="sc-item"><div class="sc-item-num">1</div><div class="sc-item-text">Finance & Accounting</div></div>
+      <div class="sc-item"><div class="sc-item-num">2</div><div class="sc-item-text">Technology & IT</div></div>
+      <div class="sc-item"><div class="sc-item-num">3</div><div class="sc-item-text">Education & Training</div></div>
+      <div class="sc-item"><div class="sc-item-num">4</div><div class="sc-item-text">Consulting & Advisory</div></div>
+      <div class="sc-item"><div class="sc-item-num">5</div><div class="sc-item-text">Media & Creative</div></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sc-title">Post to the Board</div>
+      <button class="btn-post btn-post-company" onclick="openPostModal('company')">📢 Post a Job Hiring Ad</button>
+      <button class="btn-post btn-post-seeker" onclick="openPostModal('seeker')">👤 Post Looking for Work</button>
+    </div>
+    <div class="sidebar-card">
+      <div class="sc-title">💡 Verse for Work</div>
+      <div style="font-style:italic;font-size:.82rem;color:var(--text-secondary);line-height:1.65">"The plans of the diligent lead to profit as surely as haste leads to poverty."</div>
+      <div style="font-size:.73rem;color:var(--gold);font-weight:600;margin-top:7px">— Proverbs 21:5</div>
+    </div>
+  </aside>
+
+  <!-- MAIN FEED -->
+  <div>
+    <!-- ── COMPANY JOBS TAB ── -->
+    <div class="tab-panel active" id="panel-company">
+      <div id="jobsFeed"></div>
+    </div>
+
+    <!-- ── JOB SEEKERS TAB ── -->
+    <div class="tab-panel" id="panel-seeker">
+      <div id="seekersFeed"></div>
+    </div>
+
+    <!-- ── SMART MATCHES TAB ── -->
+    <div class="tab-panel" id="panel-matches">
+      <div class="match-banner">
+        <div class="match-banner-icon">🔮</div>
+        <div class="match-banner-text">
+          <h4>Smart Matching Engine</h4>
+          <p>Our system matches job seekers to hiring ads based on industry, skills, location and job type. Both parties are notified and pointed to each other's listing for direct connection.</p>
+        </div>
+      </div>
+      <div id="matchesFeed"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── POST JOB MODAL ── -->
+<div class="modal-back" id="postModal">
+  <div class="modal">
+    <div class="modal-hd">
+      <button class="mc" onclick="closePostModal()">✕</button>
+      <h2 style="font-size:1.1rem" id="postModalTitle">Post a Job</h2>
+      <p style="font-size:.78rem;color:var(--text-muted);margin-top:3px" id="postModalSub">Fill in the details below. Published after review.</p>
+    </div>
+    <div class="modal-bd">
+      <!-- Company Section -->
+      <div id="postCompanyFields">
+        <div class="form-group"><label class="lbl">Job Title *</label><input class="fi" id="pm_title" placeholder="e.g. Senior Financial Analyst"></div>
+        <div class="form-group"><label class="lbl">Company Name *</label><input class="fi" id="pm_company" placeholder="e.g. Faithful Finance Sdn Bhd"></div>
+        <div class="form-group"><label class="lbl">Industry *</label>
+          <select class="fi" id="pm_industry">
+            <option value="">Select industry</option>
+            <option>Finance & Accounting</option><option>Technology & IT</option>
+            <option>Education & Training</option><option>Health & Medical</option>
+            <option>Legal & Compliance</option><option>Consulting & Advisory</option>
+            <option>Media & Creative</option><option>Sales & Marketing</option>
+            <option>Operations & Admin</option><option>Ministry & Nonprofit</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Job Type *</label>
+            <select class="fi" id="pm_type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option><option>Volunteer</option></select>
+          </div>
+          <div class="form-group"><label class="lbl">Location *</label><input class="fi" id="pm_loc" placeholder="e.g. Kuala Lumpur / Remote"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Salary Range</label><input class="fi" id="pm_salary" placeholder="e.g. RM 6,000–9,000"></div>
+          <div class="form-group"><label class="lbl">Contact Email *</label><input class="fi" type="email" id="pm_email" placeholder="hr@company.com"></div>
+        </div>
+        <div class="form-group"><label class="lbl">Job Description *</label><textarea class="fi" id="pm_desc" rows="3" placeholder="Describe the role, requirements, responsibilities and what makes your company a great Christian workplace..." style="resize:vertical"></textarea></div>
+        <div class="form-group"><label class="lbl">Required Skills (comma separated)</label><input class="fi" id="pm_skills" placeholder="e.g. Excel, CPA, Financial Reporting"></div>
+        <div class="form-group"><label class="lbl">Company Logo (max 1MB)</label>
+          <div class="upload-area" id="compLogoArea">
+            <input type="file" accept="image/*" onchange="handleImg(this,'compLogoPreview','compLogoArea')">
+            <div class="upload-icon">🏢</div>
+            <div class="upload-txt">Upload company logo or photo</div>
+            <img class="img-prev" id="compLogoPreview" alt="" style="border-radius:8px;width:80px;height:60px;object-fit:contain">
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;font-size:.75rem;color:var(--text-muted);align-items:center">
+          <span>💰 Listing fee:</span>
+          <span style="color:var(--gold);font-weight:700">RM 50 / SGD 20 per ad</span>
+          <span>(30-day listing)</span>
+        </div>
+        <button class="btn-sub" style="margin-top:14px" onclick="submitJob('company')">📢 Post Hiring Ad</button>
+      </div>
+      <!-- Seeker Section -->
+      <div id="postSeekerFields" style="display:none">
+        <div class="form-group"><label class="lbl">Your Name *</label><input class="fi" id="ps_name" placeholder="John Tan"></div>
+        <div class="form-group"><label class="lbl">Job Title Seeking *</label><input class="fi" id="ps_role" placeholder="e.g. Looking for Finance Manager role"></div>
+        <div class="form-group"><label class="lbl">Industry *</label>
+          <select class="fi" id="ps_industry">
+            <option value="">Select industry</option>
+            <option>Finance & Accounting</option><option>Technology & IT</option>
+            <option>Education & Training</option><option>Health & Medical</option>
+            <option>Consulting & Advisory</option><option>Media & Creative</option>
+            <option>Sales & Marketing</option><option>Operations & Admin</option>
+            <option>Ministry & Nonprofit</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="lbl">Preferred Type</label>
+            <select class="fi" id="ps_type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option></select>
+          </div>
+          <div class="form-group"><label class="lbl">Location *</label><input class="fi" id="ps_loc" placeholder="e.g. Kuala Lumpur"></div>
+        </div>
+        <div class="form-group"><label class="lbl">Contact Email *</label><input class="fi" type="email" id="ps_email" placeholder="you@email.com"></div>
+        <div class="form-group"><label class="lbl">Key Skills</label><input class="fi" id="ps_skills" placeholder="e.g. Excel, Financial Modelling, CPA"></div>
+        <div class="form-group"><label class="lbl">About Me & What I'm Looking For *</label><textarea class="fi" id="ps_bio" rows="3" placeholder="Brief description of your background, experience and the kind of role you are seeking..." style="resize:vertical"></textarea></div>
+        <div class="form-group"><label class="lbl">Expected Salary (optional)</label><input class="fi" id="ps_salary" placeholder="e.g. RM 6,000+"></div>
+        <button class="btn-sub" style="background:var(--teal);margin-top:8px" onclick="submitJob('seeker')">👤 Post My Job Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-back" id="detailModal">
+  <div class="modal">
+    <div class="modal-hd">
+      <button class="mc" onclick="closeDetailModal()">✕</button>
+      <div id="dm_type" style="margin-bottom:6px"></div>
+      <h2 style="font-size:1.05rem" id="dm_title"></h2>
+      <div id="dm_company" style="font-size:.8rem;color:var(--text-muted);margin-top:2px"></div>
+    </div>
+    <div class="modal-bd" id="dm_body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="footer-strip"><strong>Good Steward Network</strong> · Christian Jobs Board · <a href="#profileSection" style="color:var(--gold)">Register your profile</a> · Powered by faith-driven matching</div>
+
+<script>
+// ══════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════
+const SAMPLE_JOBS=[
+  {id:'j1',type:'company',title:'Senior Financial Analyst',company:'Faithful Finance Sdn Bhd',industry:'Finance & Accounting',jobType:'Full-time',loc:'Kuala Lumpur',salary:'RM 7,000–10,000',email:'hr@faithfulfinance.my',desc:'Join our Christian-values driven financial advisory firm. Manage client portfolios, prepare financial reports and mentor juniors. We seek integrity above all.',skills:['Excel','CPA','Financial Modelling','Bloomberg'],emoji:'📈',logo:null,date:'2 days ago'},
+  {id:'j2',type:'company',title:'Software Engineer (React/Node)',company:'Cornerstone Tech Sdn Bhd',industry:'Technology & IT',jobType:'Full-time',loc:'Petaling Jaya',salary:'RM 6,500–9,000',email:'hr@cornerstone.tech',desc:'Build meaningful tech products in a collaborative Christian team. We value work-life balance, integrity and a heart to serve clients well.',skills:['React','Node.js','TypeScript','AWS'],emoji:'💻',logo:null,date:'3 days ago'},
+  {id:'j3',type:'company',title:'Digital Marketing Executive',company:'Kingdom Digital Pte Ltd',industry:'Media & Creative',jobType:'Full-time',loc:'Singapore',salary:'SGD 3,500–5,000',email:'jobs@kingdomdigital.sg',desc:'Help Christian businesses and nonprofits grow their digital presence with purpose. Campaigns, SEO, Meta Ads and content creation.',skills:['Meta Ads','SEO','Canva','Analytics'],emoji:'📱',logo:null,date:'5 days ago'},
+  {id:'j4',type:'company',title:'Admin & Operations Manager',company:'Olive Branch Education',industry:'Education & Training',jobType:'Full-time',loc:'Penang',salary:'RM 4,500–6,000',email:'hr@olivebranch.edu',desc:'Manage day-to-day operations of a growing Christian education centre. Handle HR, admin, vendor relations and event coordination.',skills:['HR','Operations','Microsoft Office','Event Management'],emoji:'📚',logo:null,date:'1 week ago'},
+  {id:'j5',type:'company',title:'Church Accountant',company:'Calvary Church KL',industry:'Finance & Accounting',jobType:'Full-time',loc:'Kuala Lumpur',salary:'RM 4,000–5,500',email:'finance@calvary.org.my',desc:'Manage financial records, payroll and reporting for an active growing church community. Non-profit accounting experience preferred.',skills:['QuickBooks','Non-profit Accounting','Payroll','Budgeting'],emoji:'✦',logo:null,date:'1 week ago'},
+  {id:'j6',type:'company',title:'Graphic Designer (Part-time)',company:'Salt & Light Media',industry:'Media & Creative',jobType:'Part-time',loc:'Remote',salary:'SGD 25/hr',email:'studio@saltandlight.sg',desc:'Support our church clients and Christian campaigns with creative design work. Flexible hours, remote work. Portfolio required.',skills:['Illustrator','Photoshop','Canva','Branding'],emoji:'🎨',logo:null,date:'2 weeks ago'},
+  {id:'j7',type:'company',title:'HR Manager',company:'Grace & Co. Consulting',industry:'Operations & Admin',jobType:'Full-time',loc:'Kuala Lumpur',salary:'RM 5,500–8,000',email:'careers@graceandco.com',desc:'Lead HR strategy, talent acquisition and people culture for our fast-growing consulting firm. We want someone who leads with empathy and faith.',skills:['Recruitment','HR Policy','HRMS','Compensation'],emoji:'👥',logo:null,date:'3 weeks ago'},
+  {id:'j8',type:'company',title:'Counsellor (Part-time)',company:'Refuge Counselling Centre',industry:'Ministry & Nonprofit',jobType:'Part-time',loc:'Kuala Lumpur',salary:'RM 80/session',email:'team@refugecounselling.org',desc:'Join our team of registered Christian counsellors. See clients for individual and couples therapy. Supervision provided.',skills:['Counselling','CBT','Active Listening','BACP/MCO Registered'],emoji:'🕊️',logo:null,date:'3 weeks ago'},
+];
+
+const SAMPLE_SEEKERS=[
+  {id:'s1',type:'seeker',name:'David Lim',role:'Finance Manager / CFO',industry:'Finance & Accounting',jobType:'Full-time',loc:'Kuala Lumpur',salary:'RM 9,000+',email:'david@example.com',bio:'10 years in corporate finance across banking and consulting. ACCA qualified. Seeking a CFO or Finance Manager role at a Christian-aligned SME or nonprofit where I can serve with purpose.',skills:['ACCA','Financial Reporting','Treasury','ERP'],emoji:'📊',photo:null,date:'1 day ago'},
+  {id:'s2',type:'seeker',name:'Grace Lee',role:'Interior Designer / Creative Lead',industry:'Media & Creative',jobType:'Full-time',loc:'Singapore',salary:'SGD 5,000+',email:'grace@example.com',bio:'8 years in interior design. Strong portfolio in commercial and residential spaces. Christian. Looking to join a design firm with strong values and client care ethos.',skills:['AutoCAD','3ds Max','Project Management','Client Relations'],emoji:'🎨',photo:null,date:'2 days ago'},
+  {id:'s3',type:'seeker',name:'James Tan',role:'Software Developer',industry:'Technology & IT',jobType:'Full-time',loc:'Petaling Jaya',salary:'RM 7,000+',email:'james@example.com',bio:'5 years full-stack experience. React, Node, Python. Looking for a tech company with a Christian culture where I can contribute to meaningful products.',skills:['React','Python','Node.js','PostgreSQL'],emoji:'💻',photo:null,date:'3 days ago'},
+  {id:'s4',type:'seeker',name:'Sarah Chong',role:'HR Generalist / Talent Lead',industry:'Operations & Admin',jobType:'Full-time',loc:'Kuala Lumpur',salary:'RM 5,000+',email:'sarah@example.com',bio:'6 years in HR across tech and consulting. Experienced in full-cycle recruitment, culture-building and HRMS. Passionate about people and ministry-minded workplaces.',skills:['Recruitment','HR Strategy','HRMS','Culture'],emoji:'👥',photo:null,date:'5 days ago'},
+  {id:'s5',type:'seeker',name:'Philip Wong',role:'Business Development Consultant',industry:'Consulting & Advisory',jobType:'Contract',loc:'Singapore / Remote',salary:'SGD 8,000+',email:'philip@example.com',bio:'20 years in banking and BD. Now consulting part-time. Open to advisory, mentoring or BD roles in Christian businesses or faith-based organisations.',skills:['Business Development','Strategic Planning','C-Suite','Networking'],emoji:'🤝',photo:null,date:'1 week ago'},
+];
+
+// Live submitted
+let userJobs=[];
+let userSeekers=[];
+let activeProfile=null;
+let currentTab='company';
+let filteredJobs=[];
+let filteredSeekers=[];
+let matches=[];
+
+// ══════════════════════════════════════════════════
+// IMAGE / FILE HANDLERS
+// ══════════════════════════════════════════════════
+function handleImg(input,prevId,areaId){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>1048576){showToast('Image must be under 1MB.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const p=document.getElementById(prevId);
+    p.src=e.target.result;p.style.display='block';
+    const icon=document.querySelector('#'+areaId+' .upload-icon');
+    const txt=document.querySelector('#'+areaId+' .upload-txt');
+    if(icon)icon.style.display='none';
+    if(txt)txt.textContent='Photo selected ✓';
+    input._dataUrl=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleResume(input){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>2097152){showToast('Resume must be under 2MB.');input.value='';return;}
+  document.getElementById('resumeTxt').textContent='✓ '+file.name;
+  document.querySelector('#resumeArea .upload-icon').textContent='✅';
+  input._filename=file.name;
+}
+
+// ══════════════════════════════════════════════════
+// PROFILE SUBMIT
+// ══════════════════════════════════════════════════
+function submitProfile(){
+  const name=document.getElementById('p_name').value.trim();
+  const role=document.getElementById('p_role').value.trim();
+  const email=document.getElementById('p_email').value.trim();
+  const phone=document.getElementById('p_phone').value.trim();
+  const industry=document.getElementById('p_industry').value;
+  const loc=document.getElementById('p_loc').value.trim();
+  const bio=document.getElementById('p_bio').value.trim();
+  if(!name||!role||!email||!phone||!industry||!loc||!bio){showToast('Please fill in all required fields (*)');return;}
+  if(!email.includes('@')){showToast('Please enter a valid email.');return;}
+  const skills=document.getElementById('p_skills').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const isSeeker=document.getElementById('p_seeker').checked;
+  const photoInput=document.querySelector('#profilePhotoArea input[type=file]');
+  const photo=photoInput._dataUrl||null;
+  activeProfile={id:'me',name,role,email,phone,industry,loc,bio,skills,isSeeker,photo};
+  if(isSeeker){
+    const se={id:'s-me',type:'seeker',name,role,industry,jobType:'Full-time',loc,salary:'Negotiable',email,bio,skills,photo,date:'Just now',isNew:true};
+    userSeekers.unshift(se);
+  }
+  document.getElementById('profileForm').style.display='none';
+  document.getElementById('profileSuccessName').textContent='Profile Created, '+name+'!';
+  document.getElementById('profileSuccessMsg').textContent=isSeeker?`Your profile is live in the Job Seekers section. Our matching engine found ${calcMatches(activeProfile).length} potential job matches for you!`:`Your profile is registered. You can now post hiring ads or browse job seekers. Our engine has flagged ${calcMatches(activeProfile).length} potential hires for you.`;
+  document.getElementById('profileSuccess').style.display='block';
+  // Show profile pill in sidebar
+  renderSideProfile();
+  computeMatches();
+  renderAll();
+}
+
+function scrollToProfile(){document.getElementById('profileSection').scrollIntoView({behavior:'smooth'});}
+
+// ══════════════════════════════════════════════════
+// MATCHING ENGINE
+// ══════════════════════════════════════════════════
+function calcMatches(profile){
+  const allJobs=[...SAMPLE_JOBS,...userJobs];
+  const matched=[];
+  allJobs.forEach(j=>{
+    let score=0;
+    if(j.industry===profile.industry)score+=40;
+    if(j.loc===profile.loc||j.loc==='Remote'||profile.loc==='Remote')score+=20;
+    const jSkills=(j.skills||[]).map(s=>s.toLowerCase());
+    const pSkills=(profile.skills||[]).map(s=>s.toLowerCase());
+    const overlap=pSkills.filter(s=>jSkills.some(js=>js.includes(s)||s.includes(js)));
+    score+=Math.min(overlap.length*10,30);
+    if(score>=40)matched.push({job:j,score,overlap});
+  });
+  return matched.sort((a,b)=>b.score-a.score);
+}
+
+function computeMatches(){
+  if(!activeProfile){matches=[];return;}
+  matches=calcMatches(activeProfile);
+  // Also match seekers to company jobs
+  const allJobs=[...SAMPLE_JOBS,...userJobs];
+  const allSeekers=[...SAMPLE_SEEKERS,...userSeekers];
+  // create cross-matches
+  matches=matches.map(m=>({...m,type:'job-for-you'}));
+  // Add seeker-to-job matches (for company posters)
+  document.getElementById('cnt-matches').textContent=matches.length;
+  document.getElementById('totalMatches').textContent=matches.length;
+}
+
+// ══════════════════════════════════════════════════
+// POST JOB MODAL
+// ══════════════════════════════════════════════════
+let postType='company';
+function openPostModal(type){
+  postType=type;
+  document.getElementById('postModal').classList.add('open');
+  document.getElementById('postCompanyFields').style.display=type==='company'?'block':'none';
+  document.getElementById('postSeekerFields').style.display=type==='seeker'?'block':'none';
+  document.getElementById('postModalTitle').textContent=type==='company'?'Post a Job Hiring Ad':'Post What You\'re Looking For';
+  document.getElementById('postModalSub').textContent=type==='company'?'Help Christians find meaningful work at your organisation.':'Let Christian employers find you. Free to post.';
+}
+function closePostModal(){document.getElementById('postModal').classList.remove('open');}
+
+function submitJob(type){
+  if(type==='company'){
+    const title=document.getElementById('pm_title').value.trim();
+    const company=document.getElementById('pm_company').value.trim();
+    const industry=document.getElementById('pm_industry').value;
+    const loc=document.getElementById('pm_loc').value.trim();
+    const email=document.getElementById('pm_email').value.trim();
+    const desc=document.getElementById('pm_desc').value.trim();
+    if(!title||!company||!industry||!loc||!email||!desc){showToast('Please fill in all required fields.');return;}
+    const jobType=document.getElementById('pm_type').value;
+    const salary=document.getElementById('pm_salary').value.trim();
+    const skillsRaw=document.getElementById('pm_skills').value.trim();
+    const skills=skillsRaw?skillsRaw.split(',').map(s=>s.trim()):[];
+    const logoInput=document.querySelector('#compLogoArea input[type=file]');
+    const logo=logoInput._dataUrl||null;
+    const job={id:'j-'+Date.now(),type:'company',title,company,industry,jobType,loc,salary:salary||'Negotiable',email,desc,skills,emoji:'📢',logo,date:'Just now',isNew:true};
+    userJobs.unshift(job);
+    closePostModal();
+    computeMatches();
+    renderAll();
+    showTab('company');
+    showToast(`"${title}" posted! Matching seekers now... ✅`);
+  } else {
+    const name=document.getElementById('ps_name').value.trim();
+    const role=document.getElementById('ps_role').value.trim();
+    const industry=document.getElementById('ps_industry').value;
+    const loc=document.getElementById('ps_loc').value.trim();
+    const email=document.getElementById('ps_email').value.trim();
+    const bio=document.getElementById('ps_bio').value.trim();
+    if(!name||!role||!industry||!loc||!email||!bio){showToast('Please fill in all required fields.');return;}
+    const jobType=document.getElementById('ps_type').value;
+    const salary=document.getElementById('ps_salary').value.trim();
+    const skillsRaw=document.getElementById('ps_skills').value.trim();
+    const skills=skillsRaw?skillsRaw.split(',').map(s=>s.trim()):[];
+    const seeker={id:'s-'+Date.now(),type:'seeker',name,role,industry,jobType,loc,salary:salary||'Negotiable',email,bio,skills,emoji:'👤',photo:null,date:'Just now',isNew:true};
+    userSeekers.unshift(seeker);
+    closePostModal();
+    renderAll();
+    showTab('seeker');
+    showToast(`Profile posted! Employers can now find ${name}. ✅`);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// FILTERS
+// ══════════════════════════════════════════════════
+function applySearch(){
+  const q=document.getElementById('searchIn').value.toLowerCase();
+  const ind=document.getElementById('industryF').value;
+  const typ=document.getElementById('typeF').value;
+  const loc=document.getElementById('locF').value;
+  const allJobs=[...SAMPLE_JOBS,...userJobs];
+  const allSeekers=[...SAMPLE_SEEKERS,...userSeekers];
+  filteredJobs=allJobs.filter(j=>{
+    const mQ=!q||j.title.toLowerCase().includes(q)||j.company.toLowerCase().includes(q)||j.loc.toLowerCase().includes(q)||(j.skills||[]).some(s=>s.toLowerCase().includes(q));
+    const mI=!ind||j.industry===ind;
+    const mT=!typ||j.jobType===typ;
+    const mL=!loc||j.loc===loc;
+    return mQ&&mI&&mT&&mL;
+  });
+  filteredSeekers=allSeekers.filter(s=>{
+    const mQ=!q||s.name.toLowerCase().includes(q)||s.role.toLowerCase().includes(q)||s.loc.toLowerCase().includes(q)||(s.skills||[]).some(sk=>sk.toLowerCase().includes(q));
+    const mI=!ind||s.industry===ind;
+    const mT=!typ||s.jobType===typ;
+    const mL=!loc||s.loc===loc;
+    return mQ&&mI&&mT&&mL;
+  });
+  renderAll();
+}
+
+// ══════════════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════════════
+function renderAll(){
+  renderJobs();
+  renderSeekers();
+  renderMatches();
+  document.getElementById('cnt-company').textContent=filteredJobs.length;
+  document.getElementById('cnt-seeker').textContent=filteredSeekers.length;
+  document.getElementById('totalJobs').textContent=[...SAMPLE_JOBS,...userJobs].length;
+  document.getElementById('totalSeekers').textContent=[...SAMPLE_SEEKERS,...userSeekers].length;
+  document.getElementById('totalMatches').textContent=matches.length;
+}
+
+function jobCardHTML(j,idx,isFiltered=true){
+  const logoContent=j.logo?`<img src="${j.logo}" alt="${j.company}">`:(j.emoji||'📢');
+  return`<div class="job-card ${j.isNew?'match-card':''}" onclick="openDetail('job','${j.id}')">
+    ${j.isNew?'<span class="match-score">NEW</span>':''}
+    <div class="jc-header">
+      <div class="jc-logo">${j.logo?`<img src="${j.logo}" alt="${j.company}">`:(j.emoji||'📢')}</div>
+      <div class="jc-main">
+        <div class="jc-title">${j.title}</div>
+        <div class="jc-company">${j.company}</div>
+      </div>
+      <div class="jc-salary">${j.salary}</div>
+    </div>
+    <div class="jc-desc">${j.desc}</div>
+    <div class="tags">
+      <span class="tag tag-industry">${j.industry.split(' & ')[0]}</span>
+      <span class="tag tag-type">${j.jobType}</span>
+      <span class="tag tag-loc">📍 ${j.loc}</span>
+      ${(j.skills||[]).slice(0,2).map(s=>`<span class="tag tag-skill">${s}</span>`).join('')}
+    </div>
+    <div class="jc-meta"><span>🕐 ${j.date}</span><span>📧 ${j.email}</span></div>
+    <div class="jc-actions">
+      <button class="jbtn jbtn-p" onclick="event.stopPropagation();openDetail('job','${j.id}')">View & Apply</button>
+      <button class="jbtn jbtn-g" onclick="event.stopPropagation();showToast('Job saved!')">💾 Save</button>
+      <button class="jbtn jbtn-g" onclick="event.stopPropagation();showToast('Link copied!')">🔗 Share</button>
+    </div>
+  </div>`;
+}
+
+function seekerCardHTML(s){
+  const photoContent=s.photo?`<img src="${s.photo}" alt="${s.name}">`:(s.emoji||'👤');
+  return`<div class="job-card seeker-card ${s.isNew?'match-card':''}" onclick="openDetail('seeker','${s.id}')">
+    ${s.isNew?'<span class="match-score" style="background:var(--teal)">NEW</span>':''}
+    <div class="jc-header">
+      <div class="jc-logo" style="background:var(--teal-pale)">${s.photo?`<img src="${s.photo}" alt="${s.name}" style="border-radius:50%">`:(s.emoji||'👤')}</div>
+      <div class="jc-main">
+        <div class="jc-title" style="color:var(--teal)">${s.name}</div>
+        <div class="jc-company">Seeking: ${s.role}</div>
+      </div>
+      <div class="jc-salary" style="color:var(--teal)">${s.salary}</div>
+    </div>
+    <div class="jc-desc">${s.bio}</div>
+    <div class="tags">
+      <span class="tag tag-seeker">${s.industry.split(' & ')[0]}</span>
+      <span class="tag tag-type">${s.jobType}</span>
+      <span class="tag tag-loc">📍 ${s.loc}</span>
+      ${(s.skills||[]).slice(0,2).map(sk=>`<span class="tag tag-skill">${sk}</span>`).join('')}
+    </div>
+    <div class="jc-meta"><span>🕐 ${s.date}</span></div>
+    <div class="jc-actions">
+      <button class="jbtn jbtn-t" onclick="event.stopPropagation();openDetail('seeker','${s.id}')">View Profile</button>
+      <button class="jbtn jbtn-g" onclick="event.stopPropagation();showToast('Contact request sent to ${s.name.replace(/'/g,'')}!')">📧 Contact</button>
+      <button class="jbtn jbtn-g" onclick="event.stopPropagation();showToast('Link copied!')">🔗 Share</button>
+    </div>
+  </div>`;
+}
+
+function renderJobs(){
+  const feed=document.getElementById('jobsFeed');
+  if(!filteredJobs.length){feed.innerHTML=`<div class="empty-state"><div style="font-size:2.5rem;margin-bottom:10px">💼</div><div>No jobs match your search.</div><button class="jbtn jbtn-p" style="margin-top:14px" onclick="openPostModal('company')">Post a Job</button></div>`;return;}
+  feed.innerHTML=filteredJobs.map((j,i)=>jobCardHTML(j,i)).join('');
+}
+
+function renderSeekers(){
+  const feed=document.getElementById('seekersFeed');
+  if(!filteredSeekers.length){feed.innerHTML=`<div class="empty-state"><div style="font-size:2.5rem;margin-bottom:10px">👤</div><div>No seekers match your search.</div><button class="jbtn jbtn-t" style="margin-top:14px" onclick="openPostModal('seeker')">Post Your Job Search</button></div>`;return;}
+  feed.innerHTML=filteredSeekers.map(s=>seekerCardHTML(s)).join('');
+}
+
+function renderMatches(){
+  const feed=document.getElementById('matchesFeed');
+  if(!activeProfile){
+    feed.innerHTML=`<div class="empty-state"><div style="font-size:2.5rem;margin-bottom:10px">🔮</div><div style="font-size:.95rem;font-weight:600;margin-bottom:8px">Register your profile first</div><p style="font-size:.83rem">Create your professional profile above and our engine will match you to relevant job ads or candidates automatically.</p><button class="jbtn jbtn-gold" style="margin-top:16px" onclick="scrollToProfile()">👤 Create My Profile</button></div>`;
+    document.getElementById('cnt-matches').textContent='0';
+    return;
+  }
+  if(!matches.length){
+    feed.innerHTML=`<div class="empty-state"><div style="font-size:2.5rem;margin-bottom:10px">🔍</div><div>No matches found yet.</div><p style="font-size:.83rem;margin-top:6px">As more jobs are posted, the engine will find your best matches here.</p></div>`;
+    return;
+  }
+  let html='';
+  matches.forEach((m,i)=>{
+    const j=m.job;
+    const pct=Math.min(Math.round(m.score)+'%','100%');
+    html+=`<div class="job-card match-card" onclick="openDetail('job','${j.id}')">
+      <span class="match-score">${m.score}% Match</span>
+      <div class="jc-header">
+        <div class="jc-logo">${j.logo?`<img src="${j.logo}">`:(j.emoji||'📢')}</div>
+        <div class="jc-main">
+          <div class="jc-title">${j.title}</div>
+          <div class="jc-company">${j.company}</div>
+        </div>
+        <div class="jc-salary">${j.salary}</div>
+      </div>
+      <div class="jc-desc">${j.desc}</div>
+      <div class="tags">
+        <span class="tag tag-match">✦ Matched</span>
+        <span class="tag tag-industry">${j.industry.split(' & ')[0]}</span>
+        <span class="tag tag-type">${j.jobType}</span>
+        <span class="tag tag-loc">📍 ${j.loc}</span>
+        ${m.overlap.slice(0,2).map(sk=>`<span class="tag tag-skill">✓ ${sk}</span>`).join('')}
+      </div>
+      <div style="background:var(--gold-pale);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:.78rem;color:var(--text-secondary)">
+        <strong style="color:var(--gold)">Why matched:</strong> ${m.overlap.length>0?`Shared skills: ${m.overlap.slice(0,3).join(', ')}. `:''} Same industry (${j.industry}). ${j.loc===activeProfile.loc||j.loc==='Remote'?'Location compatible.':''}
+      </div>
+      <div class="jc-actions">
+        <button class="jbtn jbtn-gold" onclick="event.stopPropagation();showToast('Application sent to ${j.company.replace(/'/g,'')}! ✅')">✦ Apply via Match</button>
+        <button class="jbtn jbtn-g" onclick="event.stopPropagation();openDetail('job','${j.id}')">View Full Details</button>
+      </div>
+    </div>`;
+  });
+  feed.innerHTML=html;
+  document.getElementById('cnt-matches').textContent=matches.length;
+}
+
+function renderSideProfile(){
+  if(!activeProfile)return;
+  const card=document.getElementById('activeProfileCard');
+  const pill=document.getElementById('sidePillContent');
+  card.style.display='block';
+  const initials=activeProfile.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  pill.innerHTML=`
+    <div class="profile-pill-avatar">${activeProfile.photo?`<img src="${activeProfile.photo}" alt="">`:(initials||'👤')}</div>
+    <div>
+      <div class="profile-pill-name">${activeProfile.name}</div>
+      <div class="profile-pill-role">${activeProfile.role} · ${activeProfile.loc}</div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════════════
+function showTab(tab){
+  currentTab=tab;
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+
+// ══════════════════════════════════════════════════
+// DETAIL MODAL
+// ══════════════════════════════════════════════════
+function openDetail(type,id){
+  const allJobs=[...SAMPLE_JOBS,...userJobs];
+  const allSeekers=[...SAMPLE_SEEKERS,...userSeekers];
+  const item=type==='job'?allJobs.find(j=>j.id===id):allSeekers.find(s=>s.id===id);
+  if(!item)return;
+  const modal=document.getElementById('detailModal');
+  if(type==='job'){
+    document.getElementById('dm_type').innerHTML=`<span class="tag tag-industry">${item.industry}</span> <span class="tag tag-type">${item.jobType}</span>`;
+    document.getElementById('dm_title').textContent=item.title;
+    document.getElementById('dm_company').textContent=item.company+' · '+item.loc;
+    document.getElementById('dm_body').innerHTML=`
+      ${item.logo?`<img src="${item.logo}" style="max-height:60px;margin-bottom:14px;border-radius:8px" alt="${item.company}">`:''}
+      <div class="mdr"><span class="mdr-icon">📝</span><div><span class="mdr-label">Description</span><span>${item.desc}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">💰</span><div><span class="mdr-label">Salary</span><span>${item.salary}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">📍</span><div><span class="mdr-label">Location</span><span>${item.loc}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">⏱</span><div><span class="mdr-label">Job Type</span><span>${item.jobType}</span></div></div>
+      ${item.skills&&item.skills.length?`<div class="mdr"><span class="mdr-icon">⚡</span><div><span class="mdr-label">Skills Required</span><span>${item.skills.join(' · ')}</span></div></div>`:''}
+      <div class="mdr"><span class="mdr-icon">📧</span><div><span class="mdr-label">Apply To</span><a href="mailto:${item.email}" style="color:var(--gold)">${item.email}</a></div></div>
+      <div style="display:flex;gap:8px;margin-top:18px">
+        <button class="jbtn jbtn-p" style="flex:1;justify-content:center" onclick="showToast('Application sent to ${item.company.replace(/'/g,'')}! ✅')">Apply Now</button>
+        <button class="jbtn jbtn-g" style="flex:1;justify-content:center" onclick="showToast('Saved!')">💾 Save</button>
+      </div>
+    `;
+  } else {
+    document.getElementById('dm_type').innerHTML=`<span class="tag tag-seeker">${item.industry}</span> <span class="tag tag-type">${item.jobType}</span>`;
+    document.getElementById('dm_title').textContent=item.name;
+    document.getElementById('dm_company').textContent='Seeking: '+item.role+' · '+item.loc;
+    document.getElementById('dm_body').innerHTML=`
+      ${item.photo?`<img src="${item.photo}" style="width:60px;height:60px;border-radius:50%;margin-bottom:14px;border:2px solid var(--teal)" alt="${item.name}">`:''}
+      <div class="mdr"><span class="mdr-icon">📝</span><div><span class="mdr-label">About & Looking For</span><span>${item.bio}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">💰</span><div><span class="mdr-label">Expected Salary</span><span>${item.salary}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">📍</span><div><span class="mdr-label">Location</span><span>${item.loc}</span></div></div>
+      <div class="mdr"><span class="mdr-icon">⏱</span><div><span class="mdr-label">Preferred Type</span><span>${item.jobType}</span></div></div>
+      ${item.skills&&item.skills.length?`<div class="mdr"><span class="mdr-icon">⚡</span><div><span class="mdr-label">Key Skills</span><span>${item.skills.join(' · ')}</span></div></div>`:''}
+      <div style="display:flex;gap:8px;margin-top:18px">
+        <button class="jbtn jbtn-t" style="flex:1;justify-content:center" onclick="showToast('Contact request sent to ${item.name.replace(/'/g,'')}! ✅')">Contact Candidate</button>
+        <button class="jbtn jbtn-g" style="flex:1;justify-content:center" onclick="showToast('Saved!')">💾 Save</button>
+      </div>
+    `;
+  }
+  modal.classList.add('open');
+}
+function closeDetailModal(){document.getElementById('detailModal').classList.remove('open');}
+document.getElementById('detailModal').addEventListener('click',e=>{if(e.target===document.getElementById('detailModal'))closeDetailModal();});
+document.getElementById('postModal').addEventListener('click',e=>{if(e.target===document.getElementById('postModal'))closePostModal();});
+
+// ══════════════════════════════════════════════════
+// THEME / LANG
+// ══════════════════════════════════════════════════
+function toggleTheme(){
+  const t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('themeBtn').textContent=t==='light'?'🌙 Dark':'☀️ Light';
+}
+function toggleLang(){showToast('Language toggle: full version in main site');}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent='✅ '+msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// INIT
+filteredJobs=[...SAMPLE_JOBS,...userJobs];
+filteredSeekers=[...SAMPLE_SEEKERS,...userSeekers];
+renderAll();
+</script>
+</body>
+</html>

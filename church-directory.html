@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Church Directory — Good Steward Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#C9973A;--gold-light:#E8C97A;--gold-pale:#FBF5E8;
+  --navy:#1A2744;--navy-mid:#2C3E66;
+  --cream:#FAF8F4;--card-bg:#FFFFFF;--page-bg:#FAF8F4;
+  --text-primary:#1C1C1E;--text-secondary:#5C5C6E;--text-muted:#9A9AAF;
+  --border:#E8E4DC;--nav-bg:rgba(250,248,244,0.96);
+  --shadow:0 2px 16px rgba(26,39,68,0.07);--shadow-lg:0 8px 40px rgba(26,39,68,0.12);
+  --radius:12px;--radius-lg:18px;--t:.22s ease;
+}
+[data-theme="dark"]{
+  --gold:#D4A84B;--gold-pale:#2A2210;--navy:#8AADFF;
+  --cream:#0E0E12;--card-bg:#1A1A22;--page-bg:#0E0E12;
+  --text-primary:#F0EDE8;--text-secondary:#B0ACBE;--text-muted:#6A6880;
+  --border:#2A2A38;--nav-bg:rgba(14,14,18,0.96);
+  --shadow:0 2px 16px rgba(0,0,0,0.3);--shadow-lg:0 8px 40px rgba(0,0,0,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--page-bg);color:var(--text-primary);line-height:1.6;transition:background .25s,color .25s;}
+h1,h2,h3,h4{font-family:'Lora',serif;line-height:1.25;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;}
+input,select,textarea{font-family:inherit;outline:none;}
+
+/* NAV */
+.navbar{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:8px;}
+.nav-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.nav-logo span{color:var(--gold);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-pill{background:var(--card-bg);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.8rem;color:var(--text-secondary);transition:all var(--t);}
+.nav-pill:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── REGISTER BANNER ── */
+.register-banner{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);
+  padding:0;overflow:hidden;
+}
+.reg-banner-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 480px;
+  min-height:0;
+}
+.reg-banner-text{
+  padding:48px 40px;color:#fff;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+}
+.reg-banner-text::after{
+  content:'✦';font-size:260px;position:absolute;right:-20px;top:-60px;
+  color:rgba(201,151,58,.06);font-family:serif;pointer-events:none;
+}
+.reg-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.reg-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--gold-light);}
+.reg-banner-text h2{font-size:clamp(1.3rem,2.5vw,1.9rem);color:#fff;margin-bottom:10px;}
+.reg-banner-text p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.7;max-width:360px;}
+.reg-perks{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+.reg-perk{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.8);}
+.reg-perk-dot{width:7px;height:7px;border-radius:50%;background:var(--gold-light);flex-shrink:0;}
+
+/* ── FORM PANEL ── */
+.reg-form-panel{
+  background:var(--card-bg);padding:40px 36px;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.reg-form-panel h3{font-size:1.1rem;margin-bottom:4px;}
+.reg-form-panel .sub{font-size:.82rem;color:var(--text-muted);margin-bottom:22px;}
+.form-group{margin-bottom:14px;}
+.form-label{font-size:.78rem;font-weight:600;color:var(--text-secondary);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.form-input{width:100%;padding:9px 13px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.88rem;transition:border var(--t);}
+.form-input:focus{border-color:var(--gold);}
+.form-input::placeholder{color:var(--text-muted);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.img-upload-area{
+  border:2px dashed var(--border);border-radius:10px;padding:20px;
+  text-align:center;cursor:pointer;transition:all var(--t);position:relative;
+  background:var(--page-bg);
+}
+.img-upload-area:hover{border-color:var(--gold);background:var(--gold-pale);}
+.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.img-upload-icon{font-size:1.6rem;margin-bottom:6px;}
+.img-upload-text{font-size:.8rem;color:var(--text-muted);}
+.img-preview{display:none;width:100%;max-height:120px;object-fit:cover;border-radius:8px;margin-top:8px;}
+.btn-submit{width:100%;padding:12px;border-radius:10px;background:var(--gold);color:#fff;font-size:.92rem;font-weight:600;transition:all var(--t);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-submit:hover{background:#b8872e;transform:translateY(-1px);}
+.form-note{font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:10px;line-height:1.5;}
+.success-inline{display:none;text-align:center;padding:32px 0;}
+.success-inline .si-icon{font-size:2.5rem;margin-bottom:10px;}
+.success-inline h4{font-size:1.1rem;margin-bottom:6px;}
+.success-inline p{font-size:.85rem;color:var(--text-muted);}
+
+/* HERO */
+.hero{background:var(--page-bg);border-bottom:1px solid var(--border);padding:36px 0 28px;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;}
+.hero-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;}
+.hero-title-group h1{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:4px;}
+.hero-title-group p{font-size:.9rem;color:var(--text-secondary);}
+.hero-stats-row{display:flex;gap:32px;flex-wrap:wrap;}
+.hstat{text-align:center;}
+.hstat-num{font-family:'Lora',serif;font-size:1.6rem;font-weight:600;color:var(--gold);line-height:1;}
+.hstat-label{font-size:.72rem;color:var(--text-muted);margin-top:2px;}
+
+/* SEARCH */
+.search-bar{background:var(--card-bg);border-bottom:1px solid var(--border);padding:16px 0;position:sticky;top:60px;z-index:150;box-shadow:var(--shadow);}
+.search-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.si-wrap{flex:1;min-width:200px;position:relative;}
+.si-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.9rem;pointer-events:none;}
+.si-input{width:100%;padding:9px 12px 9px 36px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.88rem;transition:border var(--t);}
+.si-input:focus{border-color:var(--gold);}
+.si-input::placeholder{color:var(--text-muted);}
+.f-select{padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:160px;transition:border var(--t);}
+.f-select:focus{border-color:var(--gold);}
+.result-count{font-size:.82rem;color:var(--text-muted);white-space:nowrap;margin-left:auto;}
+
+/* TABS */
+.tabs-bar{background:var(--page-bg);border-bottom:1px solid var(--border);position:sticky;top:113px;z-index:140;overflow-x:auto;}
+.tabs-bar::-webkit-scrollbar{height:0;}
+.tabs-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;}
+.stab{padding:12px 16px;font-size:.8rem;font-weight:500;white-space:nowrap;color:var(--text-muted);background:none;border-bottom:2.5px solid transparent;transition:all var(--t);display:flex;align-items:center;gap:5px;}
+.stab:hover{color:var(--gold);}
+.stab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.stab .tc{background:var(--gold-pale);color:var(--gold);font-size:.65rem;font-weight:700;padding:1px 6px;border-radius:100px;}
+
+/* MAIN */
+.main{max-width:1200px;margin:0 auto;padding:36px 24px 80px;}
+
+/* STATE SECTION */
+.state-sec{margin-bottom:52px;scroll-margin-top:220px;}
+.state-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1.5px solid var(--border);}
+.state-flag{font-size:1.6rem;}
+.state-name-txt{font-size:1.2rem;font-weight:600;}
+.state-cnt{font-size:.78rem;color:var(--text-muted);margin-top:2px;}
+.region-badge{margin-left:auto;padding:3px 12px;border-radius:100px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.badge-my{background:#FEE2E2;color:#DC2626;}
+.badge-sg{background:#DBEAFE;color:#2563EB;}
+.badge-east{background:#D1FAE5;color:#059669;}
+
+/* CHURCH GRID */
+.church-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+.church-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t);position:relative;}
+.church-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.church-card-img{height:130px;background:linear-gradient(135deg,var(--gold-pale),var(--border));display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;}
+.church-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.church-card-body{padding:18px;}
+.church-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.church-name{font-family:'Lora',serif;font-size:.95rem;font-weight:600;line-height:1.3;}
+.denom-pill{display:inline-block;padding:2px 9px;border-radius:100px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;}
+.denom-methodist{background:#EEF2FF;color:#4361EE;}
+.denom-anglican{background:#FEE2E2;color:#DC2626;}
+.denom-lutheran{background:#FEF3C7;color:#D97706;}
+.denom-presbyterian{background:#D1FAE5;color:#059669;}
+.denom-baptist{background:#F3E8FF;color:#7C3AED;}
+.denom-catholic{background:#FFF1F2;color:#E11D48;}
+.denom-charismatic{background:#ECFDF5;color:#10B981;}
+.denom-brethren{background:#FFF7ED;color:#EA580C;}
+.denom-sib{background:#F0F9FF;color:#0284C7;}
+.denom-evangelical{background:#FDF4FF;color:#A21CAF;}
+.denom-assemblies{background:#FEFCE8;color:#CA8A04;}
+.denom-other{background:var(--gold-pale);color:var(--gold);}
+.church-addr{font-size:.78rem;color:var(--text-secondary);display:flex;gap:5px;align-items:flex-start;margin-bottom:7px;}
+.church-meta{display:flex;gap:12px;font-size:.74rem;color:var(--text-muted);flex-wrap:wrap;}
+.church-actions{display:flex;gap:7px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.bsm{padding:5px 12px;border-radius:7px;font-size:.76rem;font-weight:500;transition:all var(--t);display:inline-flex;align-items:center;gap:4px;}
+.bsm-p{background:var(--gold);color:#fff;}
+.bsm-p:hover{background:#b8872e;}
+.bsm-g{background:var(--page-bg);color:var(--text-secondary);border:1px solid var(--border);}
+.bsm-g:hover{border-color:var(--gold);color:var(--gold);}
+.new-badge{position:absolute;top:10px;right:10px;background:var(--gold);color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em;}
+
+/* NO RESULTS */
+.no-res{text-align:center;padding:60px 24px;color:var(--text-muted);}
+
+/* MODAL */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-backdrop.open{display:flex;}
+.modal{background:var(--card-bg);border-radius:var(--radius-lg);width:100%;max-width:500px;max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
+.modal-head{padding:24px 24px 0;position:relative;}
+.modal-close-btn{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--border);font-size:.9rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;}
+.modal-close-btn:hover{background:var(--gold);color:#fff;}
+.modal-body{padding:16px 24px 24px;}
+.mdr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:.86rem;}
+.mdr:last-child{border:none;}
+.mdr-icon{min-width:20px;font-size:.95rem;}
+.mdr-label{font-size:.7rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:1px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:#fff;padding:12px 18px;border-radius:var(--radius);font-size:.85rem;box-shadow:var(--shadow-lg);transform:translateY(60px);opacity:0;transition:all .3s ease;display:flex;align-items:center;gap:8px;}
+[data-theme="dark"] .toast{background:var(--gold);}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* FOOTER */
+.footer-strip{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:20px;font-size:.8rem;}
+[data-theme="dark"] .footer-strip{background:#060609;}
+.footer-strip strong{color:var(--gold);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .reg-banner-inner{grid-template-columns:1fr;}
+  .reg-banner-text{padding:32px 24px 0;}
+  .reg-form-panel{padding:28px 24px;}
+}
+@media(max-width:600px){
+  .church-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hero-stats-row{gap:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">✦</div>
+      Good <span>Steward</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-pill" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+      <button class="nav-pill" onclick="toggleLang()" id="langBtn">🌐 中文</button>
+      <button class="nav-pill" style="color:var(--gold);border-color:var(--gold)" onclick="scrollToForm()">+ Register Your Church</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     REGISTER YOUR CHURCH BANNER
+══════════════════════════════════════════════════ -->
+<div class="register-banner" id="registerSection">
+  <div class="reg-banner-inner">
+
+    <!-- LEFT: Text -->
+    <div class="reg-banner-text">
+      <div class="reg-eyebrow">Church Registration</div>
+      <h2>List Your Church in the<br>Good Steward Directory</h2>
+      <p>Join Malaysia's and Singapore's growing Christian community directory. Help believers find your church, services, and congregation — for free.</p>
+      <div class="reg-perks">
+        <div class="reg-perk"><div class="reg-perk-dot"></div>Free listing — no fees, no subscriptions</div>
+        <div class="reg-perk"><div class="reg-perk-dot"></div>Verified badge after admin review (1–3 days)</div>
+        <div class="reg-perk"><div class="reg-perk-dot"></div>Visible to 2,400+ Good Steward members</div>
+        <div class="reg-perk"><div class="reg-perk-dot"></div>Appear in search results across states</div>
+        <div class="reg-perk"><div class="reg-perk-dot"></div>Members can find directions & contact you</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="reg-form-panel">
+      <div id="churchRegForm">
+        <h3>Submit Your Church Details</h3>
+        <p class="sub">Fields marked * are required. We review all submissions within 3 business days.</p>
+
+        <div class="form-group">
+          <label class="form-label">Church Name *</label>
+          <input class="form-input" id="c_name" placeholder="e.g. Grace Methodist Church KL">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Denomination *</label>
+          <select class="form-input" id="c_denom">
+            <option value="">Select denomination</option>
+            <option>Methodist</option><option>Anglican</option><option>Catholic</option>
+            <option>Lutheran</option><option>Presbyterian</option><option>Baptist</option>
+            <option>Charismatic</option><option>Brethren</option><option>SIB</option>
+            <option>Evangelical</option><option>Assemblies of God</option><option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Church Address *</label>
+          <input class="form-input" id="c_addr" placeholder="No, Street, Area, Postcode, State">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Contact Email *</label>
+            <input class="form-input" type="email" id="c_email" placeholder="church@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Number *</label>
+            <input class="form-input" id="c_phone" placeholder="+60 3-xxxx xxxx">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Worship Service Times *</label>
+          <input class="form-input" id="c_times" placeholder="e.g. Sun 9am, 11am (English), 3pm (Mandarin)">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Service Languages</label>
+          <input class="form-input" id="c_langs" placeholder="e.g. English, Mandarin, Bahasa Malaysia">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Church Photo (max 1MB, JPG/PNG) *</label>
+          <div class="img-upload-area" id="churchUploadArea">
+            <input type="file" accept="image/jpeg,image/png,image/webp" onchange="handleImgUpload(this,'churchPreview','churchUploadArea')">
+            <div class="img-upload-icon">📷</div>
+            <div class="img-upload-text">Click to upload a photo of your church<br><span style="color:var(--gold);font-weight:600">Max 1MB · JPG or PNG</span></div>
+            <img class="img-preview" id="churchPreview" alt="Preview">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Brief Description (optional)</label>
+          <textarea class="form-input" id="c_desc" rows="2" placeholder="A short description of your congregation and ministries..." style="resize:vertical"></textarea>
+        </div>
+
+        <button class="btn-submit" onclick="submitChurch()">
+          ✦ Submit Church for Review
+        </button>
+        <p class="form-note">By submitting, you confirm you are an authorised representative of this church. All submissions are reviewed before publishing.</p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-inline" id="churchRegSuccess">
+        <div class="si-icon">🎉</div>
+        <h4>Submission Received!</h4>
+        <p>Thank you for registering <strong id="submittedChurchName"></strong>. Our team will review your details and publish the listing within 1–3 business days.<br><br>A confirmation email has been sent to your inbox.</p>
+        <button class="btn-submit" style="margin-top:20px;max-width:220px;margin-left:auto;margin-right:auto" onclick="resetChurchForm()">Submit Another Church</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO / STATS -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="hero-title-group">
+        <h1>Malaysia & Singapore <span style="color:var(--gold)">Church Directory</span></h1>
+        <p>Find churches across all states — searchable by name, denomination, language and location.</p>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hstat"><div class="hstat-num" id="totalCount">—</div><div class="hstat-label">Churches</div></div>
+        <div class="hstat"><div class="hstat-num">16</div><div class="hstat-label">States</div></div>
+        <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-label">Denominations</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="si-wrap">
+      <span class="si-icon">🔍</span>
+      <input class="si-input" id="searchInput" placeholder="Search church name, area, denomination..." oninput="applyFilters()">
+    </div>
+    <select class="f-select" id="denomFilter" onchange="applyFilters()">
+      <option value="">All Denominations</option>
+      <option>Methodist</option><option>Anglican</option><option>Lutheran</option>
+      <option>Presbyterian</option><option>Baptist</option><option>Catholic</option>
+      <option>Charismatic</option><option>Brethren</option><option>SIB</option>
+      <option>Evangelical</option><option>Assemblies of God</option><option>Other</option>
+    </select>
+    <select class="f-select" id="langFilter" onchange="applyFilters()">
+      <option value="">All Languages</option>
+      <option>English</option><option>Mandarin</option><option>Tamil</option>
+      <option>Bahasa Malaysia</option><option>Iban</option><option>Kadazan</option>
+    </select>
+    <div class="result-count" id="resultCount"></div>
+  </div>
+</div>
+
+<!-- STATE TABS -->
+<div class="tabs-bar">
+  <div class="tabs-inner" id="tabsInner"></div>
+</div>
+
+<!-- MAIN DIRECTORY -->
+<main class="main" id="mainContent"></main>
+
+<!-- CHURCH DETAIL MODAL -->
+<div class="modal-backdrop" id="churchModal">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <div id="mDenom" style="margin-bottom:8px"></div>
+      <h2 style="font-size:1.15rem" id="mName"></h2>
+      <div id="mState" style="font-size:.8rem;color:var(--text-muted);margin-top:3px;margin-bottom:2px"></div>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="footer-strip">
+  <strong>Good Steward Network</strong> · Church Directory · Malaysia & Singapore ·
+  <a href="#registerSection" style="color:var(--gold)">Register your church</a> ·
+  Data verified April 2026
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────
+const STATES=[
+  {id:'kuala-lumpur',name:'Kuala Lumpur',flag:'🏙️',region:'MY (FT)',badge:'badge-my'},
+  {id:'selangor',name:'Selangor',flag:'🌆',region:'MY',badge:'badge-my'},
+  {id:'penang',name:'Penang',flag:'🏝️',region:'MY',badge:'badge-my'},
+  {id:'perak',name:'Perak',flag:'🌿',region:'MY',badge:'badge-my'},
+  {id:'johor',name:'Johor',flag:'🦁',region:'MY',badge:'badge-my'},
+  {id:'melaka',name:'Melaka',flag:'⚓',region:'MY',badge:'badge-my'},
+  {id:'negeri-sembilan',name:'Negeri Sembilan',flag:'🏔️',region:'MY',badge:'badge-my'},
+  {id:'pahang',name:'Pahang',flag:'🌲',region:'MY',badge:'badge-my'},
+  {id:'kedah',name:'Kedah',flag:'🌾',region:'MY',badge:'badge-my'},
+  {id:'kelantan',name:'Kelantan',flag:'🎋',region:'MY',badge:'badge-my'},
+  {id:'terengganu',name:'Terengganu',flag:'🌊',region:'MY',badge:'badge-my'},
+  {id:'perlis',name:'Perlis',flag:'🌸',region:'MY',badge:'badge-my'},
+  {id:'sabah',name:'Sabah',flag:'🦅',region:'MY (East)',badge:'badge-east'},
+  {id:'sarawak',name:'Sarawak',flag:'🦜',region:'MY (East)',badge:'badge-east'},
+  {id:'putrajaya',name:'Putrajaya / Labuan',flag:'🏛️',region:'MY (FT)',badge:'badge-my'},
+  {id:'singapore',name:'Singapore',flag:'🇸🇬',region:'SG',badge:'badge-sg'},
+];
+
+const DENOMCLASS={
+  'Methodist':'denom-methodist','Anglican':'denom-anglican','Lutheran':'denom-lutheran',
+  'Presbyterian':'denom-presbyterian','Baptist':'denom-baptist','Catholic':'denom-catholic',
+  'Charismatic':'denom-charismatic','Brethren':'denom-brethren','SIB':'denom-sib',
+  'Evangelical':'denom-evangelical','Assemblies of God':'denom-assemblies'
+};
+function dc(d){return DENOMCLASS[d]||'denom-other';}
+
+// User-submitted churches (live in-memory)
+let userSubmitted=[];
+
+const CHURCHES=[
+  {state:'kuala-lumpur',name:'Wesley Methodist Church KL',denom:'Methodist',addr:'2, Jalan Hang Jebat, City Centre, 50150 KL',lang:['English','Mandarin'],services:'Sun 8:30am, 11am, 3pm (Mandarin)',phone:'+603-2072 3983',web:'www.wesleymc.org'},
+  {state:'kuala-lumpur',name:"St. Mary's Cathedral KL (Anglican)",denom:'Anglican',addr:'Jalan Raja, City Centre, 50480 KL',lang:['English'],services:'Sun 7:30am, 9:30am, 6pm',phone:'+603-2692 8672',web:'www.stmaryscathedralkl.org'},
+  {state:'kuala-lumpur',name:'Damansara Utama Methodist Church',denom:'Methodist',addr:'Damansara Utama, Petaling Jaya, KL',lang:['English','Mandarin'],services:'Sun 8am, 10am, 12pm, 3pm (Mandarin)',phone:'+603-7727 3234',web:'www.dumc.org.my'},
+  {state:'kuala-lumpur',name:'Cathedral of the Holy Spirit KL',denom:'Catholic',addr:'5, Lorong Bukit Nanas, KL City Centre, 50250 KL',lang:['English','Bahasa Malaysia'],services:'Sun 7am, 9am, 11am, 5:30pm',phone:'+603-2078 6692',web:'www.holyspiritalcathedral.org'},
+  {state:'kuala-lumpur',name:'Calvary Church KL',denom:'Assemblies of God',addr:'52, Jalan Padang Tembak, 50480 KL',lang:['English'],services:'Sun 9am, 11am, 6pm',phone:'+603-4023 0070',web:'www.calvarychurch.com.my'},
+  {state:'kuala-lumpur',name:'Glad Tidings Church KL',denom:'Assemblies of God',addr:'4, Jalan Gasing, 46000 Petaling Jaya',lang:['English'],services:'Sun 9am, 11am, 6pm',phone:'+603-7958 5658',web:'www.gtckl.org'},
+  {state:'kuala-lumpur',name:'Petaling Jaya Baptist Church',denom:'Baptist',addr:'11, Lorong Utama, PJ Old Town, 46300 PJ',lang:['English','Mandarin'],services:'Sun 9am, 11am, 3pm (Mandarin)',phone:'+603-7955 0188',web:'www.pjbaptist.org'},
+  {state:'kuala-lumpur',name:'Victory Family Centre KL',denom:'Charismatic',addr:'Lot 7, Jalan Semangat, 46200 Petaling Jaya',lang:['English'],services:'Sun 8:30am, 11am, 5pm',phone:'+603-7954 3378',web:'www.victoryfc.org'},
+  {state:'kuala-lumpur',name:'Church of the Assumption PJ',denom:'Catholic',addr:'Jalan 20/9, Section 20, 46300 Petaling Jaya',lang:['English','Bahasa Malaysia','Tamil'],services:'Sat 5pm, Sun 7am, 9am, 11am',phone:'+603-7957 3078',web:''},
+  {state:'kuala-lumpur',name:'True Jesus Church KL',denom:'Evangelical',addr:'12, Lorong Enggang, Off Jalan Ipoh, 51200 KL',lang:['Mandarin','English'],services:'Sat 10am, Sun 9am',phone:'+603-6251 3466',web:''},
+  {state:'selangor',name:'Subang Jaya Evangelical Church',denom:'Evangelical',addr:'No.1, Jalan SS15/4G, 47500 Subang Jaya',lang:['English','Mandarin'],services:'Sun 8:30am, 10:30am, 5pm',phone:'+603-5633 5895',web:'www.sjec.org.my'},
+  {state:'selangor',name:'Klang Valley Presbyterian Church',denom:'Presbyterian',addr:'Ara Damansara, 47301 Petaling Jaya',lang:['English'],services:'Sun 9am, 11am, 5pm',phone:'+603-7846 0505',web:'www.kvpc.org.my'},
+  {state:'selangor',name:'Emmanuel Evangelical Church Klang',denom:'Evangelical',addr:'2, Jalan Bendahara, 41000 Klang',lang:['English','Mandarin','Tamil'],services:'Sun 9am, 11am',phone:'+603-3372 8877',web:''},
+  {state:'selangor',name:'Full Gospel Tabernacle Klang',denom:'Charismatic',addr:'16A, Jalan Batu Tiga Lama, 41300 Klang',lang:['English'],services:'Sun 9am, 11am',phone:'+603-3343 7558',web:''},
+  {state:'selangor',name:'Puchong Evangelical Church',denom:'Evangelical',addr:'2A, Jalan Kenari 23A, 47100 Puchong',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+603-8070 2211',web:''},
+  {state:'selangor',name:'Rawang Methodist Church',denom:'Methodist',addr:'5, Jalan Rawang 1, 48000 Rawang',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'',web:''},
+  {state:'penang',name:"St. George's Church Penang (Anglican)",denom:'Anglican',addr:'1, Lebuh Farquhar, George Town, 10200 Penang',lang:['English'],services:'Sun 8am, 10:30am, 6:30pm',phone:'+604-261 2739',web:''},
+  {state:'penang',name:'Penang Wesley Methodist Church',denom:'Methodist',addr:'2, Jalan Wesley, George Town, 10400 Penang',lang:['English','Mandarin'],services:'Sun 8:30am, 11am, 3pm',phone:'+604-262 0845',web:'www.pwmc.org.my'},
+  {state:'penang',name:'Glad Tidings Church Penang',denom:'Assemblies of God',addr:'237-C, Jalan Ong Yi How, 11400 Ayer Itam',lang:['English','Mandarin'],services:'Sun 9am, 11am',phone:'+604-827 3522',web:'www.gtcpenang.org'},
+  {state:'penang',name:'Penang Lutheran Church',denom:'Lutheran',addr:'19, Jalan Logan, 10460 George Town',lang:['English','Tamil'],services:'Sun 8:30am, 10:30am',phone:'+604-228 5960',web:''},
+  {state:'penang',name:'First Baptist Church Penang',denom:'Baptist',addr:'1-C, Jalan Ahmad Husin, 11400 Penang',lang:['English'],services:'Sun 9am, 11am',phone:'+604-827 4699',web:''},
+  {state:'perak',name:"St. John's Cathedral Ipoh (Anglican)",denom:'Anglican',addr:'Jalan Dato\' Tahwil Azhar, 30000 Ipoh',lang:['English'],services:'Sun 7:30am, 9:30am, 6pm',phone:'+605-254 2950',web:''},
+  {state:'perak',name:'Methodist Church of Ipoh',denom:'Methodist',addr:'5, Jalan Bijeh Timah, 30000 Ipoh',lang:['English','Mandarin'],services:'Sun 9am, 11am, 3pm',phone:'+605-254 5699',web:''},
+  {state:'perak',name:'Glad Tidings Church Ipoh',denom:'Assemblies of God',addr:'2, Jalan Sultan Idris Shah, 30000 Ipoh',lang:['English'],services:'Sun 9am, 11am, 6pm',phone:'+605-241 1978',web:''},
+  {state:'perak',name:'Ipoh Evangelical Church',denom:'Evangelical',addr:'10, Lorong Tun Hussein Onn 2, 30350 Ipoh',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+605-545 0228',web:''},
+  {state:'johor',name:"St. Joseph's Church JB (Catholic)",denom:'Catholic',addr:'2, Jalan Padi, 80000 Johor Bahru',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 7am, 9am, 11am, 5:30pm',phone:'+607-223 4805',web:''},
+  {state:'johor',name:'Johor Bahru Methodist Church',denom:'Methodist',addr:'2, Jalan Ibrahim, 80000 Johor Bahru',lang:['English','Mandarin'],services:'Sun 8:30am, 11am, 3pm',phone:'+607-224 1476',web:''},
+  {state:'johor',name:'Johor Bahru Evangelical Church',denom:'Evangelical',addr:'21, Jalan Ngee Heng, 80000 Johor Bahru',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+607-223 3886',web:''},
+  {state:'johor',name:'Christ Church JB (Anglican)',denom:'Anglican',addr:'Jalan Gertak Merah, 80000 Johor Bahru',lang:['English'],services:'Sun 8am, 10:30am',phone:'+607-223 2856',web:''},
+  {state:'johor',name:'Victory Family Centre JB',denom:'Charismatic',addr:'Johor Bahru City Square area, 80000 JB',lang:['English'],services:'Sun 9am, 11am',phone:'+607-225 3377',web:''},
+  {state:'melaka',name:'Christ Church Melaka (Anglican)',denom:'Anglican',addr:'Jalan Gereja, 75000 Melaka',lang:['English'],services:'Sun 8am, 10:30am',phone:'+606-284 8804',web:'www.christchurchmelaka.org'},
+  {state:'melaka',name:"St. Peter's Church Melaka (Catholic)",denom:'Catholic',addr:'Jalan Bendahara, 75100 Melaka',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 7am, 9am, 11am',phone:'+606-282 8849',web:''},
+  {state:'melaka',name:'Melaka Evangelical Church',denom:'Evangelical',addr:'15, Jalan Parameswara, 75000 Melaka',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+606-281 2224',web:''},
+  {state:'negeri-sembilan',name:'Seremban Methodist Church',denom:'Methodist',addr:'2, Jalan Dato\' Bandar Tunggal, 70000 Seremban',lang:['English','Mandarin'],services:'Sun 9am, 11am',phone:'+606-762 2455',web:''},
+  {state:'negeri-sembilan',name:"St. Paul's Church Seremban (Anglican)",denom:'Anglican',addr:'Jalan Birch, 70000 Seremban',lang:['English'],services:'Sun 8am, 10:30am',phone:'+606-762 2456',web:''},
+  {state:'pahang',name:'St. Thomas Cathedral Kuantan (Anglican)',denom:'Anglican',addr:'Jalan Teluk Sisek, 25000 Kuantan',lang:['English'],services:'Sun 7:30am, 9:30am',phone:'+609-514 2345',web:''},
+  {state:'pahang',name:'Kuantan Methodist Church',denom:'Methodist',addr:'3, Jalan Mahkota, 25000 Kuantan',lang:['English','Mandarin'],services:'Sun 9am, 11am',phone:'+609-514 1186',web:''},
+  {state:'kedah',name:"All Saints' Church Alor Setar (Anglican)",denom:'Anglican',addr:'Jalan Langgar, 05000 Alor Setar',lang:['English'],services:'Sun 8am, 10am',phone:'+604-733 2355',web:''},
+  {state:'kedah',name:'Sungai Petani Evangelical Church',denom:'Evangelical',addr:'Jalan Ibrahim, 08000 Sungai Petani',lang:['Mandarin'],services:'Sun 9am, 11am',phone:'+604-422 4567',web:''},
+  {state:'kelantan',name:'Kota Bahru Catholic Church',denom:'Catholic',addr:'Jalan Bayam, 15200 Kota Bahru',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 9am',phone:'+609-748 2677',web:''},
+  {state:'kelantan',name:'Kota Bahru Methodist Church',denom:'Methodist',addr:'Jalan Masjid Lama, 15000 Kota Bahru',lang:['Mandarin','English'],services:'Sun 9am',phone:'',web:''},
+  {state:'terengganu',name:"St. Mary's Church Kuala Terengganu",denom:'Anglican',addr:'Jalan Paya Bunga, 20000 KT',lang:['English'],services:'Sun 8:30am',phone:'+609-622 2233',web:''},
+  {state:'terengganu',name:'Kuala Terengganu Catholic Church',denom:'Catholic',addr:'Jalan Hospital, 20400 KT',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 9am',phone:'+609-622 1144',web:''},
+  {state:'perlis',name:'Kangar Catholic Church',denom:'Catholic',addr:'Jalan Hospital, 01000 Kangar',lang:['English','Bahasa Malaysia'],services:'Sun 9am',phone:'+604-976 2887',web:''},
+  {state:'perlis',name:'Perlis Christian Fellowship',denom:'Evangelical',addr:'Kangar, 01000 Perlis',lang:['Mandarin','English'],services:'Sun 10am',phone:'',web:''},
+  {state:'sabah',name:'SIB Kota Kinabalu',denom:'SIB',addr:'Jalan Bukit Bendera, 88000 Kota Kinabalu',lang:['English','Bahasa Malaysia','Kadazan'],services:'Sun 7am, 9am, 11am, 3pm (Kadazan), 5pm',phone:'+6088-232 501',web:'www.sibmalaysia.org'},
+  {state:'sabah',name:'Cathedral of the Sacred Heart KK',denom:'Catholic',addr:'Jalan Gaya, 88000 Kota Kinabalu',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 7am, 9am, 11am, 5:30pm',phone:'+6088-222 207',web:''},
+  {state:'sabah',name:'Kota Kinabalu Anglican Cathedral',denom:'Anglican',addr:'Off Jalan Haji Saman, 88000 KK',lang:['English'],services:'Sun 7:30am, 9:30am, 6pm',phone:'+6088-232 769',web:''},
+  {state:'sabah',name:'Charis Evangelical Church KK',denom:'Evangelical',addr:'Mile 4, Jalan Tuaran, 88450 KK',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+6088-428 888',web:'www.chariskk.org'},
+  {state:'sabah',name:'SIB Tawau',denom:'SIB',addr:'Jalan Stephen Tan, 91000 Tawau',lang:['Bahasa Malaysia','English','Kadazan'],services:'Sun 7am, 9am, 5pm',phone:'+6089-762 200',web:''},
+  {state:'sabah',name:'Glad Tidings Church KK',denom:'Assemblies of God',addr:'Jalan Bundusan, 88300 KK',lang:['English','Mandarin'],services:'Sun 9am, 11am',phone:'+6088-723 422',web:''},
+  {state:'sarawak',name:'St. Thomas Cathedral Kuching (Anglican)',denom:'Anglican',addr:'Jalan McDougall, 93000 Kuching',lang:['English'],services:'Sun 7am, 9am, 11am, 5pm',phone:'+6082-240 187',web:''},
+  {state:'sarawak',name:'Cathedral of the Blessed Virgin Mary, Kuching',denom:'Catholic',addr:'McDougall Road, 93000 Kuching',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 7am, 9am, 11am, 5:30pm',phone:'+6082-426 424',web:''},
+  {state:'sarawak',name:'SIB Kuching — Tabernacle',denom:'SIB',addr:'Jalan Tabuan, 93350 Kuching',lang:['Iban','English','Bahasa Malaysia'],services:'Sun 7am, 9am, 11am, 5pm',phone:'+6082-455 555',web:'www.sibsarawak.org'},
+  {state:'sarawak',name:'Kuching Evangelical Church',denom:'Evangelical',addr:'19, Jalan Stutong, 93350 Kuching',lang:['Mandarin','English'],services:'Sun 9am, 11am',phone:'+6082-455 338',web:''},
+  {state:'sarawak',name:'Methodist Church Kuching',denom:'Methodist',addr:'Jalan McDougall, 93000 Kuching',lang:['English','Mandarin','Iban'],services:'Sun 9am, 11am, 3pm',phone:'+6082-248 455',web:''},
+  {state:'sarawak',name:'SIB Miri — Calvary Church',denom:'SIB',addr:'Jalan Merbau, 98000 Miri',lang:['Iban','English','Bahasa Malaysia'],services:'Sun 7am, 9am, 5pm',phone:'+6085-411 700',web:''},
+  {state:'putrajaya',name:"All Saints' Church Putrajaya (Anglican)",denom:'Anglican',addr:'Precinct 9, 62250 Putrajaya',lang:['English'],services:'Sun 9am, 11am',phone:'+603-8890 3800',web:''},
+  {state:'putrajaya',name:'Church of the Sacred Heart, Labuan',denom:'Catholic',addr:'Jalan OKK Abdullah, 87007 Labuan',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 8am, 10am',phone:'+6087-418 200',web:''},
+  {state:'singapore',name:"St. Andrew's Cathedral Singapore",denom:'Anglican',addr:"11 St Andrew's Road, Singapore 178959",lang:['English'],services:'Sun 7am, 9:15am, 11:15am, 5pm, 7pm',phone:'+65 6337 6104',web:'www.cathedral.org.sg'},
+  {state:'singapore',name:'Cathedral of the Good Shepherd SG',denom:'Catholic',addr:'A Queen Street, Singapore 188533',lang:['English','Bahasa Malaysia'],services:'Sat 6pm, Sun 7:30am, 9:30am, 11:30am, 5:30pm',phone:'+65 6337 2036',web:''},
+  {state:'singapore',name:'Wesley Methodist Church Singapore',denom:'Methodist',addr:'5 Fort Canning Road, Singapore 179494',lang:['English'],services:'Sun 7:30am, 9:30am, 5pm',phone:'+65 6336 1433',web:'www.wesleymc.org.sg'},
+  {state:'singapore',name:'Calvary Church Singapore',denom:'Assemblies of God',addr:'1 Sophia Road, Singapore 228149',lang:['English'],services:'Sun 9am, 11:15am, 5:30pm',phone:'+65 6338 8818',web:'www.calvary.org.sg'},
+  {state:'singapore',name:'Singapore Lutheran Church',denom:'Lutheran',addr:'1 Sophia Road, Singapore 228149',lang:['English'],services:'Sun 8:30am, 11am',phone:'+65 6336 9515',web:'www.slcs.org.sg'},
+  {state:'singapore',name:'Covenant Presbyterian Church SG',denom:'Presbyterian',addr:'2 Eunos Crescent, Singapore 409353',lang:['English','Mandarin'],services:'Sun 9:30am, 11:30am, 2:30pm (Mandarin)',phone:'+65 6747 6488',web:'www.covenantpresbyterian.org'},
+  {state:'singapore',name:'Bethesda (Frankel) Church',denom:'Brethren',addr:'2 Frankel Ave, Singapore 458208',lang:['English','Mandarin'],services:'Sun 9am, 11am, 4:30pm (Mandarin)',phone:'+65 6448 6851',web:'www.bethesdafrankel.org'},
+  {state:'singapore',name:'Cornerstone Community Church SG',denom:'Charismatic',addr:'194 Paya Lebar Road, Singapore 409059',lang:['English'],services:'Sun 9am, 11am, 3pm, 5pm',phone:'+65 6281 3006',web:'www.cornerstonechurch.com.sg'},
+  {state:'singapore',name:'Toa Payoh Methodist Church',denom:'Methodist',addr:'50 Lor 4 Toa Payoh, Singapore 319452',lang:['English','Mandarin','Tamil'],services:'Sun 8:30am, 10:30am, 3pm (Tamil), 5pm (Mandarin)',phone:'+65 6254 4826',web:''},
+  {state:'singapore',name:'Grace Assembly of God Singapore',denom:'Assemblies of God',addr:'355 Tanglin Road, Singapore 247947',lang:['English'],services:'Sun 9am, 11am, 6pm',phone:'+65 6733 1544',web:'www.graceaog.org'},
+];
+
+// ── STATE ──────────────────────────────────────────────────────────────
+let filteredList=[];
+let activeModal=null;
+
+// ── IMAGE UPLOAD ────────────────────────────────────────────────────────
+function handleImgUpload(input,previewId,areaId){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>1048576){showToast('Image must be under 1MB. Please compress and retry.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const prev=document.getElementById(previewId);
+    prev.src=e.target.result;
+    prev.style.display='block';
+    document.querySelector('#'+areaId+' .img-upload-icon').style.display='none';
+    document.querySelector('#'+areaId+' .img-upload-text').textContent='Photo selected ✓';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── FORM SUBMIT ─────────────────────────────────────────────────────────
+function submitChurch(){
+  const name=document.getElementById('c_name').value.trim();
+  const denom=document.getElementById('c_denom').value;
+  const addr=document.getElementById('c_addr').value.trim();
+  const email=document.getElementById('c_email').value.trim();
+  const phone=document.getElementById('c_phone').value.trim();
+  const times=document.getElementById('c_times').value.trim();
+  if(!name||!denom||!addr||!email||!phone||!times){
+    showToast('Please fill in all required fields (*)');return;
+  }
+  if(!email.includes('@')){showToast('Please enter a valid email address.');return;}
+  const langs=document.getElementById('c_langs').value.trim();
+  const desc=document.getElementById('c_desc').value.trim();
+  const langArr=langs?langs.split(',').map(l=>l.trim()):['English'];
+  // Add to live list
+  const stateGuess=guessState(addr);
+  userSubmitted.push({state:stateGuess,name,denom,addr,lang:langArr,services:times,phone,web:'',email,desc,isNew:true});
+  // Show success
+  document.getElementById('submittedChurchName').textContent=name;
+  document.getElementById('churchRegForm').style.display='none';
+  document.getElementById('churchRegSuccess').style.display='block';
+  applyFilters();
+  showToast('Church submitted for review! ✅');
+}
+
+function guessState(addr){
+  const a=addr.toLowerCase();
+  if(a.includes('kuala lumpur')||a.includes(' kl')||a.includes('petaling jaya')||a.includes('pj'))return'kuala-lumpur';
+  if(a.includes('selangor')||a.includes('klang')||a.includes('shah alam')||a.includes('puchong')||a.includes('subang'))return'selangor';
+  if(a.includes('penang')||a.includes('pulau pinang')||a.includes('george town'))return'penang';
+  if(a.includes('johor')||a.includes('jb')||a.includes('batu pahat'))return'johor';
+  if(a.includes('perak')||a.includes('ipoh')||a.includes('taiping'))return'perak';
+  if(a.includes('melaka')||a.includes('malacca'))return'melaka';
+  if(a.includes('sabah')||a.includes('kota kinabalu')||a.includes('sandakan'))return'sabah';
+  if(a.includes('sarawak')||a.includes('kuching')||a.includes('miri'))return'sarawak';
+  if(a.includes('singapore')||a.includes(' sg '))return'singapore';
+  if(a.includes('kedah')||a.includes('alor setar'))return'kedah';
+  if(a.includes('kelantan')||a.includes('kota bahru'))return'kelantan';
+  if(a.includes('negeri sembilan')||a.includes('seremban'))return'negeri-sembilan';
+  if(a.includes('pahang')||a.includes('kuantan'))return'pahang';
+  if(a.includes('perlis')||a.includes('kangar'))return'perlis';
+  if(a.includes('putrajaya')||a.includes('labuan'))return'putrajaya';
+  return'kuala-lumpur';
+}
+
+function resetChurchForm(){
+  document.getElementById('churchRegForm').style.display='block';
+  document.getElementById('churchRegSuccess').style.display='none';
+  ['c_name','c_addr','c_email','c_phone','c_times','c_langs','c_desc'].forEach(id=>{
+    document.getElementById(id).value='';
+  });
+  document.getElementById('c_denom').value='';
+}
+
+function scrollToForm(){
+  document.getElementById('registerSection').scrollIntoView({behavior:'smooth'});
+}
+
+// ── FILTERS ─────────────────────────────────────────────────────────────
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  const denom=document.getElementById('denomFilter').value;
+  const lang=document.getElementById('langFilter').value;
+  const all=[...CHURCHES,...userSubmitted];
+  filteredList=all.filter(c=>{
+    const mQ=!q||c.name.toLowerCase().includes(q)||c.addr.toLowerCase().includes(q)||c.denom.toLowerCase().includes(q);
+    const mD=!denom||c.denom===denom;
+    const mL=!lang||c.lang.some(l=>l===lang);
+    return mQ&&mD&&mL;
+  });
+  renderAll();
+}
+
+// ── RENDER ───────────────────────────────────────────────────────────────
+function renderAll(){
+  const main=document.getElementById('mainContent');
+  const tabsInner=document.getElementById('tabsInner');
+  let html='',tabsHtml='',total=0;
+
+  STATES.forEach(s=>{
+    const churches=filteredList.filter(c=>c.state===s.id);
+    const cnt=churches.length;
+    tabsHtml+=`<button class="stab" onclick="scrollToState('${s.id}')">${s.flag} ${s.name} <span class="tc">${cnt}</span></button>`;
+    if(!cnt)return;
+    total+=cnt;
+    html+=`<div class="state-sec" id="sec-${s.id}">
+      <div class="state-hdr">
+        <span class="state-flag">${s.flag}</span>
+        <div><div class="state-name-txt">${s.name}</div><div class="state-cnt">${cnt} church${cnt!==1?'es':''} listed</div></div>
+        <span class="region-badge ${s.badge}">${s.region}</span>
+      </div>
+      <div class="church-grid">
+        ${churches.map(c=>{
+          const fi=filteredList.indexOf(c);
+          const imgHtml=c.imgData?`<img src="${c.imgData}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:0">`:'';
+          return`<div class="church-card">
+            <div class="church-card-img" style="${c.imgData?'':''}">
+              ${imgHtml}${!c.imgData?'⛪':''}
+              ${c.isNew?'<div class="new-badge">NEW</div>':''}
+            </div>
+            <div class="church-card-body">
+              <div class="church-top">
+                <div class="church-name">${c.name}</div>
+                <span class="denom-pill ${dc(c.denom)}">${c.denom}</span>
+              </div>
+              <div class="church-addr">📍 <span>${c.addr}</span></div>
+              <div class="church-meta">
+                <span>🕐 ${c.services?c.services.split(',')[0]:'See details'}</span>
+                <span>🗣️ ${c.lang.join(', ')}</span>
+              </div>
+              <div class="church-actions">
+                <button class="bsm bsm-p" onclick="openModal(${fi})">Details</button>
+                <button class="bsm bsm-g" onclick="openMaps('${c.name.replace(/'/g,'')}','${c.addr.replace(/'/g,'')}')">📍 Map</button>
+                ${c.web?`<button class="bsm bsm-g" onclick="window.open('https://${c.web}','_blank')">🌐</button>`:''}
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+
+  if(!total)html=`<div class="no-res"><div style="font-size:2.5rem;margin-bottom:10px">🔍</div><div style="font-size:1rem;font-weight:500">No churches match your search.</div><p style="margin-top:6px;font-size:.85rem">Try different filters or <a href="#registerSection" style="color:var(--gold)">register your church</a>.</p></div>`;
+
+  main.innerHTML=html;
+  tabsInner.innerHTML=tabsHtml;
+  document.getElementById('totalCount').textContent=[...CHURCHES,...userSubmitted].length;
+  document.getElementById('resultCount').textContent=total?`${total} shown`:'';
+}
+
+// ── MODAL ────────────────────────────────────────────────────────────────
+function openModal(idx){
+  const c=filteredList[idx];
+  activeModal=c;
+  document.getElementById('mDenom').innerHTML=`<span class="denom-pill ${dc(c.denom)}">${c.denom}</span>`;
+  document.getElementById('mName').textContent=c.name;
+  const st=STATES.find(s=>s.id===c.state);
+  document.getElementById('mState').textContent=st?`${st.flag} ${st.name}`:'';
+  document.getElementById('mBody').innerHTML=`
+    ${c.imgData?`<img src="${c.imgData}" style="width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-bottom:14px">`:''}
+    <div class="mdr"><span class="mdr-icon">📍</span><div><span class="mdr-label">Address</span><span>${c.addr}</span></div></div>
+    <div class="mdr"><span class="mdr-icon">🕐</span><div><span class="mdr-label">Service Times</span><span>${c.services||'Contact for details'}</span></div></div>
+    <div class="mdr"><span class="mdr-icon">🗣️</span><div><span class="mdr-label">Languages</span><span>${c.lang.join(' · ')}</span></div></div>
+    ${c.phone?`<div class="mdr"><span class="mdr-icon">📞</span><div><span class="mdr-label">Phone</span><span>${c.phone}</span></div></div>`:''}
+    ${c.web?`<div class="mdr"><span class="mdr-icon">🌐</span><div><span class="mdr-label">Website</span><a href="https://${c.web}" target="_blank" style="color:var(--gold)">${c.web}</a></div></div>`:''}
+    ${c.desc?`<div class="mdr"><span class="mdr-icon">📝</span><div><span class="mdr-label">About</span><span>${c.desc}</span></div></div>`:''}
+    <div style="display:flex;gap:8px;margin-top:18px">
+      <button class="bsm bsm-p" style="flex:1;justify-content:center" onclick="openMaps('${c.name.replace(/'/g,'')}','${c.addr.replace(/'/g,'')}')">📍 Get Directions</button>
+      <button class="bsm bsm-g" style="flex:1;justify-content:center" onclick="showToast('Link copied!')">🔗 Share</button>
+    </div>
+  `;
+  document.getElementById('churchModal').classList.add('open');
+}
+function closeModal(){document.getElementById('churchModal').classList.remove('open');}
+document.getElementById('churchModal').addEventListener('click',e=>{if(e.target===document.getElementById('churchModal'))closeModal();});
+
+function openMaps(name,addr){window.open('https://www.google.com/maps/search/'+encodeURIComponent(name+' '+addr),'_blank');}
+function scrollToState(id){const el=document.getElementById('sec-'+id);if(el)el.scrollIntoView({behavior:'smooth'});}
+
+// ── THEME / LANG ─────────────────────────────────────────────────────────
+function toggleTheme(){
+  const t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('themeBtn').textContent=t==='light'?'🌙 Dark':'☀️ Light';
+}
+function toggleLang(){showToast('Language toggle: full version in main site');}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent='✅ '+msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+applyFilters();
+</script>
+</body>
+</html>
