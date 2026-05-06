@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Directory — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="active">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
+      <a href="register.html" class="nav-cta">Register</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<!-- HERO HEADER -->
+  <div style="background:linear-gradient(140deg,#0a0a0a 0%,#1a0e00 100%);padding:48px 0 0;border-bottom:1px solid rgba(201,151,58,.18)">
+    <div class="container" style="position:relative;z-index:1">
+      <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+        <span style="display:block;width:22px;height:1.5px;background:var(--gold)"></span>Christian Business Directory
+      </div>
+      <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-bottom:8px;font-family:'Outfit',sans-serif">
+        Find &amp; Connect with <span style="color:var(--gold)">Christian Businesses</span>
+      </h1>
+      <p style="font-size:.92rem;color:rgba(255,255,255,.5);max-width:480px;line-height:1.7;margin-bottom:20px">
+        Verified Christian-owned businesses across Asia. Search, discover, enquire and support one another in the marketplace.
+      </p>
+      <div style="display:flex;gap:28px;margin-bottom:28px;flex-wrap:wrap">
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1" id="totalBiz">640+</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Businesses</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1">22</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Countries</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1">14</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Categories</div></div>
+      </div>
+      <div style="display:flex;gap:10px;padding-bottom:28px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="document.getElementById('bizRegSection').scrollIntoView({behavior:'smooth'})">+ List Your Business</button>
+        <button onclick="window.location.href='dashboard.html'" style="padding:7px 16px;border-radius:100px;font-size:.82rem;font-weight:700;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .22s ease">📊 My Dashboard</button>
+        <button onclick="showToast('Map view coming soon! 🗺')" style="padding:7px 16px;border-radius:100px;font-size:.82rem;font-weight:700;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .22s ease">🗺 Map View</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY SEARCH BAR -->
+  <div style="background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+    <div class="container" style="display:flex;gap:10px;padding:13px 24px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px;position:relative">
+        <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none">🔍</span>
+        <input id="bizSearch" oninput="applyBizFilters()" placeholder="Search businesses, services, location…"
+          style="width:100%;padding:10px 13px 10px 38px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;transition:border .22s ease;font-family:inherit"
+          onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <select id="bizCatFilter" onchange="applyBizFilters()" style="padding:10px 13px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:150px;font-family:inherit">
+        <option value="">All Categories</option>
+        <option>Technology &amp; IT</option><option>Finance &amp; Accounting</option>
+        <option>Education &amp; Coaching</option><option>Healthcare &amp; Wellness</option>
+        <option>Construction &amp; Engineering</option><option>Food &amp; Hospitality</option>
+        <option>Retail &amp; E-commerce</option><option>Legal &amp; Consulting</option>
+        <option>Media &amp; Creative</option><option>Agriculture &amp; Food</option>
+      </select>
+      <select id="bizCountryFilter" onchange="applyBizFilters()" style="padding:10px 13px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:130px;font-family:inherit">
+        <option value="">All Countries</option>
+        <option>Malaysia</option><option>Singapore</option><option>Indonesia</option>
+        <option>Philippines</option><option>Thailand</option><option>Hong Kong</option>
+      </select>
+      <select id="bizVerifiedFilter" onchange="applyBizFilters()" style="padding:10px 13px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:130px;font-family:inherit">
+        <option value="">All Listings</option>
+        <option value="verified">✓ Verified Only</option>
+        <option value="new">🆕 New Listings</option>
+      </select>
+      <span id="bizResultCount" style="font-size:.8rem;color:var(--text-muted);white-space:nowrap;margin-left:auto"></span>
+    </div>
+    <!-- CATEGORY PILL TABS -->
+    <div style="overflow-x:auto;border-top:1px solid var(--border)">
+      <div class="container" style="display:flex;padding:9px 24px;gap:6px" id="bizCatPills"></div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="container" style="padding:32px 24px 80px" id="bizMainContent"></div>
+
+  <!-- REGISTER BUSINESS BANNER -->
+  <div id="bizRegSection" style="background:linear-gradient(135deg,#0d2818 0%,#1a4a2e 100%);overflow:hidden">
+    <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 460px">
+      <div style="padding:52px 44px;color:#fff;position:relative;overflow:hidden">
+        <div style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Noto Serif SC',serif;font-size:200px;color:rgba(255,255,255,.03);pointer-events:none;line-height:1">好管家</div>
+        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+          <span style="display:block;width:20px;height:1.5px;background:var(--sage)"></span>List Your Business
+        </div>
+        <h2 style="font-size:clamp(1.3rem,2.3vw,1.9rem);margin-bottom:10px;line-height:1.25;font-family:'Outfit',sans-serif">Join 640+ Christian Businesses<br>on Good Steward</h2>
+        <p style="color:rgba(255,255,255,.6);font-size:.87rem;line-height:1.7;max-width:360px">Reach a trusted community of faith-driven customers and partners. Free listing — no credit card required.</p>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.78)"><div style="width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0"></div>Visible to 2,800+ Christian members</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.78)"><div style="width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0"></div>Verified Christian Business badge</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.78)"><div style="width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0"></div>Listing reviewed &amp; approved within 48hrs</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.78)"><div style="width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0"></div>Automatically appears in directory after approval</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.78)"><div style="width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0"></div>Manage everything from your dashboard</div>
+        </div>
+      </div>
+      <div style="background:var(--card-bg);padding:40px 34px;border-left:1px solid rgba(255,255,255,.06)">
+        <div id="bizRegForm">
+          <h3 style="font-size:1.1rem;margin-bottom:4px;font-family:'Outfit',sans-serif;font-weight:800">Register Your Business</h3>
+          <p style="font-size:.77rem;color:var(--text-muted);margin-bottom:18px">Free · Reviewed in 48hrs · Auto-published on approval</p>
+          <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Business Name *</label>
+            <input class="fi" id="b_name" placeholder="e.g. Grace Consulting Sdn Bhd"></div>
+          <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Category *</label>
+            <select class="fi" id="b_cat"><option value="">Select category…</option><option>Technology &amp; IT</option><option>Finance &amp; Accounting</option><option>Education &amp; Coaching</option><option>Healthcare &amp; Wellness</option><option>Construction &amp; Engineering</option><option>Food &amp; Hospitality</option><option>Retail &amp; E-commerce</option><option>Legal &amp; Consulting</option><option>Media &amp; Creative</option><option>Agriculture &amp; Food</option></select></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:12px">
+            <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Country *</label>
+              <select class="fi" id="b_country"><option value="">Select…</option><option>Malaysia</option><option>Singapore</option><option>Indonesia</option><option>Philippines</option><option>Thailand</option></select></div>
+            <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City</label>
+              <input class="fi" id="b_addr" placeholder="e.g. Kuala Lumpur"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:12px">
+            <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email *</label>
+              <input class="fi" id="b_email" type="email" placeholder="biz@email.com"></div>
+            <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone</label>
+              <input class="fi" id="b_phone" placeholder="+60 12 345 6789"></div>
+          </div>
+          <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Short Description *</label>
+            <textarea class="fi" id="b_desc" rows="2" placeholder="What does your business do?"></textarea></div>
+          <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Website (optional)</label>
+            <input class="fi" id="b_web" placeholder="yourwebsite.com"></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px">
+            <input type="checkbox" id="b_confirm" style="margin-top:3px;accent-color:var(--gold)">
+            <label for="b_confirm" style="font-size:.77rem;color:var(--text-secondary)">I confirm this is a Christian-owned/led business and agree to the <span style="color:var(--gold)">Community Guidelines</span>.</label>
+          </div>
+          <button onclick="submitBizReg()" style="width:100%;padding:11px;border-radius:10px;background:var(--gold);color:#000;font-size:.9rem;font-weight:800;cursor:pointer;transition:all .22s ease;border:none;font-family:inherit">✦ Submit for Review</button>
+          <p style="font-size:.71rem;color:var(--text-muted);text-align:center;margin-top:8px">Submitted listings go to Pending Review. Approved within 48hrs.</p>
+        </div>
+        <div id="bizRegSuccess" style="display:none;text-align:center;padding:28px 0">
+          <div style="font-size:3rem;margin-bottom:12px">🎉</div>
+          <h4 style="font-size:1.1rem;font-family:'Outfit',sans-serif;margin-bottom:8px">Submitted for Review!</h4>
+          <p style="font-size:.83rem;color:var(--text-secondary);margin-bottom:6px;line-height:1.65">Your listing is now <strong>Pending Review</strong> in your Dashboard.</p>
+          <p style="font-size:.83rem;color:var(--text-secondary);margin-bottom:20px;line-height:1.65">Once approved, it will <strong>automatically appear</strong> in the Business Directory.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button onclick="window.location.href='dashboard.html'" style="padding:8px 18px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">View in Dashboard</button>
+            <button onclick="resetBizForm()" style="padding:8px 18px;border-radius:100px;background:var(--page-bg);color:var(--text-secondary);font-size:.84rem;font-weight:700;border:1px solid var(--border);cursor:pointer">Submit Another</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSINESS DETAIL MODAL -->
+  <div class="modal-overlay" id="bizModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('bizModal')">✕</button>
+      <div id="mCat" style="margin-bottom:8px"></div>
+      <h3 id="mName" style="font-size:1.3rem;margin-bottom:4px;font-family:'Outfit',sans-serif"></h3>
+      <div id="mCountry" style="font-size:.82rem;color:var(--text-muted);margin-bottom:18px"></div>
+      <div id="mBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  applyBizFilters();updateHomeCounts();
+});
+</script>
+</body>
+</html>

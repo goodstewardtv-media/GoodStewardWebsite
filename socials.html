@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Socials — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="active">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
+      <a href="register.html" class="nav-cta">Register</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<!-- HERO -->
+  <div style="background:linear-gradient(140deg,#160028 0%,#240040 100%);padding:36px 0 28px;border-bottom:1px solid rgba(124,92,191,.2)">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(167,130,255,.8);margin-bottom:10px;display:flex;align-items:center;gap:8px">
+          <span style="display:block;width:20px;height:1.5px;background:rgba(167,130,255,.7)"></span>Christian Socials
+        </div>
+        <h1 style="color:#fff;font-size:clamp(1.5rem,2.8vw,2.2rem);font-family:'Outfit',sans-serif;margin-bottom:6px">Share. Connect. <span style="color:#a882ff">Inspire.</span></h1>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;max-width:440px;line-height:1.7">Your personal faith &amp; business feed. Post updates, share wins, upload photos, follow people you admire.</p>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="window.location.href='community.html'" style="padding:8px 18px;border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);font-size:.83rem;font-weight:700;cursor:pointer">💬 Go to Forum →</button>
+        <button onclick="document.getElementById('socPostTa').focus()" style="padding:8px 18px;border-radius:100px;background:#a882ff;color:#000;border:none;font-size:.83rem;font-weight:800;cursor:pointer">+ New Post</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding:24px 24px 80px">
+    <div style="display:grid;grid-template-columns:260px 1fr 240px;gap:20px;align-items:start">
+
+      <!-- LEFT SIDEBAR — Profile card + nav -->
+      <div style="position:sticky;top:78px">
+        <!-- Profile card -->
+        <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);overflow:hidden;margin-bottom:12px">
+          <div style="height:56px;background:linear-gradient(135deg,#7C5CBF,#4a1a8a)"></div>
+          <div style="padding:0 14px;margin-top:-20px;margin-bottom:8px">
+            <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.88rem;color:#000;border:3px solid var(--card-bg)">JT</div>
+          </div>
+          <div style="padding:0 14px 14px">
+            <div style="font-size:.95rem;font-weight:800;font-family:'Outfit',sans-serif;margin-bottom:2px">John Tan</div>
+            <div style="font-size:.74rem;color:var(--text-muted);margin-bottom:10px">Business Owner · Kuala Lumpur</div>
+            <div style="display:flex;border-top:1px solid var(--border)">
+              <div style="flex:1;text-align:center;padding:9px 0;border-right:1px solid var(--border)">
+                <div style="font-size:.97rem;font-weight:800" id="soc-following-count">89</div><div style="font-size:.64rem;color:var(--text-muted)">Following</div>
+              </div>
+              <div style="flex:1;text-align:center;padding:9px 0;border-right:1px solid var(--border)">
+                <div style="font-size:.97rem;font-weight:800" id="soc-followers-count">214</div><div style="font-size:.64rem;color:var(--text-muted)">Followers</div>
+              </div>
+              <div style="flex:1;text-align:center;padding:9px 0">
+                <div style="font-size:.97rem;font-weight:800" id="soc-posts-count">32</div><div style="font-size:.64rem;color:var(--text-muted)">Posts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Nav -->
+        <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);overflow:hidden">
+          <div onclick="showToast('Feed active!')" style="display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:.86rem;font-weight:700;color:#a882ff;background:rgba(124,92,191,.07);cursor:pointer">📰 My Feed</div>
+          <div onclick="showToast('Profile page coming soon!')" style="display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:.86rem;font-weight:600;color:var(--text-secondary);cursor:pointer;border-top:1px solid var(--border);transition:all .2s ease" onmouseover="this.style.color='#a882ff'" onmouseout="this.style.color='var(--text-secondary)'">👤 My Profile</div>
+          <div onclick="showToast('Saved posts coming soon!')" style="display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:.86rem;font-weight:600;color:var(--text-secondary);cursor:pointer;border-top:1px solid var(--border);transition:all .2s ease" onmouseover="this.style.color='#a882ff'" onmouseout="this.style.color='var(--text-secondary)'">🔖 Saved Posts</div>
+          <div onclick="window.location.href='community.html'" style="display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:.86rem;font-weight:600;color:var(--text-secondary);cursor:pointer;border-top:1px solid var(--border);transition:all .2s ease" onmouseover="this.style.color='#a882ff'" onmouseout="this.style.color='var(--text-secondary)'">💬 Community Forum</div>
+          <div onclick="showToast('Prayer Wall coming soon!')" style="display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:.86rem;font-weight:600;color:var(--text-secondary);cursor:pointer;border-top:1px solid var(--border);transition:all .2s ease" onmouseover="this.style.color='#a882ff'" onmouseout="this.style.color='var(--text-secondary)'">🙏 Prayer Wall</div>
+        </div>
+      </div>
+
+      <!-- CENTER FEED -->
+      <div>
+        <!-- POST COMPOSER -->
+        <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:16px;margin-bottom:16px" id="socComposer">
+          <div style="display:flex;gap:11px;align-items:flex-start;margin-bottom:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#000;flex-shrink:0">JT</div>
+            <textarea id="socPostTa" rows="3" placeholder="Share a testimony, business update, or encouragement with the community…"
+              style="flex:1;border:none;background:none;font-size:.9rem;color:var(--text-primary);resize:none;font-family:inherit;min-height:70px;outline:none"></textarea>
+          </div>
+          <!-- Image preview -->
+          <div id="socImgPreview" style="display:none;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:12px;position:relative">
+            <img id="socImgEl" style="width:100%;max-height:240px;object-fit:cover;display:block">
+            <div onclick="removeSocImg()" style="position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;cursor:pointer">✕</div>
+          </div>
+          <!-- Toolbar -->
+          <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px;flex-wrap:wrap;gap:8px">
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <!-- Photo upload -->
+              <label style="display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:8px;font-size:.8rem;color:var(--text-muted);cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='var(--page-bg)';this.style.color='#a882ff'" onmouseout="this.style.background='none';this.style.color='var(--text-muted)'">
+                📷 Photo <input type="file" accept="image/*" style="display:none" onchange="socPreviewImg(this)">
+              </label>
+              <button onclick="socAddTag('Testimony')" style="padding:6px 11px;border-radius:8px;font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='var(--page-bg)';this.style.color='#a882ff'" onmouseout="this.style.background='none';this.style.color='var(--text-muted)'">🙏 Testimony</button>
+              <button onclick="socAddTag('BusinessTip')" style="padding:6px 11px;border-radius:8px;font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='var(--page-bg)';this.style.color='#a882ff'" onmouseout="this.style.background='none';this.style.color='var(--text-muted)'">💡 Tip</button>
+              <button onclick="socAddTag('Prayer')" style="padding:6px 11px;border-radius:8px;font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='var(--page-bg)';this.style.color='#a882ff'" onmouseout="this.style.background='none';this.style.color='var(--text-muted)'">❤️ Prayer</button>
+              <button onclick="socAddTag('Encouragement')" style="padding:6px 11px;border-radius:8px;font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='var(--page-bg)';this.style.color='#a882ff'" onmouseout="this.style.background='none';this.style.color='var(--text-muted)'">✨ Encourage</button>
+            </div>
+            <button onclick="socPublishPost()" style="padding:8px 22px;border-radius:100px;background:#a882ff;color:#000;font-size:.85rem;font-weight:800;border:none;cursor:pointer;transition:all .2s ease" onmouseover="this.style.background='#7C5CBF';this.style.color='#fff'" onmouseout="this.style.background='#a882ff';this.style.color='#000'">Post</button>
+          </div>
+        </div>
+
+        <!-- FEED -->
+        <div id="socialFeed"></div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div style="position:sticky;top:78px">
+        <!-- Trending -->
+        <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;margin-bottom:12px">
+          <div style="font-size:.88rem;font-weight:800;font-family:'Outfit',sans-serif;margin-bottom:13px">🔥 Trending</div>
+          <div id="socTrending"></div>
+        </div>
+        <!-- Suggested -->
+        <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;margin-bottom:12px">
+          <div style="font-size:.88rem;font-weight:800;font-family:'Outfit',sans-serif;margin-bottom:13px">👥 Suggested</div>
+          <div id="socSuggested"></div>
+        </div>
+        <!-- Verse -->
+        <div style="background:linear-gradient(135deg,#160028,#240040);border-radius:18px;padding:18px;text-align:center">
+          <div style="font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a882ff;margin-bottom:9px">✦ Verse of the Day</div>
+          <div style="font-size:.88rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:8px">"Commit to the LORD whatever you do, and he will establish your plans."</div>
+          <div style="font-size:.74rem;color:#a882ff;font-weight:700">— Proverbs 16:3</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  initSocials();
+});
+</script>
+</body>
+</html>

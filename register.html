@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
+      <a href="register.html" class="nav-cta">Register</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<div style="min-height:calc(100vh - 64px);display:flex;background:var(--black);position:relative;overflow:hidden">
+
+    <!-- BG decorative Chinese text -->
+    <div style="position:absolute;font-family:'Noto Serif SC',serif;font-size:32vw;color:rgba(201,151,58,.03);pointer-events:none;line-height:1;user-select:none;right:-5%;bottom:-10%">好管家</div>
+    <div style="position:absolute;top:0;right:0;width:50%;height:100%;background:var(--card-bg);clip-path:polygon(8% 0,100% 0,100% 100%,0 100%)"></div>
+
+    <!-- LEFT PANEL -->
+    <div style="flex:1;padding:60px 56px;position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;min-width:0">
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(201,151,58,.12);color:var(--gold);font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px;border:1px solid rgba(201,151,58,.2)">✦ Free to Join</div>
+      <h1 style="font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-family:'Outfit',sans-serif;font-weight:900;line-height:1.18;margin-bottom:16px">
+        Join the<br><span style="color:var(--gold)">Good Steward</span><br>Family Today
+      </h1>
+      <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:36px;max-width:400px">
+        Connect with 2,800+ Christian business owners, professionals and believers across 22 countries.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(201,151,58,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">🏪</div>
+          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">List Your Business Free</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Get discovered by thousands of Christian consumers and partners across Asia.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(78,205,196,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">💼</div>
+          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">Access the Jobs Board</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Find purpose-driven work or hire believers who share your values.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(124,92,191,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">📱</div>
+          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">Post on Socials &amp; Forum</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Share testimonies, get prayer support and build real relationships.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(107,203,119,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">📅</div>
+          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">RSVP to Events</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Access workshops, conferences and prayer breakfasts across Asia.</div></div>
+        </div>
+      </div>
+      <!-- Testimonial -->
+      <div style="margin-top:40px;padding:20px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
+        <p style="font-size:.88rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.7;margin-bottom:12px">"Good Steward gave my consulting firm the visibility we needed. Three new clients in the first month alone. God is faithful!"</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#000">DL</div>
+          <div><div style="font-size:.83rem;font-weight:700;color:#fff">David Lim</div><div style="font-size:.73rem;color:rgba(255,255,255,.4)">Management Consultant · Kuala Lumpur</div></div>
+          <div style="margin-left:auto;color:var(--gold);font-size:.82rem">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — FORM -->
+    <div style="width:480px;flex-shrink:0;background:var(--card-bg);padding:52px 44px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;border-left:1px solid var(--border)">
+
+      <!-- FORM STATE -->
+      <div id="regFormWrap">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:4px">Create Your Account</h2>
+        <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:24px">Free forever · No credit card needed · Takes 60 seconds</p>
+
+        <!-- ROLE SELECTOR -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px">
+          <div class="reg-role-btn active-role" onclick="selectRegRole(this,'Business Owner','🏪')" id="role-biz"
+            style="border:2px solid var(--gold);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--gold-pale)">
+            <div style="font-size:1.6rem;margin-bottom:6px">🏪</div>
+            <div style="font-size:.76rem;font-weight:800;color:var(--gold)">Business Owner</div>
+          </div>
+          <div class="reg-role-btn" onclick="selectRegRole(this,'Professional','💼')" id="role-pro"
+            style="border:2px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--page-bg)">
+            <div style="font-size:1.6rem;margin-bottom:6px">💼</div>
+            <div style="font-size:.76rem;font-weight:800;color:var(--text-secondary)">Professional</div>
+          </div>
+          <div class="reg-role-btn" onclick="selectRegRole(this,'Believer','🙏')" id="role-bel"
+            style="border:2px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--page-bg)">
+            <div style="font-size:1.6rem;margin-bottom:6px">🙏</div>
+            <div style="font-size:.76rem;font-weight:800;color:var(--text-secondary)">Believer</div>
+          </div>
+        </div>
+
+        <!-- FIELDS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">First Name *</label>
+            <input class="fi" id="reg_first" placeholder="John" oninput="clearRegErr('reg_first')"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Last Name *</label>
+            <input class="fi" id="reg_last" placeholder="Tan"></div>
+        </div>
+        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email Address *</label>
+          <input class="fi" id="reg_email" type="email" placeholder="you@email.com" oninput="clearRegErr('reg_email')"></div>
+        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone Number</label>
+          <input class="fi" id="reg_phone" placeholder="+60 12 345 6789"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Country *</label>
+            <select class="fi" id="reg_country" onchange="clearRegErr('reg_country')">
+              <option value="">Select…</option><option>Malaysia</option><option>Singapore</option>
+              <option>Indonesia</option><option>Philippines</option><option>Thailand</option>
+              <option>Hong Kong</option><option>Australia</option><option>Other</option>
+            </select></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City</label>
+            <input class="fi" id="reg_city" placeholder="e.g. Kuala Lumpur"></div>
+        </div>
+        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Password *</label>
+          <div style="position:relative">
+            <input class="fi" id="reg_pw" type="password" placeholder="Min. 8 characters" oninput="checkPwStrength(this.value)">
+            <div onclick="togglePwVis()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-muted);font-size:.85rem" id="pwToggle">👁</div>
+          </div>
+          <div id="pwStrengthBar" style="height:3px;border-radius:100px;margin-top:5px;background:var(--border);overflow:hidden"><div id="pwStrengthFill" style="height:100%;width:0%;transition:all .3s ease;border-radius:100px"></div></div>
+          <div id="pwStrengthLabel" style="font-size:.7rem;color:var(--text-muted);margin-top:3px"></div>
+        </div>
+        <div style="margin-bottom:8px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Referral / Church (optional)</label>
+          <input class="fi" id="reg_referral" placeholder="e.g. Calvary Life Church / John Doe"></div>
+
+        <!-- Error message -->
+        <div id="regErrMsg" style="display:none;background:#fff0f0;color:#c0392b;padding:9px 14px;border-radius:10px;font-size:.82rem;font-weight:700;margin-bottom:12px;border-left:3px solid #c0392b"></div>
+
+        <!-- Checkboxes -->
+        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px">
+          <input type="checkbox" id="reg_agree" style="margin-top:3px;accent-color:var(--gold)">
+          <label for="reg_agree" style="font-size:.78rem;color:var(--text-secondary)">I agree to the <span style="color:var(--gold);cursor:pointer">Terms of Service</span> and <span style="color:var(--gold);cursor:pointer">Community Guidelines</span>. I am a Christian or interested in the Christian marketplace community.</label>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px">
+          <input type="checkbox" id="reg_notify" checked style="margin-top:3px;accent-color:var(--gold)">
+          <label for="reg_notify" style="font-size:.78rem;color:var(--text-secondary)">Send me a welcome email and weekly Good Steward newsletter (you can unsubscribe anytime).</label>
+        </div>
+
+        <button onclick="submitReg()" id="regSubmitBtn"
+          style="width:100%;padding:13px;border-radius:10px;background:var(--gold);color:#000;font-size:.95rem;font-weight:800;cursor:pointer;transition:all .22s ease;border:none;font-family:inherit;letter-spacing:.01em">
+          ✦ Create Free Account
+        </button>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:10px">
+          Already have an account? <span onclick="showToast('Sign in coming soon!')" style="color:var(--gold);cursor:pointer;font-weight:700">Sign in →</span>
+        </p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="regSuccessWrap" style="display:none;text-align:center">
+        <div style="font-size:3.5rem;margin-bottom:16px">🎉</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:10px">Welcome to Good Steward!</h3>
+        <p style="font-size:.9rem;color:var(--text-secondary);margin-bottom:8px;line-height:1.7">Your account has been created, <strong id="regWelcomeName">Friend</strong>!</p>
+        <p style="font-size:.88rem;color:var(--text-secondary);margin-bottom:20px;line-height:1.7">A confirmation email has been sent to <strong id="regWelcomeEmail">you</strong>. Click the link to verify and unlock all features.</p>
+        <div style="background:var(--gold-pale);border-radius:16px;padding:18px;margin-bottom:22px">
+          <div style="font-size:.87rem;font-style:italic;color:var(--text-secondary);line-height:1.65;margin-bottom:8px">"The plans of the diligent lead to profit as surely as haste leads to poverty."</div>
+          <div style="font-size:.76rem;color:var(--gold);font-weight:700">— Proverbs 21:5</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button onclick="window.location.href='dashboard.html'" style="padding:12px;border-radius:10px;background:var(--gold);color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer">Go to My Dashboard →</button>
+          <button onclick="window.location.href='business.html'" style="padding:12px;border-radius:10px;background:var(--page-bg);color:var(--text-secondary);font-size:.9rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer">Browse the Network</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EMAIL CONFIRMATION MODAL (Point 11) ══ -->
+  <div class="modal-overlay" id="emailModal" style="z-index:5000">
+    <div style="background:#fff;border-radius:24px;width:90%;max-width:520px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5);animation:fadeUp .3s ease">
+
+      <!-- Email client chrome -->
+      <div style="background:#f1f0ef;padding:11px 16px;display:flex;align-items:center;gap:7px">
+        <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:#ffbd2e"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:#28c840"></div>
+        <div style="margin-left:8px;font-size:.75rem;color:#888;font-family:monospace;flex:1;text-align:center">📧 Welcome to Good Steward — Your Inbox</div>
+      </div>
+
+      <!-- Email from/subject bar -->
+      <div style="background:#fafafa;border-bottom:1px solid #e8e8e8;padding:10px 18px;font-size:.78rem;color:#666">
+        <div><strong>From:</strong> Good Steward &lt;welcome@goodsteward.net&gt;</div>
+        <div><strong>To:</strong> <span id="emailToField">you@email.com</span></div>
+        <div><strong>Subject:</strong> ✦ Welcome to Good Steward — Verify your account</div>
+      </div>
+
+      <!-- Email header (branded) -->
+      <div style="background:#0a0a0a;padding:28px 32px;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:1.8rem;color:var(--gold);letter-spacing:.04em;margin-bottom:4px">好管家</div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase">A · GOOD · STEWARD</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:3px">Christian Marketplace Network</div>
+      </div>
+
+      <!-- Email body -->
+      <div style="padding:32px 36px">
+        <h2 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;margin-bottom:10px;color:#1a1916">
+          Welcome, <span id="emailHi" style="color:#C9973A">Friend</span>! 🎉
+        </h2>
+        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:12px">
+          Thank you for joining the <strong>Good Steward Christian Marketplace</strong>. You are now part of a community of 2,800+ Christians across Asia who are doing business with faith, integrity and purpose.
+        </p>
+        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:6px">
+          Your role: <strong id="emailRole" style="color:#1a1916">Member</strong>
+        </p>
+        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:20px">
+          Click the button below to verify your email address and unlock full access to your dashboard, business listings, the jobs board, socials and community forum.
+        </p>
+
+        <!-- CTA button -->
+        <div onclick="closeEmailModal()" style="display:block;width:100%;padding:14px;border-radius:12px;background:#C9973A;color:#000;font-size:.95rem;font-weight:800;text-align:center;cursor:pointer;margin-bottom:16px;transition:all .2s ease;box-sizing:border-box" onmouseover="this.style.background='#9A7020';this.style.color='#fff'" onmouseout="this.style.background='#C9973A';this.style.color='#000'">
+          ✦ Verify My Email Address
+        </div>
+
+        <p style="font-size:.78rem;color:#999;text-align:center;margin-bottom:20px">This link expires in 24 hours. If you didn't register, you can safely ignore this email.</p>
+
+        <!-- What's next -->
+        <div style="background:#f8f7f5;border-radius:12px;padding:18px;margin-bottom:16px">
+          <div style="font-size:.82rem;font-weight:800;color:#333;margin-bottom:12px">✦ What's next after verification:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#C9973A">🏪</span> List your business</div>
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#4ECDC4">💼</span> Browse job board</div>
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#a882ff">📱</span> Post on Socials</div>
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#6BCB77">💬</span> Join the Forum</div>
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#7c9cff">📅</span> RSVP to Events</div>
+            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#FF8FAB">🙏</span> Prayer Wall</div>
+          </div>
+        </div>
+
+        <!-- Scripture -->
+        <div style="background:linear-gradient(135deg,#0a0a0a,#1a0e00);border-radius:12px;padding:16px;text-align:center">
+          <div style="font-size:.82rem;font-style:italic;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:6px">"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."</div>
+          <div style="font-size:.74rem;color:#C9973A;font-weight:700">— Ephesians 2:10</div>
+        </div>
+      </div>
+
+      <!-- Email footer -->
+      <div style="background:#f8f7f5;padding:18px 36px;text-align:center;font-size:.72rem;color:#aaa;border-top:1px solid #eee">
+        <div>Good Steward Christian Marketplace · Malaysia &amp; Singapore</div>
+        <div style="margin-top:4px">© 2026 Good Steward Network · <span style="cursor:pointer" onclick="showToast('Unsubscribe option coming soon')">Unsubscribe</span> · <span style="cursor:pointer" onclick="showToast('Privacy Policy coming soon')">Privacy</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  
+});
+</script>
+</body>
+</html>
