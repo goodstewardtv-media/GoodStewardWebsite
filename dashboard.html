@@ -64,33 +64,33 @@
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px">
       <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('listing')" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">👁</div>
-        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:var(--gold);line-height:1">247</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:var(--gold);line-height:1">0</div>
         <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Profile Views</div>
-        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px">↑ 18% this month</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
       </div>
       <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('enquiries')" onmouseover="this.style.borderColor='#4ECDC4'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📧</div>
-        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#4ECDC4;line-height:1">32</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#4ECDC4;line-height:1">0</div>
         <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Enquiries</div>
-        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px">↑ 5 new this week</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
       </div>
       <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('network')" onmouseover="this.style.borderColor='#a882ff'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">🤝</div>
-        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#a882ff;line-height:1" id="dash-conn-count">89</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#a882ff;line-height:1" id="dash-conn-count">0</div>
         <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Connections</div>
-        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px">↑ 12 new</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
       </div>
       <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('events')" onmouseover="this.style.borderColor='#7c9cff'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📅</div>
-        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#7c9cff;line-height:1" id="dash-ev-count">8</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#7c9cff;line-height:1" id="dash-ev-count">0</div>
         <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Events RSVP'd</div>
-        <div style="font-size:.7rem;color:var(--text-muted);font-weight:700;margin-top:4px">2 upcoming</div>
+        <div style="font-size:.7rem;color:var(--text-muted);font-weight:700;margin-top:4px"></div>
       </div>
       <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('posts')" onmouseover="this.style.borderColor='#FF8FAB'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📝</div>
-        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#FF8FAB;line-height:1" id="dash-posts-count">32</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#FF8FAB;line-height:1" id="dash-posts-count">0</div>
         <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Posts &amp; Threads</div>
-        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px">4 new replies</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
       </div>
     </div>
 
@@ -101,7 +101,8 @@
         <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);overflow:hidden;margin-bottom:14px">
           <div onclick="switchDashTab('listing')"   id="dnav-listing"   class="dash-nav-item active-nav" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:700;cursor:pointer;border-bottom:1px solid var(--border);background:var(--gold-pale);color:var(--gold);transition:all .2s ease">🏪 My Listings</div>
           <div onclick="switchDashTab('jobs')"      id="dnav-jobs"      class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">💼 Post a Job</div>
-          <div onclick="switchDashTab('posts')"     id="dnav-posts"     class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📱 Socials &amp; Forum</div>
+          <div onclick="window.location.href='socials.html'" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📱 Socials</div>
+          <div onclick="window.location.href='community.html'" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">💬 Forum</div>
           <div onclick="switchDashTab('network')"   id="dnav-network"   class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">🤝 My Network</div>
           <div onclick="switchDashTab('enquiries')" id="dnav-enquiries" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📧 Enquiries</div>
           <div onclick="switchDashTab('events')"    id="dnav-events"    class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📅 My Events</div>
