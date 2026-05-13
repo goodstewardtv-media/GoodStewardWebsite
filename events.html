@@ -8,6 +8,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Find and RSVP to Christian events worldwide. Conferences, workshops, summits, meet ups and more.">
+  <meta name="keywords" content="Christian community, christian events, Good Steward, faith network">
+  <meta name="author" content="Good Steward Network">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Christian Events — 好管家 A Good Steward">
+  <meta property="og:description" content="Find and RSVP to Christian events worldwide. Conferences, workshops, summits, meet ups and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://goodstewardtv-media.github.io/GoodStewardWebsite/events.html">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:site_name" content="好管家 A Good Steward">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -32,8 +44,8 @@
       <a href="news.html" id="nav-news" class="">News</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
-      <a href="register.html" class="nav-cta">Register</a>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta">Log In</a>
     </div>
   </div>
 </nav>
@@ -93,8 +105,8 @@
         <button onclick="setEvCat(this,'all')"         class="evcbtn active" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:#7c9cff;color:#000;border:1.5px solid #7c9cff;cursor:pointer">All</button>
         <button onclick="setEvCat(this,'conference')"  class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🎙 Conference</button>
         <button onclick="setEvCat(this,'workshop')"    class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🛠 Workshop</button>
-        <button onclick="setEvCat(this,'networking')"  class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🤝 Networking</button>
-        <button onclick="setEvCat(this,'prayer')"      class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🙏 Prayer</button>
+        <button onclick="setEvCat(this,'convention')"  class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🏛 Convention</button>
+        <button onclick="setEvCat(this,'meetup')"      class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">☕ Meet Up</button>
         <button onclick="setEvCat(this,'summit')"      class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">🏔 Summit</button>
         <button onclick="setEvCat(this,'training')"    class="evcbtn" style="padding:6px 14px;border-radius:100px;font-size:.79rem;font-weight:700;white-space:nowrap;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);cursor:pointer">📚 Training</button>
       </div>
@@ -121,7 +133,7 @@
       <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:18px;margin-bottom:14px;text-align:center">
         <div style="font-size:1.8rem;margin-bottom:8px">📢</div>
         <div style="font-weight:800;font-size:.9rem;font-family:'Outfit',sans-serif;margin-bottom:6px">Organising an Event?</div>
-        <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:14px;line-height:1.6">Submit your Christian event to reach 2,800+ believers across Asia.</p>
+        <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:14px;line-height:1.6">Submit your Christian event to reach other believers around the World.</p>
         <button onclick="openSubmitEventModal()" style="width:100%;padding:9px;border-radius:10px;background:#7c9cff;color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Submit an Event</button>
       </div>
       <!-- Verse -->
@@ -181,5 +193,26 @@ document.addEventListener('DOMContentLoaded', function() {
   renderEventsPage();
 });
 </script>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--black);border-top:1px solid var(--border);padding:28px 0;margin-top:auto">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <p style="font-size:.78rem;color:var(--text-muted)">© 2026 好管家 A Good Steward Network · "For we are God's handiwork" — Eph 2:10</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a>
+        <a href="mailto:hello@goodsteward.net" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Contact Us</a>
+        <a href="register.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Join Free</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
 </body>
 </html>

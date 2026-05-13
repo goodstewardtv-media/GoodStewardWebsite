@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register — 好管家 A Good Steward</title>
+<title>Join Good Steward — 好管家 A Good Steward</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<meta name="description" content="Join Good Steward as a Company or Personal member. Connect with Christian businesses and talents worldwide.">
+<meta name="keywords" content="Christian membership, join Good Steward, Christian business network, Christian community signup">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Join Good Steward — 好管家 A Good Steward">
+<meta property="og:description" content="Join Good Steward as a Company or Personal member. Connect with Christian businesses and talents worldwide.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <div id="toast" class="toast"><span id="toastMsg"></span></div>
 
 <nav class="navbar">
@@ -23,247 +30,271 @@
     </a>
     <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
     <div class="nav-links" id="mobNav">
-      <a href="index.html" id="nav-home" class="">Home</a>
-      <a href="business.html" id="nav-business" class="">Business</a>
-      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
-      <a href="socials.html" id="nav-socials" class="">Socials</a>
-      <a href="community.html" id="nav-community" class="">Community</a>
-      <a href="events.html" id="nav-events" class="">Events</a>
-      <a href="news.html" id="nav-news" class="">News</a>
+      <a href="index.html" id="nav-home">Home</a>
+      <a href="business.html" id="nav-business">Business</a>
+      <a href="jobs.html" id="nav-jobs">Jobs</a>
+      <a href="socials.html" id="nav-socials">Socials</a>
+      <a href="community.html" id="nav-community">Community</a>
+      <a href="events.html" id="nav-events">Events</a>
+      <a href="news.html" id="nav-news">News</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
-      <a href="register.html" class="nav-cta">Register</a>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta active">Log In</a>
     </div>
   </div>
 </nav>
 
-<div class="page active">
-<div style="min-height:calc(100vh - 64px);display:flex;background:var(--black);position:relative;overflow:hidden">
+<div class="page active" style="min-height:calc(100vh - 64px);background:var(--black)">
 
-    <!-- BG decorative Chinese text -->
-    <div style="position:absolute;font-family:'Noto Serif SC',serif;font-size:32vw;color:rgba(201,151,58,.03);pointer-events:none;line-height:1;user-select:none;right:-5%;bottom:-10%">好管家</div>
-    <div style="position:absolute;top:0;right:0;width:50%;height:100%;background:var(--card-bg);clip-path:polygon(8% 0,100% 0,100% 100%,0 100%)"></div>
-
-    <!-- LEFT PANEL -->
-    <div style="flex:1;padding:60px 56px;position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;min-width:0">
-      <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(201,151,58,.12);color:var(--gold);font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px;border:1px solid rgba(201,151,58,.2)">✦ Free to Join</div>
-      <h1 style="font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-family:'Outfit',sans-serif;font-weight:900;line-height:1.18;margin-bottom:16px">
-        Join the<br><span style="color:var(--gold)">Good Steward</span><br>Family Today
-      </h1>
-      <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:36px;max-width:400px">
-        Connect with 2,800+ Christian business owners, professionals and believers across 22 countries.
-      </p>
-      <div style="display:flex;flex-direction:column;gap:18px">
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <div style="width:42px;height:42px;border-radius:12px;background:rgba(201,151,58,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">🏪</div>
-          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">List Your Business Free</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Get discovered by thousands of Christian consumers and partners across Asia.</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <div style="width:42px;height:42px;border-radius:12px;background:rgba(78,205,196,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">💼</div>
-          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">Access the Jobs Board</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Find purpose-driven work or hire believers who share your values.</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <div style="width:42px;height:42px;border-radius:12px;background:rgba(124,92,191,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">📱</div>
-          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">Post on Socials &amp; Forum</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Share testimonies, get prayer support and build real relationships.</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <div style="width:42px;height:42px;border-radius:12px;background:rgba(107,203,119,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">📅</div>
-          <div><div style="font-weight:800;font-size:.95rem;color:#fff;margin-bottom:3px">RSVP to Events</div><div style="font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.55">Access workshops, conferences and prayer breakfasts across Asia.</div></div>
-        </div>
-      </div>
-      <!-- Testimonial -->
-      <div style="margin-top:40px;padding:20px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
-        <p style="font-size:.88rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.7;margin-bottom:12px">"Good Steward gave my consulting firm the visibility we needed. Three new clients in the first month alone. God is faithful!"</p>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#000">DL</div>
-          <div><div style="font-size:.83rem;font-weight:700;color:#fff">David Lim</div><div style="font-size:.73rem;color:rgba(255,255,255,.4)">Management Consultant · Kuala Lumpur</div></div>
-          <div style="margin-left:auto;color:var(--gold);font-size:.82rem">★★★★★</div>
-        </div>
-      </div>
+  <!-- STEP 1: CHOOSE MEMBER TYPE -->
+  <div id="step-choose" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 64px);padding:40px 24px;position:relative;overflow:hidden">
+    <div style="position:absolute;font-family:'Noto Serif SC',serif;font-size:40vw;color:rgba(201,151,58,.02);pointer-events:none;line-height:1;user-select:none">好管家</div>
+    <div style="text-align:center;margin-bottom:48px;position:relative;z-index:1">
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(201,151,58,.12);color:var(--gold);font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(201,151,58,.2)">✦ Join Good Steward</div>
+      <h1 style="font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;font-family:'Outfit',sans-serif;font-weight:900;line-height:1.2;margin-bottom:12px">How would you like to join?</h1>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.5);max-width:420px;margin:0 auto">Choose your membership type. You can always access Socials, Forum, Events and News regardless of your choice.</p>
     </div>
 
-    <!-- RIGHT PANEL — FORM -->
-    <div style="width:480px;flex-shrink:0;background:var(--card-bg);padding:52px 44px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;border-left:1px solid var(--border)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:780px;width:100%;position:relative;z-index:1">
 
-      <!-- FORM STATE -->
-      <div id="regFormWrap">
-        <h2 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:4px">Create Your Account</h2>
-        <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:24px">Free forever · No credit card needed · Takes 60 seconds</p>
-
-        <!-- ROLE SELECTOR -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px">
-          <div class="reg-role-btn active-role" onclick="selectRegRole(this,'Business Owner','🏪')" id="role-biz"
-            style="border:2px solid var(--gold);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--gold-pale)">
-            <div style="font-size:1.6rem;margin-bottom:6px">🏪</div>
-            <div style="font-size:.76rem;font-weight:800;color:var(--gold)">Business Owner</div>
-          </div>
-          <div class="reg-role-btn" onclick="selectRegRole(this,'Professional','💼')" id="role-pro"
-            style="border:2px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--page-bg)">
-            <div style="font-size:1.6rem;margin-bottom:6px">💼</div>
-            <div style="font-size:.76rem;font-weight:800;color:var(--text-secondary)">Professional</div>
-          </div>
-          <div class="reg-role-btn" onclick="selectRegRole(this,'Believer','🙏')" id="role-bel"
-            style="border:2px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .22s ease;background:var(--page-bg)">
-            <div style="font-size:1.6rem;margin-bottom:6px">🙏</div>
-            <div style="font-size:.76rem;font-weight:800;color:var(--text-secondary)">Believer</div>
-          </div>
+      <!-- COMPANY -->
+      <div onclick="selectMemberType('company')" style="background:linear-gradient(145deg,#001828,#002d3d);border-radius:28px;padding:38px 32px;cursor:pointer;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.34,1.56,.64,1);border:2px solid rgba(78,205,196,.2)" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='#4ECDC4';this.style.boxShadow='0 24px 60px rgba(78,205,196,.18)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(78,205,196,.2)';this.style.boxShadow='none'">
+        <div style="position:absolute;right:-20px;top:-20px;font-size:9rem;opacity:.04">🏢</div>
+        <div style="width:64px;height:64px;border-radius:18px;background:rgba(78,205,196,.15);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:20px">🏢</div>
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4ECDC4;margin-bottom:10px">Company Account</div>
+        <h3 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3">Corporate / Business Entity</h3>
+        <p style="font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px">Register your company, list your business, post job vacancies and connect with Christian talents and partners.</p>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:24px">
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#4ECDC4">✓</span> Post Job Vacancies</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#4ECDC4">✓</span> Business Directory Listing</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#4ECDC4">✓</span> Company Dashboard</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#4ECDC4">✓</span> Socials, Forum, Events Access</div>
         </div>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:100px;background:#4ECDC4;color:#000;font-size:.88rem;font-weight:800">Join as Company →</div>
+      </div>
 
-        <!-- FIELDS -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px">
-          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">First Name *</label>
-            <input class="fi" id="reg_first" placeholder="John" oninput="clearRegErr('reg_first')"></div>
-          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Last Name *</label>
-            <input class="fi" id="reg_last" placeholder="Tan"></div>
+      <!-- PERSONAL -->
+      <div onclick="selectMemberType('personal')" style="background:linear-gradient(145deg,#160028,#240040);border-radius:28px;padding:38px 32px;cursor:pointer;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.34,1.56,.64,1);border:2px solid rgba(168,130,255,.2)" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='#a882ff';this.style.boxShadow='0 24px 60px rgba(168,130,255,.18)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(168,130,255,.2)';this.style.boxShadow='none'">
+        <div style="position:absolute;right:-20px;top:-20px;font-size:9rem;opacity:.04">👤</div>
+        <div style="width:64px;height:64px;border-radius:18px;background:rgba(168,130,255,.15);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:20px">👤</div>
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#a882ff;margin-bottom:10px">Personal Account</div>
+        <h3 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3">Individual / Talent</h3>
+        <p style="font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px">Create your personal profile, post your availability, showcase your skills and connect with Christian employers and the community.</p>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:24px">
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#a882ff">✓</span> Post Your Availability / Resume</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#a882ff">✓</span> Browse &amp; Apply for Jobs</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#a882ff">✓</span> Personal Profile Dashboard</div>
+          <div style="font-size:.81rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px"><span style="color:#a882ff">✓</span> Socials, Forum, Events Access</div>
         </div>
-        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email Address *</label>
-          <input class="fi" id="reg_email" type="email" placeholder="you@email.com" oninput="clearRegErr('reg_email')"></div>
-        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone Number</label>
-          <input class="fi" id="reg_phone" placeholder="+60 12 345 6789"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px">
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:100px;background:#a882ff;color:#000;font-size:.88rem;font-weight:800">Join as Individual →</div>
+      </div>
+
+    </div>
+    <p style="font-size:.8rem;color:rgba(255,255,255,.3);margin-top:24px;position:relative;z-index:1">Already have an account? <a href="#" onclick="showToast('Sign in coming soon!')" style="color:var(--gold);font-weight:700">Sign in →</a></p>
+  </div>
+
+  <!-- STEP 2: COMPANY FORM -->
+  <div id="step-company" style="display:none;padding:48px 24px 80px">
+    <div style="max-width:860px;margin:0 auto">
+      <button onclick="goBack()" style="display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12);font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:28px">← Back</button>
+      <div style="text-align:center;margin-bottom:36px">
+        <div style="width:64px;height:64px;border-radius:18px;background:rgba(78,205,196,.15);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 14px">🏢</div>
+        <h2 style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:6px">Company Registration</h2>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.45)">Free · Takes 2 minutes · Reviewed within 48hrs</p>
+      </div>
+      <div style="background:var(--card-bg);border-radius:24px;border:1px solid var(--border);padding:36px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Company Name *</label><input class="fi" id="co_name" placeholder="e.g. Grace Digital Sdn Bhd"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Registration No.</label><input class="fi" id="co_reg" placeholder="e.g. 1234567-X"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Industry / Category *</label>
+            <select class="fi" id="co_industry"><option value="">Select…</option><option>Agriculture & Food</option><option>Art & Collectibles</option><option>Blockchain & AI</option><option>Church & Ministry</option><option>Construction & Engineering</option><option>Education & Coaching</option><option>Events & Tourism</option><option>Fashion & Entertainment</option><option>Finance & Accounting</option><option>Food & Hospitality</option><option>Healthcare & Wellness</option><option>Legal & Consulting</option><option>Media & Creative</option><option>Nonprofit</option><option>Retail & E-commerce</option><option>Technology & IT</option><option>Others</option></select></div>
           <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Country *</label>
-            <select class="fi" id="reg_country" onchange="clearRegErr('reg_country')">
-              <option value="">Select…</option><option>Malaysia</option><option>Singapore</option>
-              <option>Indonesia</option><option>Philippines</option><option>Thailand</option>
-              <option>Hong Kong</option><option>Australia</option><option>Other</option>
-            </select></div>
-          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City</label>
-            <input class="fi" id="reg_city" placeholder="e.g. Kuala Lumpur"></div>
+            <select class="fi" id="co_country"><option value="">Select country…</option><option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Australia</option><option>Austria</option><option>Bahrain</option><option>Bangladesh</option><option>Belgium</option><option>Brazil</option><option>Brunei</option><option>Cambodia</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Ecuador</option><option>Egypt</option><option>Finland</option><option>France</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Hong Kong</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kuwait</option><option>Laos</option><option>Lebanon</option><option>Malaysia</option><option>Maldives</option><option>Malta</option><option>Mexico</option><option>Mongolia</option><option>Morocco</option><option>Myanmar</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Panama</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sri Lanka</option><option>Sweden</option><option>Switzerland</option><option>Taiwan</option><option>Tanzania</option><option>Thailand</option><option>Turkey</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Venezuela</option><option>Vietnam</option><option>Zimbabwe</option><option>Other</option></select></div>
         </div>
-        <div style="margin-bottom:13px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Password *</label>
-          <div style="position:relative">
-            <input class="fi" id="reg_pw" type="password" placeholder="Min. 8 characters" oninput="checkPwStrength(this.value)">
-            <div onclick="togglePwVis()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-muted);font-size:.85rem" id="pwToggle">👁</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City *</label><input class="fi" id="co_city" placeholder="e.g. Kuala Lumpur"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email *</label><input class="fi" id="co_email" type="email" placeholder="company@email.com"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone</label><input class="fi" id="co_phone" placeholder="+60 12 345 6789"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Website *</label><input class="fi" id="co_web" placeholder="yourwebsite.com"></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Social Links</label>
+          <div style="display:flex;gap:8px"><select class="fi" id="co_social_type" style="width:140px"><option>Facebook</option><option>Twitter/X</option><option>LinkedIn</option></select><input class="fi" id="co_social_url" placeholder="Paste your social link" style="flex:1"></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">My Church (optional)</label><input class="fi" id="co_church" placeholder="e.g. Calvary Life Church"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Password *</label>
+            <div style="position:relative"><input class="fi" id="co_pw" type="password" placeholder="Min. 8 characters" oninput="checkPwStrength(this.value)"><div onclick="togglePwVis()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-muted)" id="pwToggle">👁</div></div>
+            <div id="pwStrengthBar" style="height:3px;border-radius:100px;margin-top:5px;background:var(--border);overflow:hidden"><div id="pwStrengthFill" style="height:100%;width:0%;transition:all .3s ease;border-radius:100px"></div></div>
+            <div id="pwStrengthLabel" style="font-size:.7rem;color:var(--text-muted);margin-top:3px"></div>
           </div>
-          <div id="pwStrengthBar" style="height:3px;border-radius:100px;margin-top:5px;background:var(--border);overflow:hidden"><div id="pwStrengthFill" style="height:100%;width:0%;transition:all .3s ease;border-radius:100px"></div></div>
-          <div id="pwStrengthLabel" style="font-size:.7rem;color:var(--text-muted);margin-top:3px"></div>
         </div>
-        <div style="margin-bottom:8px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Referral / Church (optional)</label>
-          <input class="fi" id="reg_referral" placeholder="e.g. Calvary Life Church / John Doe"></div>
-
-        <!-- Error message -->
-        <div id="regErrMsg" style="display:none;background:#fff0f0;color:#c0392b;padding:9px 14px;border-radius:10px;font-size:.82rem;font-weight:700;margin-bottom:12px;border-left:3px solid #c0392b"></div>
-
-        <!-- Checkboxes -->
+        <div style="margin-bottom:14px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Company Description *</label><textarea class="fi" id="co_desc" rows="2" placeholder="Brief description of your company and what you do…"></textarea></div>
+        <div id="coErrMsg" style="display:none;background:#fff0f0;color:#c0392b;padding:9px 14px;border-radius:10px;font-size:.82rem;font-weight:700;margin-bottom:12px;border-left:3px solid #c0392b"></div>
         <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px">
-          <input type="checkbox" id="reg_agree" style="margin-top:3px;accent-color:var(--gold)">
-          <label for="reg_agree" style="font-size:.78rem;color:var(--text-secondary)">I agree to the <span style="color:var(--gold);cursor:pointer">Terms of Service</span> and <span style="color:var(--gold);cursor:pointer">Community Guidelines</span>. I am a Christian or interested in the Christian marketplace community.</label>
+          <input type="checkbox" id="co_jesus" style="margin-top:3px;accent-color:#4ECDC4">
+          <label for="co_jesus" style="font-size:.79rem;color:var(--text-secondary)">I believe Jesus Christ as my Lord and Savior.</label>
         </div>
         <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px">
-          <input type="checkbox" id="reg_notify" checked style="margin-top:3px;accent-color:var(--gold)">
-          <label for="reg_notify" style="font-size:.78rem;color:var(--text-secondary)">Send me a welcome email and weekly Good Steward newsletter (you can unsubscribe anytime).</label>
+          <input type="checkbox" id="co_agree" style="margin-top:3px;accent-color:#4ECDC4">
+          <label for="co_agree" style="font-size:.79rem;color:var(--text-secondary)">I confirm this is a Christian-owned/led business and agree to the <span style="color:#4ECDC4;cursor:pointer">Terms of Service</span> and <span style="color:#4ECDC4;cursor:pointer">Community Guidelines</span>.</label>
         </div>
-
-        <button onclick="submitReg()" id="regSubmitBtn"
-          style="width:100%;padding:13px;border-radius:10px;background:var(--gold);color:#000;font-size:.95rem;font-weight:800;cursor:pointer;transition:all .22s ease;border:none;font-family:inherit;letter-spacing:.01em">
-          ✦ Create Free Account
-        </button>
-        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:10px">
-          Already have an account? <span onclick="showToast('Sign in coming soon!')" style="color:var(--gold);cursor:pointer;font-weight:700">Sign in →</span>
-        </p>
-      </div>
-
-      <!-- SUCCESS STATE -->
-      <div id="regSuccessWrap" style="display:none;text-align:center">
-        <div style="font-size:3.5rem;margin-bottom:16px">🎉</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:10px">Welcome to Good Steward!</h3>
-        <p style="font-size:.9rem;color:var(--text-secondary);margin-bottom:8px;line-height:1.7">Your account has been created, <strong id="regWelcomeName">Friend</strong>!</p>
-        <p style="font-size:.88rem;color:var(--text-secondary);margin-bottom:20px;line-height:1.7">A confirmation email has been sent to <strong id="regWelcomeEmail">you</strong>. Click the link to verify and unlock all features.</p>
-        <div style="background:var(--gold-pale);border-radius:16px;padding:18px;margin-bottom:22px">
-          <div style="font-size:.87rem;font-style:italic;color:var(--text-secondary);line-height:1.65;margin-bottom:8px">"The plans of the diligent lead to profit as surely as haste leads to poverty."</div>
-          <div style="font-size:.76rem;color:var(--gold);font-weight:700">— Proverbs 21:5</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <button onclick="window.location.href='dashboard.html'" style="padding:12px;border-radius:10px;background:var(--gold);color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer">Go to My Dashboard →</button>
-          <button onclick="window.location.href='business.html'" style="padding:12px;border-radius:10px;background:var(--page-bg);color:var(--text-secondary);font-size:.9rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer">Browse the Network</button>
-        </div>
+        <button onclick="submitCompanyReg()" style="width:100%;padding:13px;border-radius:10px;background:#4ECDC4;color:#000;font-size:.95rem;font-weight:800;cursor:pointer;border:none;font-family:inherit">Create Company Account</button>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:10px">Your submission will be reviewed and listed once it's approved.</p>
       </div>
     </div>
   </div>
 
-  <!-- ══ EMAIL CONFIRMATION MODAL (Point 11) ══ -->
-  <div class="modal-overlay" id="emailModal" style="z-index:5000">
-    <div style="background:#fff;border-radius:24px;width:90%;max-width:520px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5);animation:fadeUp .3s ease">
-
-      <!-- Email client chrome -->
-      <div style="background:#f1f0ef;padding:11px 16px;display:flex;align-items:center;gap:7px">
-        <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
-        <div style="width:12px;height:12px;border-radius:50%;background:#ffbd2e"></div>
-        <div style="width:12px;height:12px;border-radius:50%;background:#28c840"></div>
-        <div style="margin-left:8px;font-size:.75rem;color:#888;font-family:monospace;flex:1;text-align:center">📧 Welcome to Good Steward — Your Inbox</div>
+  <!-- STEP 2: PERSONAL FORM -->
+  <div id="step-personal" style="display:none;padding:48px 24px 80px">
+    <div style="max-width:860px;margin:0 auto">
+      <button onclick="goBack()" style="display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12);font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:28px">← Back</button>
+      <div style="text-align:center;margin-bottom:36px">
+        <div style="width:64px;height:64px;border-radius:18px;background:rgba(168,130,255,.15);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 14px">👤</div>
+        <h2 style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:6px">Personal Registration</h2>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.45)">Free · Takes 2 minutes · Join instantly</p>
       </div>
-
-      <!-- Email from/subject bar -->
-      <div style="background:#fafafa;border-bottom:1px solid #e8e8e8;padding:10px 18px;font-size:.78rem;color:#666">
-        <div><strong>From:</strong> Good Steward &lt;welcome@goodsteward.net&gt;</div>
-        <div><strong>To:</strong> <span id="emailToField">you@email.com</span></div>
-        <div><strong>Subject:</strong> ✦ Welcome to Good Steward — Verify your account</div>
-      </div>
-
-      <!-- Email header (branded) -->
-      <div style="background:#0a0a0a;padding:28px 32px;text-align:center">
-        <div style="font-family:'Noto Serif SC',serif;font-size:1.8rem;color:var(--gold);letter-spacing:.04em;margin-bottom:4px">好管家</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase">A · GOOD · STEWARD</div>
-        <div style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:3px">Christian Marketplace Network</div>
-      </div>
-
-      <!-- Email body -->
-      <div style="padding:32px 36px">
-        <h2 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;margin-bottom:10px;color:#1a1916">
-          Welcome, <span id="emailHi" style="color:#C9973A">Friend</span>! 🎉
-        </h2>
-        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:12px">
-          Thank you for joining the <strong>Good Steward Christian Marketplace</strong>. You are now part of a community of 2,800+ Christians across Asia who are doing business with faith, integrity and purpose.
-        </p>
-        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:6px">
-          Your role: <strong id="emailRole" style="color:#1a1916">Member</strong>
-        </p>
-        <p style="font-size:.88rem;color:#555;line-height:1.75;margin-bottom:20px">
-          Click the button below to verify your email address and unlock full access to your dashboard, business listings, the jobs board, socials and community forum.
-        </p>
-
-        <!-- CTA button -->
-        <div onclick="closeEmailModal()" style="display:block;width:100%;padding:14px;border-radius:12px;background:#C9973A;color:#000;font-size:.95rem;font-weight:800;text-align:center;cursor:pointer;margin-bottom:16px;transition:all .2s ease;box-sizing:border-box" onmouseover="this.style.background='#9A7020';this.style.color='#fff'" onmouseout="this.style.background='#C9973A';this.style.color='#000'">
-          ✦ Verify My Email Address
+      <div style="background:var(--card-bg);border-radius:24px;border:1px solid var(--border);padding:36px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">First Name *</label><input class="fi" id="pe_first" placeholder="John"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Last Name *</label><input class="fi" id="pe_last" placeholder="Tan"></div>
         </div>
-
-        <p style="font-size:.78rem;color:#999;text-align:center;margin-bottom:20px">This link expires in 24 hours. If you didn't register, you can safely ignore this email.</p>
-
-        <!-- What's next -->
-        <div style="background:#f8f7f5;border-radius:12px;padding:18px;margin-bottom:16px">
-          <div style="font-size:.82rem;font-weight:800;color:#333;margin-bottom:12px">✦ What's next after verification:</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#C9973A">🏪</span> List your business</div>
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#4ECDC4">💼</span> Browse job board</div>
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#a882ff">📱</span> Post on Socials</div>
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#6BCB77">💬</span> Join the Forum</div>
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#7c9cff">📅</span> RSVP to Events</div>
-            <div style="font-size:.8rem;color:#666;display:flex;align-items:center;gap:6px"><span style="color:#FF8FAB">🙏</span> Prayer Wall</div>
-          </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Industry / Skills *</label>
+            <select class="fi" id="pe_industry"><option value="">Select…</option><option>Agriculture & Food</option><option>Art & Collectibles</option><option>Blockchain & AI</option><option>Church & Ministry</option><option>Construction & Engineering</option><option>Education & Coaching</option><option>Events & Tourism</option><option>Fashion & Entertainment</option><option>Finance & Accounting</option><option>Food & Hospitality</option><option>Healthcare & Wellness</option><option>Legal & Consulting</option><option>Media & Creative</option><option>Nonprofit</option><option>Retail & E-commerce</option><option>Technology & IT</option><option>Others</option></select></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Country *</label>
+            <select class="fi" id="pe_country"><option value="">Select country…</option><option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Australia</option><option>Austria</option><option>Bahrain</option><option>Bangladesh</option><option>Belgium</option><option>Brazil</option><option>Brunei</option><option>Cambodia</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Ecuador</option><option>Egypt</option><option>Finland</option><option>France</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Hong Kong</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kuwait</option><option>Laos</option><option>Lebanon</option><option>Malaysia</option><option>Maldives</option><option>Malta</option><option>Mexico</option><option>Mongolia</option><option>Morocco</option><option>Myanmar</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Panama</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sri Lanka</option><option>Sweden</option><option>Switzerland</option><option>Taiwan</option><option>Tanzania</option><option>Thailand</option><option>Turkey</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Venezuela</option><option>Vietnam</option><option>Zimbabwe</option><option>Other</option></select></div>
         </div>
-
-        <!-- Scripture -->
-        <div style="background:linear-gradient(135deg,#0a0a0a,#1a0e00);border-radius:12px;padding:16px;text-align:center">
-          <div style="font-size:.82rem;font-style:italic;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:6px">"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."</div>
-          <div style="font-size:.74rem;color:#C9973A;font-weight:700">— Ephesians 2:10</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City *</label><input class="fi" id="pe_city" placeholder="e.g. Kuala Lumpur"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email *</label><input class="fi" id="pe_email" type="email" placeholder="you@email.com"></div>
         </div>
-      </div>
-
-      <!-- Email footer -->
-      <div style="background:#f8f7f5;padding:18px 36px;text-align:center;font-size:.72rem;color:#aaa;border-top:1px solid #eee">
-        <div>Good Steward Christian Marketplace · Malaysia &amp; Singapore</div>
-        <div style="margin-top:4px">© 2026 Good Steward Network · <span style="cursor:pointer" onclick="showToast('Unsubscribe option coming soon')">Unsubscribe</span> · <span style="cursor:pointer" onclick="showToast('Privacy Policy coming soon')">Privacy</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone</label><input class="fi" id="pe_phone" placeholder="+60 12 345 6789"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">LinkedIn / Social</label><input class="fi" id="pe_social" placeholder="linkedin.com/in/yourname"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">My Church (optional)</label><input class="fi" id="pe_church" placeholder="e.g. Hope City Church"></div>
+          <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Password *</label>
+            <div style="position:relative"><input class="fi" id="pe_pw" type="password" placeholder="Min. 8 characters"><div onclick="togglePeVis()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-muted)">👁</div></div></div>
+        </div>
+        <div style="margin-bottom:14px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">About You</label><textarea class="fi" id="pe_bio" rows="2" placeholder="Brief intro about yourself, your skills and faith…"></textarea></div>
+        <div id="peErrMsg" style="display:none;background:#fff0f0;color:#c0392b;padding:9px 14px;border-radius:10px;font-size:.82rem;font-weight:700;margin-bottom:12px;border-left:3px solid #c0392b"></div>
+        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px">
+          <input type="checkbox" id="pe_jesus" style="margin-top:3px;accent-color:#a882ff">
+          <label for="pe_jesus" style="font-size:.79rem;color:var(--text-secondary)">I believe Jesus Christ as my Lord and Savior.</label>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:20px">
+          <input type="checkbox" id="pe_agree" style="margin-top:3px;accent-color:#a882ff">
+          <label for="pe_agree" style="font-size:.79rem;color:var(--text-secondary)">I agree to the <span style="color:#a882ff;cursor:pointer">Terms of Service</span> and <span style="color:#a882ff;cursor:pointer">Community Guidelines</span>. I am a Christian or interested in the Christian community.</label>
+        </div>
+        <button onclick="submitPersonalReg()" style="width:100%;padding:13px;border-radius:10px;background:#a882ff;color:#000;font-size:.95rem;font-weight:800;cursor:pointer;border:none;font-family:inherit">Create Personal Account</button>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:10px">Your submission will be reviewed and listed once it's approved.</p>
       </div>
     </div>
   </div>
+
+  <!-- SUCCESS STATE -->
+  <div id="step-success" style="display:none;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 64px);padding:40px 24px;text-align:center">
+    <div style="font-size:4rem;margin-bottom:20px">🎉</div>
+    <h2 style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800;color:#fff;margin-bottom:10px">Welcome to Good Steward!</h2>
+    <p style="font-size:.95rem;color:rgba(255,255,255,.5);max-width:420px;margin:0 auto 10px;line-height:1.7">Your account has been created successfully. A confirmation email has been sent to you.</p>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.4);max-width:400px;margin:0 auto 30px;line-height:1.7">Your submission will be reviewed and listed once it's approved.</p>
+    <div style="background:rgba(201,151,58,.08);border:1px solid rgba(201,151,58,.2);border-radius:16px;padding:20px;max-width:400px;margin:0 auto 28px">
+      <div style="font-size:.85rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:8px">"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."</div>
+      <div style="font-size:.76rem;color:var(--gold);font-weight:700">— Ephesians 2:10</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <a href="dashboard.html" style="padding:12px 28px;border-radius:100px;background:var(--gold);color:#000;font-size:.9rem;font-weight:800;text-decoration:none">Go to Dashboard →</a>
+      <a href="index.html" style="padding:12px 28px;border-radius:100px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:.9rem;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.15)">Browse Network</a>
+    </div>
+  </div>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
+
 </div>
 
 <script src="shared.js"></script>
 <script>
-// Page init
+function selectMemberType(type) {
+  document.getElementById('step-choose').style.display = 'none';
+  document.getElementById('step-company').style.display = type === 'company' ? 'block' : 'none';
+  document.getElementById('step-personal').style.display = type === 'personal' ? 'block' : 'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goBack() {
+  document.getElementById('step-company').style.display = 'none';
+  document.getElementById('step-personal').style.display = 'none';
+  document.getElementById('step-choose').style.display = 'flex';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function submitCompanyReg() {
+  const name = document.getElementById('co_name').value.trim();
+  const industry = document.getElementById('co_industry').value;
+  const country = document.getElementById('co_country').value;
+  const email = document.getElementById('co_email').value.trim();
+  const web = document.getElementById('co_web').value.trim();
+  const desc = document.getElementById('co_desc').value.trim();
+  const pw = document.getElementById('co_pw').value;
+  const jesus = document.getElementById('co_jesus').checked;
+  const agree = document.getElementById('co_agree').checked;
+  const err = document.getElementById('coErrMsg');
+  if (!name) { err.textContent='Please enter your company name.'; err.style.display='block'; return; }
+  if (!industry) { err.textContent='Please select an industry.'; err.style.display='block'; return; }
+  if (!country) { err.textContent='Please select your country.'; err.style.display='block'; return; }
+  if (!email || !email.includes('@')) { err.textContent='Please enter a valid email.'; err.style.display='block'; return; }
+  if (!web) { err.textContent='Please enter your company website.'; err.style.display='block'; return; }
+  if (!desc) { err.textContent='Please add a company description.'; err.style.display='block'; return; }
+  if (!pw || pw.length < 8) { err.textContent='Password must be at least 8 characters.'; err.style.display='block'; return; }
+  if (!agree) { err.textContent='Please agree to the Terms of Service.'; err.style.display='block'; return; }
+  err.style.display='none';
+  document.getElementById('step-company').style.display = 'none';
+  const s = document.getElementById('step-success');
+  s.style.display = 'flex';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function submitPersonalReg() {
+  const first = document.getElementById('pe_first').value.trim();
+  const last = document.getElementById('pe_last').value.trim();
+  const country = document.getElementById('pe_country').value;
+  const email = document.getElementById('pe_email').value.trim();
+  const pw = document.getElementById('pe_pw').value;
+  const agree = document.getElementById('pe_agree').checked;
+  const err = document.getElementById('peErrMsg');
+  if (!first) { err.textContent='Please enter your first name.'; err.style.display='block'; return; }
+  if (!last) { err.textContent='Please enter your last name.'; err.style.display='block'; return; }
+  if (!country) { err.textContent='Please select your country.'; err.style.display='block'; return; }
+  if (!email || !email.includes('@')) { err.textContent='Please enter a valid email.'; err.style.display='block'; return; }
+  if (!pw || pw.length < 8) { err.textContent='Password must be at least 8 characters.'; err.style.display='block'; return; }
+  if (!agree) { err.textContent='Please agree to the Terms of Service.'; err.style.display='block'; return; }
+  err.style.display='none';
+  document.getElementById('step-personal').style.display = 'none';
+  const s = document.getElementById('step-success');
+  s.style.display = 'flex';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function togglePeVis() {
+  const pw = document.getElementById('pe_pw');
+  pw.type = pw.type === 'password' ? 'text' : 'password';
+}
+function acceptCookies() {
+  document.getElementById('cookieBanner').style.display = 'none';
+  localStorage.setItem('cookiesAccepted','1');
+}
 document.addEventListener('DOMContentLoaded', function() {
-  
+  if (localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookieBanner').style.display = 'none';
+  }
 });
 </script>
 </body>

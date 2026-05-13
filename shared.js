@@ -154,8 +154,24 @@ function toggleMobileNav() {
 function toggleTheme() {
   const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', t);
-  document.getElementById('theme-btn').textContent = t === 'light' ? '🌙 Dark' : '☀️ Light';
+  const icon = document.getElementById('theme-icon');
+  if (icon) icon.textContent = t === 'light' ? '🌙' : '☀️';
+  const btn = document.getElementById('theme-btn');
+  if (btn) btn.title = t === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  try { localStorage.setItem('gs-theme', t); } catch(e) {}
 }
+
+// Apply saved theme on load
+(function() {
+  try {
+    const saved = localStorage.getItem('gs-theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      const icon = document.getElementById('theme-icon');
+      if (icon) icon.textContent = saved === 'light' ? '🌙' : '☀️';
+    }
+  } catch(e) {}
+})();
 
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 document.addEventListener('click', e => { if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('open'); });
@@ -1405,3 +1421,26 @@ window.addEventListener('load', () => {
   initSocials();
   initForum();
 });
+
+function openEmployerModal() { document.getElementById('employerModal').classList.add('open'); }
+function openTalentModal()   { document.getElementById('talentModal').classList.add('open'); }
+
+function submitEmployerForm() {
+  const company = document.getElementById('emp_company')?.value.trim();
+  const title   = document.getElementById('emp_title')?.value.trim();
+  const loc     = document.getElementById('emp_loc')?.value.trim();
+  const email   = document.getElementById('emp_email')?.value.trim();
+  const desc    = document.getElementById('emp_desc')?.value.trim();
+  if (!company || !title || !loc || !email || !desc) return showToast('Please fill all required fields.');
+  closeModal('employerModal');
+  showToast('Your submission will be reviewed and listed once it\'s approved. ✅');
+}
+
+function submitTalentForm() {
+  const name  = document.getElementById('tal_name')?.value.trim();
+  const title = document.getElementById('tal_title')?.value.trim();
+  const email = document.getElementById('tal_email')?.value.trim();
+  if (!name || !title || !email) return showToast('Please fill all required fields.');
+  closeModal('talentModal');
+  showToast('Your submission will be reviewed and listed once it\'s approved. ✅');
+}

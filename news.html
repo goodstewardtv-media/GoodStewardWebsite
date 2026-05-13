@@ -8,6 +8,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Curated news for Christians around the world. Business, faith, community and ministry updates.">
+  <meta name="keywords" content="Christian community, world news & ministry news, Good Steward, faith network">
+  <meta name="author" content="Good Steward Network">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="World News & Ministry News — 好管家 A Good Steward">
+  <meta property="og:description" content="Curated news for Christians around the world. Business, faith, community and ministry updates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://goodstewardtv-media.github.io/GoodStewardWebsite/news.html">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:site_name" content="好管家 A Good Steward">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -32,8 +44,8 @@
       <a href="news.html" id="nav-news" class="active">News</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
-      <a href="register.html" class="nav-cta">Register</a>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta">Log In</a>
     </div>
   </div>
 </nav>
@@ -46,10 +58,10 @@
         <span style="display:block;width:22px;height:1.5px;background:rgba(138,173,255,.7)"></span>News &amp; Updates
       </div>
       <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;font-family:'Outfit',sans-serif;margin-bottom:8px">
-        Faith in the <span style="color:var(--gold)">Marketplace</span>
+        World News · <span style="color:var(--gold)">Ministry News</span>
       </h1>
       <p style="font-size:.9rem;color:rgba(255,255,255,.5);max-width:480px;line-height:1.7">
-        Curated news for faith-driven leaders across Asia. Business · Faith &amp; Work · Community · Testimonies.
+        Curated News for Christians around the World.
       </p>
     </div>
   </div>
@@ -129,5 +141,26 @@ document.addEventListener('DOMContentLoaded', function() {
   renderNewsPage();
 });
 </script>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--black);border-top:1px solid var(--border);padding:28px 0;margin-top:auto">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <p style="font-size:.78rem;color:var(--text-muted)">© 2026 好管家 A Good Steward Network · "For we are God's handiwork" — Eph 2:10</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a>
+        <a href="mailto:hello@goodsteward.net" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Contact Us</a>
+        <a href="register.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Join Free</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
 </body>
 </html>
