@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+  <meta name="description" content="Curated news for Christians around the world. Business, faith, community and ministry updates.">
+  <meta name="keywords" content="Christian community, world news & ministry news, Good Steward, faith network">
+  <meta name="author" content="Good Steward Network">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="World News & Ministry News — 好管家 A Good Steward">
+  <meta property="og:description" content="Curated news for Christians around the world. Business, faith, community and ministry updates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://goodstewardtv-media.github.io/GoodStewardWebsite/news.html">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:site_name" content="好管家 A Good Steward">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="active">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<!-- HERO -->
+  <div style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);padding:48px 0 32px;border-bottom:1px solid rgba(67,97,238,.18)">
+    <div class="container">
+      <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(138,173,255,.8);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+        <span style="display:block;width:22px;height:1.5px;background:rgba(138,173,255,.7)"></span>News &amp; Updates
+      </div>
+      <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;font-family:'Outfit',sans-serif;margin-bottom:8px">
+        World News · <span style="color:var(--gold)">Ministry News</span>
+      </h1>
+      <p style="font-size:.9rem;color:rgba(255,255,255,.5);max-width:480px;line-height:1.7">
+        Curated News for Christians around the World.
+      </p>
+    </div>
+  </div>
+
+  <!-- SEARCH + CATEGORY TABS -->
+  <div style="background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+    <div class="container" style="display:flex;gap:10px;padding:12px 24px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px;position:relative">
+        <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none">🔍</span>
+        <input id="newsSearch" oninput="renderNewsPage()" placeholder="Search articles…"
+          style="width:100%;padding:9px 13px 9px 38px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;font-family:inherit;outline:none"
+          onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+    </div>
+    <div style="overflow-x:auto;border-top:1px solid var(--border)">
+      <div class="container" style="display:flex" id="newsCatTabs">
+        <button onclick="setNewsCat(this,'all')"        class="nctab active" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--gold);background:none;border:none;border-bottom:2.5px solid var(--gold);cursor:pointer;margin-bottom:-1px;font-family:inherit">All News</button>
+        <button onclick="setNewsCat(this,'Business')"   class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Business</button>
+        <button onclick="setNewsCat(this,'Faith & Work')" class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Faith &amp; Work</button>
+        <button onclick="setNewsCat(this,'Community')"  class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Community</button>
+        <button onclick="setNewsCat(this,'Testimony')"  class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Testimonies</button>
+        <button onclick="setNewsCat(this,'Events')"     class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Events</button>
+        <button onclick="setNewsCat(this,'Network News')" class="nctab" style="padding:11px 18px;font-size:.82rem;font-weight:700;white-space:nowrap;color:var(--text-muted);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px;font-family:inherit">Network</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container" style="padding:32px 24px 80px">
+    <!-- FEATURED ARTICLE (top) -->
+    <div id="newsFeatured" style="margin-bottom:36px"></div>
+    <!-- MAIN GRID -->
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:start">
+      <div>
+        <div id="newsGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px"></div>
+        <div id="newsNoResults" style="display:none;text-align:center;padding:60px 0;color:var(--text-muted)">
+          <div style="font-size:2.5rem;margin-bottom:12px">📰</div>
+          <div style="font-weight:700;font-size:1rem">No articles found.</div>
+        </div>
+      </div>
+      <!-- NEWS SIDEBAR -->
+      <div style="position:sticky;top:calc(64px + 100px + 14px)">
+        <!-- Newsletter -->
+        <div style="background:linear-gradient(135deg,#1a1a2e,#2d2d5e);border-radius:20px;padding:22px;margin-bottom:14px;text-align:center">
+          <div style="font-size:1.8rem;margin-bottom:10px">📬</div>
+          <div style="font-weight:800;font-size:.95rem;font-family:'Outfit',sans-serif;color:#fff;margin-bottom:6px">Faith &amp; Business Weekly</div>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:14px;line-height:1.6">Get curated Christian marketplace news delivered every Monday.</p>
+          <input placeholder="your@email.com" style="width:100%;padding:9px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:.84rem;margin-bottom:10px;font-family:inherit;outline:none" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
+          <button onclick="showToast('Subscribed! Welcome to the community 📬')" style="width:100%;padding:9px;border-radius:10px;background:var(--gold);color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Subscribe Free</button>
+        </div>
+        <!-- Popular tags -->
+        <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:18px;margin-bottom:14px">
+          <div style="font-weight:800;font-size:.88rem;font-family:'Outfit',sans-serif;margin-bottom:14px">🏷 Popular Topics</div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px">
+            <span onclick="setNewsCat(document.querySelector('.nctab[onclick*=Business]'),'Business')" style="padding:5px 12px;border-radius:100px;background:var(--gold-pale);color:var(--gold);font-size:.78rem;font-weight:700;cursor:pointer">Business</span>
+            <span onclick="setNewsCat(document.querySelector('.nctab[onclick*=Faith]'),'Faith & Work')" style="padding:5px 12px;border-radius:100px;background:#eef0ff;color:#4361EE;font-size:.78rem;font-weight:700;cursor:pointer">Faith &amp; Work</span>
+            <span onclick="setNewsCat(document.querySelector('.nctab[onclick*=Testimony]'),'Testimony')" style="padding:5px 12px;border-radius:100px;background:#eafbeb;color:#3d8a47;font-size:.78rem;font-weight:700;cursor:pointer">Testimonies</span>
+            <span style="padding:5px 12px;border-radius:100px;background:#fff0f0;color:#FF6B6B;font-size:.78rem;font-weight:700;cursor:pointer">#Prayer</span>
+            <span style="padding:5px 12px;border-radius:100px;background:#f0ecff;color:#7C5CBF;font-size:.78rem;font-weight:700;cursor:pointer">#Leadership</span>
+            <span style="padding:5px 12px;border-radius:100px;background:#e8faf9;color:#4ECDC4;font-size:.78rem;font-weight:700;cursor:pointer">#Asia</span>
+          </div>
+        </div>
+        <!-- About -->
+        <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:18px">
+          <div style="font-weight:800;font-size:.88rem;font-family:'Outfit',sans-serif;margin-bottom:8px">ℹ️ About Good Steward News</div>
+          <p style="font-size:.82rem;color:var(--text-secondary);line-height:1.65">Curated stories about Christians in business, faith-driven leadership and the marketplace across Asia Pacific. Published weekly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  renderNewsPage();
+});
+</script>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--black);border-top:1px solid var(--border);padding:28px 0;margin-top:auto">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <p style="font-size:.78rem;color:var(--text-muted)">© 2026 好管家 A Good Steward Network · "For we are God's handiwork" — Eph 2:10</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a>
+        <a href="mailto:hello@goodsteward.net" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Contact Us</a>
+        <a href="register.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Join Free</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<!-- DASHBOARD HERO -->
+  <div style="background:var(--black);padding:32px 0 24px;border-bottom:1px solid rgba(201,151,58,.15)">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;color:#000;flex-shrink:0" id="dash-avatar-display">JT</div>
+        <div>
+          <div style="font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Member Dashboard</div>
+          <h2 style="font-size:clamp(1.1rem,2.5vw,1.7rem);color:#fff;font-family:'Outfit',sans-serif;font-weight:800">Welcome back, <span style="color:var(--gold)" id="dash-name-display">John Tan</span> ✦</h2>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.4);margin-top:2px" id="dash-role-display">Business Owner · Kuala Lumpur, Malaysia · Member since Jan 2025</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button onclick="switchDashTab('settings')" style="padding:8px 16px;border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);font-size:.82rem;font-weight:700;cursor:pointer">⚙ Settings</button>
+        <button onclick="document.getElementById('bizRegSection').scrollIntoView({behavior:'smooth'});window.location.href='business.html'" style="padding:8px 16px;border-radius:100px;background:var(--gold);color:#000;border:none;font-size:.82rem;font-weight:800;cursor:pointer">+ List Business</button>
+        <button onclick="openPostJobModal();window.location.href='jobs.html'" style="padding:8px 16px;border-radius:100px;background:#4ECDC4;color:#000;border:none;font-size:.82rem;font-weight:800;cursor:pointer">+ Post Job</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding:24px 24px 80px">
+
+    <!-- STAT CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px">
+      <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('listing')" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">👁</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:var(--gold);line-height:1">0</div>
+        <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Profile Views</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('enquiries')" onmouseover="this.style.borderColor='#4ECDC4'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📧</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#4ECDC4;line-height:1">0</div>
+        <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Enquiries</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('network')" onmouseover="this.style.borderColor='#a882ff'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">🤝</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#a882ff;line-height:1" id="dash-conn-count">0</div>
+        <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Connections</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('events')" onmouseover="this.style.borderColor='#7c9cff'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📅</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#7c9cff;line-height:1" id="dash-ev-count">0</div>
+        <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Events RSVP'd</div>
+        <div style="font-size:.7rem;color:var(--text-muted);font-weight:700;margin-top:4px"></div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:18px;border:1px solid var(--border);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:all .22s ease" onclick="switchDashTab('posts')" onmouseover="this.style.borderColor='#FF8FAB'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="position:absolute;right:-4px;top:-4px;font-size:2.8rem;opacity:.07">📝</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:#FF8FAB;line-height:1" id="dash-posts-count">0</div>
+        <div style="font-size:.74rem;color:var(--text-muted);margin-top:3px">Posts &amp; Threads</div>
+        <div style="font-size:.7rem;color:#6BCB77;font-weight:700;margin-top:4px"></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start">
+
+      <!-- LEFT NAV -->
+      <div style="position:sticky;top:78px">
+        <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);overflow:hidden;margin-bottom:14px">
+          <div onclick="switchDashTab('listing')"   id="dnav-listing"   class="dash-nav-item active-nav" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:700;cursor:pointer;border-bottom:1px solid var(--border);background:var(--gold-pale);color:var(--gold);transition:all .2s ease">🏪 My Listings</div>
+          <div onclick="switchDashTab('jobs')"      id="dnav-jobs"      class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">💼 Post a Job</div>
+          <div onclick="window.location.href='socials.html'" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📱 Socials</div>
+          <div onclick="window.location.href='community.html'" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">💬 Forum</div>
+          <div onclick="switchDashTab('network')"   id="dnav-network"   class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">🤝 My Network</div>
+          <div onclick="switchDashTab('enquiries')" id="dnav-enquiries" class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📧 Enquiries</div>
+          <div onclick="switchDashTab('events')"    id="dnav-events"    class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">📅 My Events</div>
+          <div onclick="switchDashTab('pending')"   id="dnav-pending"   class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">⏳ Pending Review</div>
+          <div onclick="switchDashTab('admin')"     id="dnav-admin"     class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text-secondary);transition:all .2s ease">🔑 Admin Panel</div>
+          <div onclick="switchDashTab('settings')"  id="dnav-settings"  class="dash-nav-item" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.86rem;font-weight:600;cursor:pointer;color:var(--text-secondary);transition:all .2s ease">⚙ Settings</div>
+        </div>
+        <!-- Prayer verse widget -->
+        <div style="background:linear-gradient(135deg,#0a0a0a,#1a0e00);border-radius:18px;padding:18px;text-align:center">
+          <div style="font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:9px">✦ Daily Verse</div>
+          <div style="font-size:.86rem;font-style:italic;color:rgba(255,255,255,.82);line-height:1.65;margin-bottom:8px">"Commit to the LORD whatever you do, and he will establish your plans."</div>
+          <div style="font-size:.74rem;color:var(--gold);font-weight:700">— Proverbs 16:3</div>
+        </div>
+      </div>
+
+      <!-- MAIN PANEL -->
+      <div>
+
+        <!-- ── TAB: MY LISTINGS ── -->
+        <div id="dpanel-listing">
+          <!-- Live business listings -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--gold);padding:22px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+              <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif">✦ My Live Business Listings</div>
+              <button onclick="document.getElementById('bizRegSection').scrollIntoView({behavior:'smooth'});window.location.href='business.html'" style="padding:6px 16px;border-radius:100px;background:var(--gold);color:#000;font-size:.8rem;font-weight:800;border:none;cursor:pointer">+ Add Listing</button>
+            </div>
+            <div id="dash-my-biz"></div>
+          </div>
+
+          <!-- Add product / service quick form -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">➕ Add a Product or Service</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:16px">List a specific product or service under your business. Appears on your business profile.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Product/Service Name *</label>
+                <input class="fi" id="prod_name" placeholder="e.g. Tax Advisory Package"></div>
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Starting Price</label>
+                <input class="fi" id="prod_price" placeholder="e.g. RM 500 / Free consult"></div>
+            </div>
+            <div style="margin-bottom:14px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Description</label>
+              <textarea class="fi" id="prod_desc" rows="2" placeholder="Brief description of your offering…"></textarea></div>
+            <button onclick="addProductListing()" style="padding:9px 22px;border-radius:100px;background:var(--gold);color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Add to Profile</button>
+          </div>
+          <div id="dash-products"></div>
+        </div>
+
+        <!-- ── TAB: POST A JOB ── -->
+        <div id="dpanel-jobs" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">📢 Post a Job / Hire</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:16px">Submitted listings are reviewed within 48hrs and auto-published to the Jobs Board on approval.</p>
+            <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Title *</label><input class="fi" id="dash_job_title" placeholder="e.g. Senior Accountant"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Location</label><input class="fi" id="dash_job_loc" placeholder="City or Remote"></div>
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Type</label><select class="fi" id="dash_job_type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Volunteer</option></select></div>
+            </div>
+            <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Salary Range</label><input class="fi" id="dash_job_salary" placeholder="e.g. RM 4,000–6,000/month"></div>
+            <div style="margin-bottom:14px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Description *</label><textarea class="fi" id="dash_job_desc" rows="3" placeholder="Describe the role, responsibilities and faith expectations…"></textarea></div>
+            <div style="display:flex;gap:10px">
+              <button onclick="dashPostJob()" style="padding:9px 22px;border-radius:100px;background:#4ECDC4;color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Submit for Review →</button>
+              <button onclick="window.location.href='jobs.html'" style="padding:9px 22px;border-radius:100px;background:var(--page-bg);color:var(--text-secondary);font-size:.86rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer">Browse Jobs Board →</button>
+            </div>
+          </div>
+          <!-- My live jobs -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:14px">💼 My Live Job Postings</div>
+            <div id="dash-my-jobs"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: SOCIALS & FORUM ── -->
+        <div id="dpanel-posts" style="display:none">
+          <!-- Quick social post -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:14px">📱 Quick Social Post</div>
+            <div style="display:flex;gap:11px;align-items:flex-start;margin-bottom:12px">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:#000;flex-shrink:0">JT</div>
+              <textarea id="dashSocPost" rows="3" placeholder="Share a business update, testimony or encouragement…" style="flex:1;border:1.5px solid var(--border);border-radius:12px;padding:10px 13px;background:var(--page-bg);color:var(--text-primary);font-size:.88rem;font-family:inherit;resize:none;outline:none" onfocus="this.style.borderColor='#a882ff'" onblur="this.style.borderColor='var(--border)'"></textarea>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button onclick="dashSocPublish()" style="padding:8px 20px;border-radius:100px;background:#a882ff;color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Publish to Feed</button>
+              <button onclick="window.location.href='socials.html'" style="padding:8px 20px;border-radius:100px;background:var(--page-bg);color:var(--text-secondary);font-size:.84rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer">Go to Socials →</button>
+            </div>
+          </div>
+          <!-- Quick forum thread -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:14px">💬 Start a Forum Discussion</div>
+            <div style="margin-bottom:12px">
+              <select class="fi" id="dashForumFlair" style="margin-bottom:10px"><option value="biz">💼 Business</option><option value="prayer">🙏 Prayer</option><option value="testimony">✨ Testimony</option><option value="advice">💡 Advice</option><option value="scripture">📖 Scripture</option><option value="qa">❓ Q&amp;A</option></select>
+              <input class="fi" id="dashForumTitle" placeholder="Topic title — make it specific and helpful" style="margin-bottom:10px">
+              <textarea class="fi" id="dashForumBody" rows="2" placeholder="Share details, context or a scripture verse…"></textarea>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button onclick="dashForumPost()" style="padding:8px 20px;border-radius:100px;background:#6BCB77;color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Post to Forum</button>
+              <button onclick="window.location.href='community.html'" style="padding:8px 20px;border-radius:100px;background:var(--page-bg);color:var(--text-secondary);font-size:.84rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer">Go to Forum →</button>
+            </div>
+          </div>
+          <!-- Recent posts -->
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:14px">📋 My Recent Posts</div>
+            <div id="dashMyPosts"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: NETWORK ── -->
+        <div id="dpanel-network" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">🤝 My Connections</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:18px">Christians you follow and who follow you.</p>
+            <div id="dashNetwork"></div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:14px">💡 Suggested Connections</div>
+            <div id="dashSuggested"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: ENQUIRIES ── -->
+        <div id="dpanel-enquiries" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">📧 Business Enquiries</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:18px">Enquiries received from the Business Directory.</p>
+            <div id="dashEnquiries"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: MY EVENTS ── -->
+        <div id="dpanel-events" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">📅 My Event RSVPs</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:18px">Events you've RSVP'd to.</p>
+            <div id="dashEvents"></div>
+          </div>
+          <button onclick="window.location.href='events.html'" style="padding:10px 24px;border-radius:100px;background:#7c9cff;color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Browse All Events →</button>
+        </div>
+
+        <!-- ── TAB: PENDING REVIEW ── -->
+        <div id="dpanel-pending" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">⏳ Business Listings — Pending Review</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:16px">Submitted listings awaiting approval. They will appear in the directory once approved.</p>
+            <div id="dash-pending-biz"></div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:4px">⏳ Job Postings — Pending Review</div>
+            <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:16px">Submitted jobs awaiting approval. They will appear on the Jobs Board once approved.</p>
+            <div id="dash-pending-jobs"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: ADMIN PANEL ── -->
+        <div id="dpanel-admin" style="display:none">
+          <div style="background:linear-gradient(135deg,#0a0a0a,#1a0e00);border-radius:20px;border:1px solid rgba(201,151,58,.25);padding:20px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-size:1.4rem">🔑</div>
+              <div>
+                <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;color:#fff">Admin Review Panel</div>
+                <div style="font-size:.78rem;color:rgba(255,255,255,.45)">Approve or reject submitted listings. Approved items go live immediately.</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.95rem;font-family:'Outfit',sans-serif;margin-bottom:4px">📋 Business Listings Awaiting Approval</div>
+            <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:16px">Approve → instantly live in directory. Reject → removed from queue.</p>
+            <div id="dash-pending-biz-admin"></div>
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+              <p style="font-size:.8rem;color:var(--text-muted)">💡 <strong>Try it:</strong> Go to <span onclick="document.getElementById('bizRegSection').scrollIntoView({behavior:'smooth'});window.location.href='business.html'" style="color:var(--gold);cursor:pointer;font-weight:700">Business Directory → List Your Business</span>, submit a listing, then come back to approve it here.</p>
+            </div>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.95rem;font-family:'Outfit',sans-serif;margin-bottom:4px">💼 Job Postings Awaiting Approval</div>
+            <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:16px">Approve → instantly live on Jobs Board. Reject → removed from queue.</p>
+            <div id="dash-pending-jobs-admin"></div>
+          </div>
+        </div>
+
+        <!-- ── TAB: SETTINGS ── -->
+        <div id="dpanel-settings" style="display:none">
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:16px">👤 Profile Settings</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">First Name</label><input class="fi" value="John"></div>
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Last Name</label><input class="fi" value="Tan"></div>
+            </div>
+            <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Email</label><input class="fi" value="john.tan@email.com" type="email"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Phone</label><input class="fi" value="+60 12 345 6789"></div>
+              <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">City</label><input class="fi" value="Kuala Lumpur"></div>
+            </div>
+            <div style="margin-bottom:16px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Bio</label><textarea class="fi" rows="2" placeholder="Tell the community about yourself…">Christian business owner passionate about financial integrity and biblical leadership.</textarea></div>
+            <button onclick="showToast('Profile updated! ✓')" style="padding:9px 22px;border-radius:100px;background:var(--gold);color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer">Save Changes</button>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px;margin-bottom:18px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:16px">🔔 Notification Preferences</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:.88rem;font-weight:700">Business enquiries</div><div style="font-size:.76rem;color:var(--text-muted)">When someone sends you a business enquiry</div></div>
+                <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:.88rem;font-weight:700">New followers</div><div style="font-size:.76rem;color:var(--text-muted)">When someone follows you on Socials</div></div>
+                <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:.88rem;font-weight:700">Forum replies</div><div style="font-size:.76rem;color:var(--text-muted)">When someone replies to your forum threads</div></div>
+                <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:.88rem;font-weight:700">Event reminders</div><div style="font-size:.76rem;color:var(--text-muted)">24hr reminder before events you RSVP'd to</div></div>
+                <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0">
+                <div><div style="font-size:.88rem;font-weight:700">Weekly newsletter</div><div style="font-size:.76rem;color:var(--text-muted)">Good Steward weekly faith &amp; business digest</div></div>
+                <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+              </div>
+            </div>
+            <button onclick="showToast('Notification preferences saved! 🔔')" style="padding:9px 22px;border-radius:100px;background:var(--gold);color:#000;font-size:.86rem;font-weight:800;border:none;cursor:pointer;margin-top:16px">Save Preferences</button>
+          </div>
+          <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:22px">
+            <div style="font-weight:800;font-size:.97rem;font-family:'Outfit',sans-serif;margin-bottom:16px">🔒 Account &amp; Security</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onclick="showToast('Password change email sent!')" style="padding:10px 20px;border-radius:10px;background:var(--page-bg);color:var(--text-primary);font-size:.86rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer;text-align:left">🔑 Change Password</button>
+              <button onclick="showToast('Two-factor auth coming soon!')" style="padding:10px 20px;border-radius:10px;background:var(--page-bg);color:var(--text-primary);font-size:.86rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer;text-align:left">🛡 Enable Two-Factor Authentication</button>
+              <button onclick="showToast('Download scheduled! Check your email.')" style="padding:10px 20px;border-radius:10px;background:var(--page-bg);color:var(--text-primary);font-size:.86rem;font-weight:700;border:1.5px solid var(--border);cursor:pointer;text-align:left">📥 Download My Data</button>
+              <button onclick="showToast('Account deactivation requires email confirmation.')" style="padding:10px 20px;border-radius:10px;background:#fff0f0;color:#c0392b;font-size:.86rem;font-weight:700;border:1.5px solid #fbb;cursor:pointer;text-align:left">🗑 Deactivate Account</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  renderDashboard();renderDashMyPosts();
+});
+</script>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--black);border-top:1px solid var(--border);padding:28px 0;margin-top:auto">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <p style="font-size:.78rem;color:var(--text-muted)">© 2026 好管家 A Good Steward Network · "For we are God's handiwork" — Eph 2:10</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a>
+        <a href="mailto:hello@goodsteward.net" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Contact Us</a>
+        <a href="register.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Join Free</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
+</body>
+</html>

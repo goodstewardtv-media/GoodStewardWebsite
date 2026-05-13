@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs Board — 好管家 A Good Steward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+  <meta name="description" content="Find jobs at Christian-led companies or post your availability. Connect Christian employers with talented believers worldwide.">
+  <meta name="keywords" content="Christian business, christian jobs board, Good Steward, faith marketplace, Malaysia, Singapore">
+  <meta name="author" content="Good Steward Network">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Christian Jobs Board — 好管家 A Good Steward">
+  <meta property="og:description" content="Find jobs at Christian-led companies or post your availability. Connect Christian employers with talented believers worldwide.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://goodstewardtv-media.github.io/GoodStewardWebsite/jobs.html">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:site_name" content="好管家 A Good Steward">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img-wrap">
+        <img src="logo.png" alt="好管家" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-logo-icon" style="display:none">好</div>
+      </div>
+    </a>
+    <button class="nav-hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="mobNav">
+      <a href="index.html" id="nav-home" class="">Home</a>
+      <a href="business.html" id="nav-business" class="">Business</a>
+      <a href="jobs.html" id="nav-jobs" class="active">Jobs</a>
+      <a href="socials.html" id="nav-socials" class="">Socials</a>
+      <a href="community.html" id="nav-community" class="">Community</a>
+      <a href="events.html" id="nav-events" class="">Events</a>
+      <a href="news.html" id="nav-news" class="">News</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><span id="theme-icon">🌙</span></button>
+      <a href="register.html" class="nav-cta">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+<!-- HERO -->
+  <div style="background:linear-gradient(140deg,#001828 0%,#002d3d 100%);padding:48px 0 28px;border-bottom:1px solid rgba(78,205,196,.18)">
+    <div class="container" style="position:relative;z-index:1">
+      <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(78,205,196,.8);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+        <span style="display:block;width:22px;height:1.5px;background:rgba(78,205,196,.8)"></span>Christian Jobs Board
+      </div>
+      <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-bottom:8px;font-family:'Outfit',sans-serif">
+        Work With Purpose.<br><span style="color:#4ECDC4">Serve With Excellence.</span>
+      </h1>
+      <p style="font-size:.92rem;color:rgba(255,255,255,.5);max-width:480px;line-height:1.7;margin-bottom:20px">
+        Find jobs at Christian-led companies or hire talented believers.
+      </p>
+      
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#4ECDC4;line-height:1">120+</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Employers</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#4ECDC4;line-height:1">18</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Countries</div></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button onclick="openPostJobModal()" style="padding:9px 22px;border-radius:100px;background:#4ECDC4;color:#000;font-size:.87rem;font-weight:800;border:none;cursor:pointer;transition:all .22s ease">📢 Post a Job</button>
+        <button onclick="window.location.href='dashboard.html'" style="padding:9px 22px;border-radius:100px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:.87rem;font-weight:700;border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .22s ease">📊 My Dashboard</button>
+        <button onclick="showToast('Resume builder coming soon! 📄')" style="padding:9px 22px;border-radius:100px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:.87rem;font-weight:700;border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .22s ease">📄 Upload Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY SEARCH -->
+  <div style="background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:13px 0">
+    <div class="container" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px;position:relative">
+        <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none">🔍</span>
+        <input id="jobSearch" oninput="renderJobs()" placeholder="Job title, skill, company…"
+          style="width:100%;padding:10px 13px 10px 38px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.87rem;font-family:inherit"
+          onfocus="this.style.borderColor='#4ECDC4'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <select id="jobLocation" onchange="renderJobs()" style="padding:10px 13px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:140px;font-family:inherit">
+        <option value="">All Locations</option>
+        <option>Kuala Lumpur</option><option>Singapore</option><option>Penang</option>
+        <option>Johor Bahru</option><option>Jakarta</option><option>Remote</option>
+      </select>
+      <select id="jobType" onchange="renderJobs()" style="padding:10px 13px;border:1.5px solid var(--border);border-radius:12px;background:var(--page-bg);color:var(--text-primary);font-size:.85rem;min-width:120px;font-family:inherit">
+        <option value="">All Types</option>
+        <option>Full-time</option><option>Part-time</option><option>Contract</option>
+        <option>Volunteer</option><option>Internship</option>
+      </select>
+      <span id="jobCount" style="font-size:.8rem;color:var(--text-muted);white-space:nowrap;margin-left:auto"></span>
+    </div>
+  </div>
+
+
+  <!-- EMPLOYER / TALENT CARDS -->
+  <div class="container" style="padding:28px 24px 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:8px">
+
+      <!-- EMPLOYER CARD -->
+      <div onclick="openEmployerModal()" style="background:linear-gradient(135deg,#001828,#002d3d);border-radius:24px;border:1.5px solid rgba(78,205,196,.3);padding:32px 28px;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(78,205,196,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:.05">🏢</div>
+        <div style="width:56px;height:56px;border-radius:16px;background:rgba(78,205,196,.15);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:18px">🏢</div>
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4ECDC4;margin-bottom:8px">For Companies</div>
+        <h3 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3">Post a Job Vacancy</h3>
+        <p style="font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px">Looking to hire Christian talent? Post your vacancy and reach thousands of qualified believers actively seeking purpose-driven work.</p>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;background:#4ECDC4;color:#000;font-size:.87rem;font-weight:800">Post a Job →</div>
+      </div>
+
+      <!-- TALENT CARD -->
+      <div onclick="openTalentModal()" style="background:linear-gradient(135deg,#1a0030,#2d0050);border-radius:24px;border:1.5px solid rgba(168,130,255,.3);padding:32px 28px;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(168,130,255,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:.05">🌟</div>
+        <div style="width:56px;height:56px;border-radius:16px;background:rgba(168,130,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:18px">🌟</div>
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#a882ff;margin-bottom:8px">For Talents</div>
+        <h3 style="font-size:1.3rem;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3">Post Your Availability</h3>
+        <p style="font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px">Ready to serve? Post your skills and availability so Christian employers can discover and connect with you directly.</p>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;background:#a882ff;color:#000;font-size:.87rem;font-weight:800">Post Availability →</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMPLOYER MODAL -->
+  <div class="modal-overlay" id="employerModal">
+    <div class="modal-box" style="max-width:560px">
+      <button class="modal-close" onclick="closeModal('employerModal')">✕</button>
+      <h3 style="font-size:1.2rem;font-family:'Outfit',sans-serif;font-weight:800;margin-bottom:4px">🏢 Post a Job Vacancy</h3>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:18px">Reviewed within 48hrs · Published on approval · Reach Christian talents worldwide</p>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Company Name *</label><input class="fi" id="emp_company" placeholder="e.g. Grace Digital Sdn Bhd"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Industry *</label>
+          <select class="fi" id="emp_industry"><option value="">Select…</option><option>Agriculture & Food</option><option>Art & Collectibles</option><option>Blockchain & AI</option><option>Church & Ministry</option><option>Construction & Engineering</option><option>Education & Coaching</option><option>Events & Tourism</option><option>Fashion & Entertainment</option><option>Finance & Accounting</option><option>Food & Hospitality</option><option>Healthcare & Wellness</option><option>Legal & Consulting</option><option>Media & Creative</option><option>Nonprofit</option><option>Retail & E-commerce</option><option>Technology & IT</option><option>Others</option></select></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Title *</label><input class="fi" id="emp_title" placeholder="e.g. Senior Developer"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Location *</label><input class="fi" id="emp_loc" placeholder="City or Remote"></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Type *</label>
+          <select class="fi" id="emp_type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Volunteer</option><option>Internship</option></select></div>
+      </div>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Salary Range</label><input class="fi" id="emp_salary" placeholder="e.g. RM 5,000–8,000/month"></div>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Contact Email *</label><input class="fi" id="emp_email" type="email" placeholder="hr@company.com"></div>
+      <div style="margin-bottom:16px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Description &amp; Requirements *</label><textarea class="fi" id="emp_desc" rows="3" placeholder="Describe the role, requirements and faith expectations…"></textarea></div>
+      <button onclick="submitEmployerForm()" style="width:100%;padding:11px;border-radius:10px;background:#4ECDC4;color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer;font-family:inherit">Submit for Review</button>
+      <p style="font-size:.71rem;color:var(--text-muted);text-align:center;margin-top:8px">Your submission will be reviewed and listed once it's approved.</p>
+    </div>
+  </div>
+
+  <!-- TALENT MODAL -->
+  <div class="modal-overlay" id="talentModal">
+    <div class="modal-box" style="max-width:560px">
+      <button class="modal-close" onclick="closeModal('talentModal')">✕</button>
+      <h3 style="font-size:1.2rem;font-family:'Outfit',sans-serif;font-weight:800;margin-bottom:4px">🌟 Post Your Availability</h3>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:18px">Let Christian employers discover you · Reviewed within 48hrs</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Full Name *</label><input class="fi" id="tal_name" placeholder="Your full name"></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Title / Role *</label><input class="fi" id="tal_title" placeholder="e.g. Graphic Designer"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Industry *</label>
+          <select class="fi" id="tal_industry"><option value="">Select…</option><option>Agriculture & Food</option><option>Art & Collectibles</option><option>Blockchain & AI</option><option>Church & Ministry</option><option>Construction & Engineering</option><option>Education & Coaching</option><option>Events & Tourism</option><option>Fashion & Entertainment</option><option>Finance & Accounting</option><option>Food & Hospitality</option><option>Healthcare & Wellness</option><option>Legal & Consulting</option><option>Media & Creative</option><option>Nonprofit</option><option>Retail & E-commerce</option><option>Technology & IT</option><option>Others</option></select></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Experience Level</label>
+          <select class="fi" id="tal_exp"><option>Entry Level</option><option>Mid Level</option><option>Senior</option><option>Leadership</option></select></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Location *</label><input class="fi" id="tal_loc" placeholder="City or Remote"></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Expected Salary</label><input class="fi" id="tal_salary" placeholder="e.g. RM 4,000/month"></div>
+      </div>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Skills (comma separated)</label><input class="fi" id="tal_skills" placeholder="e.g. React, Accounting, Graphic Design"></div>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Contact Email *</label><input class="fi" id="tal_email" type="email" placeholder="you@email.com"></div>
+      <div style="margin-bottom:11px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">About You</label><textarea class="fi" id="tal_bio" rows="2" placeholder="Brief intro — your experience, faith and what you bring…"></textarea></div>
+      <div style="margin-bottom:16px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Upload Resume / CV (PDF)</label>
+        <input type="file" accept=".pdf,.doc,.docx" id="tal_resume" style="width:100%;padding:9px;border:1.5px solid var(--border);border-radius:10px;background:var(--page-bg);color:var(--text-secondary);font-size:.84rem;font-family:inherit;cursor:pointer"></div>
+      <button onclick="submitTalentForm()" style="width:100%;padding:11px;border-radius:10px;background:#a882ff;color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer;font-family:inherit">Submit for Review</button>
+      <p style="font-size:.71rem;color:var(--text-muted);text-align:center;margin-top:8px">Your submission will be reviewed and listed once it's approved.</p>
+    </div>
+  </div>
+
+  <!-- LAYOUT: SIDEBAR + LISTINGS -->
+  <div class="container" style="display:grid;grid-template-columns:280px 1fr;gap:26px;padding:28px 24px 80px;align-items:start">
+
+    <!-- SIDEBAR -->
+    <div style="position:sticky;top:calc(64px + 60px + 14px);align-self:start">
+      <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:20px;margin-bottom:14px">
+        <div style="font-weight:800;font-size:.9rem;margin-bottom:14px;font-family:'Outfit',sans-serif">🎯 Filter Jobs</div>
+        <label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Industry</label>
+        <select id="jobIndustry" onchange="renderJobs()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--page-bg);color:var(--text-primary);font-size:.84rem;margin-bottom:12px;font-family:inherit">
+          <option value="">All Industries</option>
+          <option>Technology</option><option>Finance</option><option>Education</option>
+          <option>Healthcare</option><option>Media &amp; Creative</option><option>Ministry &amp; Church</option><option>Non-profit</option>
+        </select>
+        <label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Experience</label>
+        <select style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--page-bg);color:var(--text-primary);font-size:.84rem;font-family:inherit">
+          <option>Any Level</option><option>Entry Level</option><option>Mid Level</option><option>Senior</option><option>Leadership</option>
+        </select>
+      </div>
+      <div style="background:var(--card-bg);border-radius:20px;border:1px solid var(--border);padding:20px;margin-bottom:14px;text-align:center">
+        <div style="font-size:1.8rem;margin-bottom:8px">📋</div>
+        <div style="font-weight:800;font-size:.9rem;margin-bottom:6px;font-family:'Outfit',sans-serif">Looking for Work?</div>
+        <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:14px;line-height:1.6">Post your resume and let Christian employers find you.</p>
+        <button onclick="showToast('Resume builder coming soon!')" style="width:100%;padding:8px;border-radius:10px;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">Upload Resume</button>
+      </div>
+      <div style="background:linear-gradient(135deg,#001828,#002d3d);border-radius:20px;padding:20px;text-align:center">
+        <div style="font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4ECDC4;margin-bottom:10px">✦ For Workers</div>
+        <div style="font-size:.9rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:8px">"Whatever you do, work at it with all your heart."</div>
+        <div style="font-size:.76rem;color:#4ECDC4;font-weight:700">— Colossians 3:23</div>
+      </div>
+    </div>
+
+    <!-- JOB LISTINGS -->
+    <div id="jobListings"></div>
+  </div>
+
+  <!-- POST JOB MODAL -->
+  <div class="modal-overlay" id="postJobModal">
+    <div class="modal-box" style="max-width:540px">
+      <button class="modal-close" onclick="closeModal('postJobModal')">✕</button>
+      <h3 style="font-size:1.2rem;margin-bottom:4px;font-family:'Outfit',sans-serif;font-weight:800">Post a Job Opening</h3>
+      <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:20px">Submitted for review · Auto-published on approval · Reach 2,800+ Christians</p>
+      <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Title *</label>
+        <input class="fi" id="pj_title" placeholder="e.g. Senior Software Developer"></div>
+      <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Company Name *</label>
+        <input class="fi" id="pj_company" placeholder="e.g. Lighthouse Digital Sdn Bhd"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Location *</label>
+          <input class="fi" id="pj_loc" placeholder="City or Remote"></div>
+        <div><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Type *</label>
+          <select class="fi" id="pj_type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Volunteer</option><option>Internship</option></select></div>
+      </div>
+      <div style="margin-bottom:12px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Salary Range</label>
+        <input class="fi" id="pj_salary" placeholder="e.g. RM 5,000–8,000/month"></div>
+      <div style="margin-bottom:16px"><label style="font-size:.72rem;font-weight:800;color:var(--text-secondary);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">Job Description *</label>
+        <textarea class="fi" id="pj_desc" rows="3" placeholder="Describe the role, responsibilities and faith expectations…"></textarea></div>
+      <div style="display:flex;gap:10px">
+        <button onclick="submitJobPost()" style="flex:1;padding:11px;border-radius:10px;background:#4ECDC4;color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer;font-family:inherit">Submit for Review</button>
+        <button onclick="closeModal('postJobModal')" style="padding:11px 20px;border-radius:10px;background:var(--page-bg);color:var(--text-secondary);border:1.5px solid var(--border);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit">Cancel</button>
+      </div>
+      <p style="font-size:.71rem;color:var(--text-muted);text-align:center;margin-top:10px">Listings reviewed within 48hrs · Auto-published on approval</p>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Page init
+document.addEventListener('DOMContentLoaded', function() {
+  renderJobs();updateHomeCounts();
+});
+</script>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--black);border-top:1px solid var(--border);padding:28px 0;margin-top:auto">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <p style="font-size:.78rem;color:var(--text-muted)">© 2026 好管家 A Good Steward Network · "For we are God's handiwork" — Eph 2:10</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a>
+        <a href="mailto:hello@goodsteward.net" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Contact Us</a>
+        <a href="register.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">Join Free</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid rgba(201,151,58,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(10px)">
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0;max-width:600px;line-height:1.6">🍪 We use cookies to improve your experience and show relevant ads. By continuing, you agree to our <a href="privacy.html" style="color:var(--gold);font-weight:700">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:100px;background:var(--gold);color:#000;font-size:.84rem;font-weight:800;border:none;cursor:pointer">Accept</button>
+      <a href="privacy.html" style="padding:8px 16px;border-radius:100px;background:transparent;color:rgba(255,255,255,.5);font-size:.84rem;font-weight:600;border:1px solid rgba(255,255,255,.15);text-decoration:none">Learn More</a>
+    </div>
+  </div>
+</body>
+</html>
